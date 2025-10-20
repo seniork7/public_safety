@@ -4,8 +4,10 @@ import HeroBanner from '../HeroBanner.jsx'
 function Home() {
     return (
         <>
-        <NavBar />
-        <HeroBanner />
+        <header>
+            <NavBar />
+            <HeroBanner />
+        </header>
         </>
     )
 }
