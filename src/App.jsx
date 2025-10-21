@@ -1,10 +1,14 @@
+import Header from './components/Header.jsx'
 import Home from './components/pages/Home.jsx'
 
 function App() {
 
   return (
     <>
-      <Home />
+      <Header />
+      <main>
+        <Home />
+      </main>
     </>
   )
 }
