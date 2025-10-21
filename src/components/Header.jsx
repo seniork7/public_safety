@@ -9,7 +9,7 @@ function Header() {
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Public Safety</span>
         </NavbarBrand>
         <div className="flex md:order-2">
-          <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg cursor-pointer">Get Involved</Button>
+          <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg hidden md:block cursor-pointer">Get Involved</Button>
           <NavbarToggle />
         </div>
         <NavbarCollapse>
@@ -18,6 +18,7 @@ function Header() {
           <NavbarLink href="#">Services</NavbarLink>
           <NavbarLink href="#">Join Us</NavbarLink>
           <NavbarLink href="#">Contact</NavbarLink>
+          <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-4 py-2 px-4 rounded-lg md:hidden cursor-pointer">Get Involved</Button>
         </NavbarCollapse>
       </Navbar>
 

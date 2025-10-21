@@ -10,7 +10,9 @@ function HeroBanner() {
 
             {/* Content */}
             <div className="relative z-10 max-w-3xl h-full">
-                <SafetyAlert />
+                <div className="pt-16">
+                    <SafetyAlert />
+                </div>
                 <article className="flex flex-col items-start justify-center gap-2 h-full max-w-xl px-4 md:px-8">
                     <h1 className="text-5xl md:text-6xl text-white font-bold">
                     <span className="text-green-500">Together</span> <br /> we keep our community safe
@@ -20,9 +22,9 @@ function HeroBanner() {
                     </p>
 
                     {/* Buttons */}
-                    <div className="flex gap-4 my-4">
+                    <div className="flex flex-col md:flex-row w-full gap-4 my-4">
                         <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-lg cursor-pointer"><a href="#">Join Volunteers</a></Button>
-                        <Button className="bg-transparent border border-white text-white hover:bg-blue-600 hover:text-white transition font-bold py-2 px-8 rounded-lg cursor-pointer"><a href="#">Get Involved</a></Button>
+                        <Button className="bg-transparent border border-white text-white hover:bg-blue-600 hover:text-white transition font-bold py-2 px-8 rounded-lg cursor-pointer"><a href="#">Learn More</a></Button>
                     </div>
                 </article>
             </div>
