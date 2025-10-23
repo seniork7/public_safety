@@ -1,7 +1,13 @@
 import { HiOutlineShieldCheck, HiOutlineClock, HiOutlineTrendingUp, HiShieldCheck } from "react-icons/hi"
-import { HiMiniBellAlert, HiHeart } from "react-icons/hi2"
+import { HiMiniBellAlert, HiHeart, HiMiniArrowRight } from "react-icons/hi2"
 import { Card, Button } from "flowbite-react"
 import Community from '../../assets/images/community.png'
+
+const card = [
+    { title: "Emergency Response Training", text: "Our Emergency Response Training program equips individuals with the skills and knowledge needed to respond effectively in crisis situations.", icon: <HiMiniBellAlert />, link: "Learn More" },
+    { title: "First Aid Training", text: "Comprehensive First Aid Training covering essential lifesaving techniques such as CPR, wound care, and handling medical emergencies.", icon: <HiHeart />, link: "Learn More" },
+    { title: "Community Safety Workshops", text: "Engage in our Community Safety Workshops to learn about crime prevention, disaster preparedness, and creating safer neighborhoods.", icon: <HiOutlineShieldCheck />, link: "Learn More" }
+]
 
 function Home() {
     return (
@@ -52,73 +58,23 @@ function Home() {
                 <p className="max-w-lg text-center">Explore our most popular programs designed to protect and empower your community.</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 my-8 px-4 md:px-8">
-                    <Card className="max-w-sm">
-                        <h5 className="flex items-center justify-start gap-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-                            <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
-                            <HiMiniBellAlert />
-                            </span>
-                            Emergency Response Training
-                        </h5>
-                        <p className="font-normal text-gray-700 dark:text-gray-400">
-                            Our Emergency Response Training program equips individuals with the skills and knowledge needed to respond effectively in crisis situations.
-                        </p>
-                        <Button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-8 rounded-lg cursor-pointer">
-                            Learn More
-                            <svg className="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                fillRule="evenodd"
-                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                clipRule="evenodd"
-                            />
-                            </svg>
-                        </Button>
-                    </Card>
+                    {card.map((item, index) => (
+                        <Card key={index} className="max-w-sm">
+                            <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-gray-900 dark:text-white">
+                                <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
+                                    {item.icon}
+                                </span>
+                                {item.title}
+                            </h5>
+                            <p className="font-normal text-gray-700 dark:text-gray-400">
+                                {item.text}
+                            </p>
 
-                    <Card className="max-w-sm">
-                        <h5 className="flex items-center justify-start gap-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-                            <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
-                            <HiHeart />
-                            </span>
-                            First Aid Training
-                        </h5>
-                        <p className="font-normal text-gray-700 dark:text-gray-400">
-                            Comprehensive First Aid Training covering essential lifesaving techniques such as CPR, wound care, and handling medical emergencies.
-                        </p>
-                        <Button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-8 rounded-lg cursor-pointer">
-                            Learn More
-                            <svg className="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                fillRule="evenodd"
-                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                clipRule="evenodd"
-                            />
-                            </svg>
-                        </Button>
-                    </Card>
-
-                    <Card className="max-w-sm">
-                        <h5 className="flex items-center justify-start gap-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-                            <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
-                            <HiShieldCheck />
-                            </span>
-                            Community Safety Workshops
-                        </h5>
-                        <p className="font-normal text-gray-700 dark:text-gray-400">
-                            Engage in our Community Safety Workshops to learn about crime prevention, disaster preparedness, and creating safer neighborhoods.
-                        </p>
-                        <Button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-8 rounded-lg cursor-pointer">
-                            Learn More
-                            <svg className="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                fillRule="evenodd"
-                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                clipRule="evenodd"
-                            />
-                            </svg>
-                        </Button>
-                    </Card>
+                            <a href="#" className="flex items-center gap-2 text-red-500 hover:underline">{item.link} <HiMiniArrowRight /></a>
+                        </Card>
+                    ))}
                 </div>
-                <Button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-8 rounded-lg cursor-pointer"><a href="#">View All Programs</a></Button>
+                <Button className="bg-red-500 hover:bg-red-700 text-white font-bold my-8 py-2 px-8 rounded-lg cursor-pointer"><a href="#">View All Programs</a></Button>
             </section>
         </>
     )
