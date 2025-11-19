@@ -1,4 +1,3 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header.jsx'
 import Home from './components/pages/Home.jsx'
 import About from './components/pages/About.jsx'
