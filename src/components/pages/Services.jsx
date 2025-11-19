@@ -1,6 +1,15 @@
 import { Card, TextInput, Button } from "flowbite-react"
 import { HiMiniUserGroup, HiMiniBookOpen, HiFire, HiMiniBellAlert, HiHeart, HiExclamationTriangle, HiChatBubbleBottomCenterText, HiMiniCheckBadge, HiHome, HiCheckCircle, HiMiniArrowRight, HiAcademicCap } from "react-icons/hi2"
 import FirstAid from '../../assets/images/FirstAid.jpg'
+import CPRTraing from '../../assets/images/cpr-training.jpg'
+import FireTraining from '../../assets/images/fire-training.jpg'
+import OutReachProgram from '../../assets/images/outreach-program.jpg'
+import YouthSafety from '../../assets/images/youth-safety.jpg'
+import AwarenessCampaigns from '../../assets/images/awareness-campaigns.jpg'
+import DisasterPreparedness from '../../assets/images/disaster-preparedness.jpg'
+import HomeSafety from '../../assets/images/home-safety.jpg'
+import BabySitting from '../../assets/images/baby-sitting.jpg'
+
 
 const programs = [
     { 
@@ -20,7 +29,7 @@ const programs = [
         title: "First Aid & CPR Training", 
         text: "Comprehensive CPR and first aid certification courses designed for all skill levels, from complete beginners to advanced caregivers.", 
         icon: <HiHeart />, 
-        image: FirstAid, 
+        image: CPRTraing, 
         features: [
                 "AHA/Red Cross certified courses", 
                 "Hands-on practice with equipment", 
@@ -33,7 +42,7 @@ const programs = [
         title: "Fire Safety Workshops", 
         text: "Hands-on training sessions focused on fire prevention, safety protocols, and emergency response techniques.", 
         icon: <HiFire />, 
-        image: FirstAid, 
+        image: FireTraining, 
         features: [
                 "Fire extinguisher training", 
                 "Evacuation planning", 
@@ -46,7 +55,7 @@ const programs = [
         title: "Community Outreach Programs", 
         text: "Building stronger, safer neighborhoods through education programs, safety audits, and community engagement events.", 
         icon: <HiMiniUserGroup />, 
-        image: FirstAid, 
+        image: OutReachProgram, 
         features: [
                 "Neighborhood safety assessments", 
                 "Community emergency preparedness", 
@@ -59,7 +68,7 @@ const programs = [
         title: "Youth Safety Education", 
         text: "Engaging educational programs that teach young people essential safety skills and develop future community leaders.", 
         icon: <HiMiniBookOpen />, 
-        image: FirstAid, 
+        image: YouthSafety, 
         features: [
                 "Age-appropriate safety curriculum", 
                 "Bullying prevention and response", 
@@ -72,12 +81,12 @@ const programs = [
         title: "Public Awareness Campaigns", 
         text: "Campaigns and initiatives to spread awareness about safety practices, emergency preparedness, and accident prevention.", 
         icon: <HiChatBubbleBottomCenterText />, 
-        image: FirstAid, 
+        image: AwarenessCampaigns, 
         features: [
                 "Seasonal safety campaigns", 
                 "Social media safety tips", 
                 "Community safety newsletters",
-                "QPublic service announcements",
+                "Public service announcements",
                 "Safety awareness materials distribution"
         ] 
     },
@@ -85,7 +94,7 @@ const programs = [
         title: "Disaster Preparedness Training", 
         text: "Comprehensive training on preparing for natural disasters, creating emergency plans, and building resilient communities.", 
         icon: <HiExclamationTriangle />, 
-        image: FirstAid, 
+        image: DisasterPreparedness, 
         features: [
                 "Emergency kit preparation", 
                 "Evacuation planning", 
@@ -98,7 +107,7 @@ const programs = [
         title: "Home Safety Assessments", 
         text: "Free home safety evaluations to identify hazards and provide recommendations for a safer living environment.", 
         icon: <HiHome />, 
-        image: FirstAid, 
+        image: HomeSafety, 
         features: [
                 "Comprehensive safety inspection", 
                 "Fall prevention assessment", 
@@ -111,7 +120,7 @@ const programs = [
         title: "Babysitter Safety Certification", 
         text: "Comprehensive training for young babysitters covering childcare, safety, and emergency response procedures.", 
         icon: <HiMiniCheckBadge />, 
-        image: FirstAid, 
+        image: BabySitting, 
         features: [
                 "Child development basics", 
                 "Infant and child CPR", 
@@ -133,7 +142,7 @@ function Services() {
         <>          
             <section className="">
                 <div className="bg-gray-800 flex flex-col items-center justify-center p-8 text-white">
-                    <h2 className="text-4xl text-center font-bold mb-4">Our Programs & Services</h2>
+                    <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Our Programs & Services</h2>
                     <p className="max-w-xl text-center">Comprehensive safety programs designed to protect, educate, and empower every member of our community through expert training and support.</p>
                 </div>
 

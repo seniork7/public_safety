@@ -1,9 +1,11 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header.jsx'
 import Home from './components/pages/Home.jsx'
 import About from './components/pages/About.jsx'
 import Services from './components/pages/Services.jsx'
 import JoinUs from './components/pages/JoinUs.jsx'
-// import Contact from './components/pages/Contact.jsx'
+import Contact from './components/pages/Contact.jsx'
+import Footer from './components/Footer.jsx'
 
 function App() {
 
@@ -15,7 +17,8 @@ function App() {
         <About />
         <Services />
         <JoinUs />
-        {/* <Contact /> */}
+        <Contact />
+        <Footer />
       </main>
     </>
   )

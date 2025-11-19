@@ -1,6 +1,12 @@
 import { Card } from "flowbite-react"
 import { HiMiniUserGroup, HiHeart, HiExclamationTriangle, HiMiniRocketLaunch } from "react-icons/hi2"
 import FirstAid from '../../assets/images/FirstAid.jpg'
+import EmergencyResponse from '../../assets/images/emergency-response.jpg'
+import Education from '../../assets/images/education.jpg'
+import OutReach from '../../assets/images/outreach.jpg'
+import Leadership from '../../assets/images/leadership.jpg'
+import Disaster from '../../assets/images/disaster.jpg'
+import Medical from '../../assets/images/medical.jpg'
 
 const values = [
     { title: "Safety First", text: "We prioritize the safety and well-being of every community member in everything we do. Our rigorous training and protocols ensure the highest standards of care.", icon: <HiExclamationTriangle /> },
@@ -10,12 +16,12 @@ const values = [
 ]
 
 const team = [
-    { name: "Emergency Response Team", role: "First responders trained in medical emergencies", image: FirstAid },
-    { name: "Training & Education", role: "Certified instructors providing safety education", image: FirstAid },
-    { name: "Community Outreach", role: "Building connections through engagement and support", image: FirstAid },
-    { name: "Leadership Team", role: "Experienced leaders guiding our mission", image: FirstAid },
-    { name: "Disaster Preparedness", role: "Planning for emergency situations", image: FirstAid },
-    { name: "Medical Services", role: "Healthcare professionals on standby", image: FirstAid }
+    { name: "First Aid Team", role: "First aiders trained in basic life support ready to respond", image: EmergencyResponse },
+    { name: "Training & Education", role: "Certified instructors providing safety education and training", image: Education },
+    { name: "Community Outreach", role: "Building connections through engagement and support", image: OutReach },
+    { name: "Management Team", role: "Experienced leaders guiding our mission ensuring effective operations", image: Leadership },
+    { name: "Disaster Preparedness", role: "Planning for emergency situations and response strategies", image: Disaster },
+    { name: "Medical Services", role: "Healthcare professionals on standby to provide immediate care", image: Medical }
 ]
 
 function About() {
@@ -23,7 +29,7 @@ function About() {
         <>
             <section className="mt-8">
                 <div className="bg-gray-800 flex flex-col items-center justify-center p-8 text-white">
-                    <h2 className="text-4xl text-center font-bold mb-4">About Us</h2>
+                    <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">About Us</h2>
                     <p className="max-w-xl text-center">For 25 years, we've been dedicated to building safer & stronger communities through volunteer service, emergency response, and comprehensive safety education.</p>
                 </div>
 
@@ -71,14 +77,17 @@ function About() {
 
                 <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                     {team.map((item, index) => (
-                        <Card key={index} className="max-w-sm" imgSrc={item.image}>
-                            <h5 className="text-lg font-bold text-gray-900 dark:text-white">
-                                {item.name}
-                            </h5>
-                            <p className="font-normal text-gray-700 dark:text-gray-400">
-                                {item.role}
-                            </p>
-                        </Card>
+                        <div key={index} className="max-w-sm overflow-hidden shadow-lg rounded-lg">
+                            <img src={item.image} alt={item.name} className="w-full h-80 object-cover" />
+                            <div className="p-4">
+                                <h5 className="text-lg font-bold text-gray-900 dark:text-gray-900">
+                                    {item.name}
+                                </h5>
+                                <p className="font-normal text-gray-700 dark:text-gray-700">
+                                    {item.role}
+                                </p>
+                            </div>
+                        </div>
                     ))}
                 </div>
             </section>

@@ -1,10 +1,10 @@
 import { Alert } from "flowbite-react";
 import { HiEye, HiInformationCircle } from "react-icons/hi";
 
-export function SafetyAlert() {
+function SafetyAlert() {
     return (
-        <Alert additionalContent={<ExampleAdditionalContent />} color="warning" icon={HiInformationCircle}>
-        <span className="font-medium">Safety Tip:</span> In case of emergency, do not hesitate to call 911 or contact the local authorities.
+        <Alert className="bg-[#F9F871] dark:bg-[#FFF990] text-[#FF4E5B] dark:text-[#FF4E5B]" additionalContent={<ExampleAdditionalContent />} color="warning" icon={HiInformationCircle}>
+        <span className="font-medium text-[#FF4E5B] dark:text-[#FF4E5B]">Safety Tip:</span> In case of emergency, do not hesitate to call 911 or contact the local authorities.
         </Alert>
     );
 }

@@ -4,21 +4,21 @@ import HeroBanner from './HeroBanner.jsx'
 function Header() {
   return (
     <header>
-      <Navbar className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md shadow-md">
+      <Navbar className="bg-[#FFFFFF] dark:bg-[#181A20] fixed top-0 left-0 right-0 z-50 backdrop-blur-md shadow-md">
         <NavbarBrand href="./">
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Public Safety</span>
+          <span className="self-center whitespace-nowrap text-xl font-semibold text-[#FF4E5B] dark:text-[#FF6E7A]">Public Safety</span>
         </NavbarBrand>
         <div className="flex md:order-2">
-          <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg hidden md:block cursor-pointer">Get Involved</Button>
+          <Button className="bg-[#FF4E5B] hover:bg-[#ff5462] text-[#FFFFFF] dark:bg-[#FF6E7A] font-bold py-2 px-4 rounded-lg hidden md:block cursor-pointer">Get Involved</Button>
           <NavbarToggle />
         </div>
-        <NavbarCollapse>
-          <NavbarLink href="#">Home</NavbarLink> 
-          <NavbarLink href="#">About</NavbarLink>
-          <NavbarLink href="#">Services</NavbarLink>
-          <NavbarLink href="#">Join Us</NavbarLink>
-          <NavbarLink href="#">Contact</NavbarLink>
-          <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-4 py-2 px-4 rounded-lg md:hidden cursor-pointer">Get Involved</Button>
+        <NavbarCollapse className="">
+          <NavbarLink className="text-[#3A415A] dark:text-[#484F66] hover:text-[#FF6E7A]" href="#">Home</NavbarLink> 
+          <NavbarLink className="text-[#3A415A] dark:text-[#484F66] hover:text-[#FF6E7A]" href="#">About</NavbarLink>
+          <NavbarLink className="text-[#3A415A] dark:text-[#484F66] hover:text-[#FF6E7A]" href="#">Services</NavbarLink>
+          <NavbarLink className="text-[#3A415A] dark:text-[#484F66] hover:text-[#FF6E7A]" href="#">Join Us</NavbarLink>
+          <NavbarLink className="text-[#3A415A] dark:text-[#484F66] hover:text-[#FF6E7A]" href="#">Contact</NavbarLink>
+          <Button className="bg-[#FF4E5B] hover:bg-[#ff5462] text-[#FFFFFF] dark:bg-[#FF6E7A] font-bold mt-4 py-2 px-4 rounded-lg md:hidden cursor-pointer">Get Involved</Button>
         </NavbarCollapse>
       </Navbar>
 
