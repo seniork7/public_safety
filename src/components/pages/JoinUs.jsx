@@ -97,21 +97,33 @@ function JoinUs() {
                                     />
                                 </div>
                             </div>
-                            <div>
-                                <Label htmlFor="interest" className="text-gray-900">Role Interested In *</Label>
-                                <Dropdown label="Areas of Interest" dismissOnClick={true} className="bg-white text-gray-900">
-                                    <DropdownItem>First Aid</DropdownItem>
-                                    <DropdownItem>Community Outreach</DropdownItem>
-                                    <DropdownItem>Disaster Response</DropdownItem>
-                                    <DropdownItem>CPR Training</DropdownItem>
-                                    <DropdownItem>Event Support</DropdownItem>
-                                    <DropdownItem>Other</DropdownItem>
-                                </Dropdown>
+                            <div className="flex flex-col justify-between items-center md:flex-row gap-4">
+                                <div className="w-full">
+                                    <Label htmlFor="gender" className="text-gray-900">Gender *</Label>
+                                    <Dropdown label="Select Gender" dismissOnClick={true} className="bg-white text-gray-900 focus:outline-none focus:ring-0 cursor-pointer">
+                                        <DropdownItem>Male</DropdownItem>
+                                        <DropdownItem>Female</DropdownItem>
+                                        <DropdownItem>Non-binary</DropdownItem>
+                                        <DropdownItem>Prefer not to say</DropdownItem>
+                                        <DropdownItem>Other</DropdownItem>
+                                    </Dropdown>
+                                </div>
+                                <div className="w-full">
+                                    <Label htmlFor="interest" className="text-gray-900">Role Interested In *</Label>
+                                    <Dropdown label="Areas of Interest" dismissOnClick={true} className="bg-white text-gray-900 focus:outline-none focus:ring-0 cursor-pointer">
+                                        <DropdownItem>First Aid</DropdownItem>
+                                        <DropdownItem>Community Outreach</DropdownItem>
+                                        <DropdownItem>Disaster Response</DropdownItem>
+                                        <DropdownItem>CPR Training</DropdownItem>
+                                        <DropdownItem>Event Support</DropdownItem>
+                                        <DropdownItem>Other</DropdownItem>
+                                    </Dropdown>
+                                </div>
                             </div>
                             <div className="flex flex-col md:flex-row gap-4">
                                 <div className="flex-col w-full">
                                     <Label htmlFor="experience" className="text-white">Experience Level</Label>
-                                    <Dropdown label="Experience Level" dismissOnClick={true}>
+                                    <Dropdown label="Experience Level" dismissOnClick={true} className="bg-white text-gray-900 focus:outline-none focus:ring-0 cursor-pointer">
                                         <DropdownItem>No Experience</DropdownItem>
                                         <DropdownItem>Some Experience</DropdownItem>
                                         <DropdownItem>Certified Professional</DropdownItem>
@@ -119,7 +131,7 @@ function JoinUs() {
                                 </div>
                                 <div className="flex-col w-full">
                                     <Label htmlFor="availability" className="text-white">Availability</Label>
-                                    <Dropdown label="Availability" dismissOnClick={true}>
+                                    <Dropdown label="Availability" dismissOnClick={true} className="bg-white text-gray-900 focus:outline-none focus:ring-0 cursor-pointer">
                                         <DropdownItem>Weekdays</DropdownItem>
                                         <DropdownItem>Weekends</DropdownItem>
                                         <DropdownItem>Evenings</DropdownItem>
@@ -136,10 +148,10 @@ function JoinUs() {
                                 />
                             </div>
                             <div>
-                                <Checkbox id="terms" required={true}/>
+                                <Checkbox id="terms" required={true} className="transition focus:outline-none focus:ring-0 cursor-pointer"/>
                                 <Label htmlFor="terms" className="ml-2 text-white">I agree to the terms and conditions and understand that a background check may be required for certain volunteer positions. *</Label>
                             </div>
-                            <Button type="submit" className="bg-blue-600 hover:bg-blue-700">Submit Application</Button>
+                            <Button type="submit" className="bg-blue-600 hover:bg-blue-700 transition focus:outline-none focus:ring-0 cursor-pointer">Submit Application</Button>
                         </form>
                     </div>
                 </div>

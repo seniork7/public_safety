@@ -175,7 +175,7 @@ function Services() {
                                 className="w-full"
                             />
 
-                            <Button className="bg-red-500 hover:bg-red-700 text-white font-bold cursor-pointer"
+                            <Button className="bg-red-500 hover:bg-red-700 text-white font-bold cursor-pointer transition focus:outline-none focus:ring-0"
                             onClick={() => setSearchItem("")}
                             value={setSearchItem}>
                                 Clear
@@ -208,7 +208,7 @@ function Services() {
                                     ))}
                                 </ul>
 
-                                <Button onClick={() => HandleBtnClick("getInvolved")} className="flex justify-center items-center gap-2 bg-red-500 hover:bg-red-700 text-white hover:underline rounded-lg px-4 py-2 mt-2">
+                                <Button onClick={() => HandleBtnClick("getInvolved")} className="flex justify-center items-center gap-2 bg-red-500 hover:bg-red-700 text-white hover:underline rounded-lg px-4 py-2 mt-2 transition focus:outline-none focus:ring-0">
                                     Enroll Now
                                     <HiMiniArrowRight />
                                 </Button>

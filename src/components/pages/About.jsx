@@ -27,14 +27,14 @@ const team = [
 function About() {
     return (
         <>
-            <section id="about" className="mt-8 scroll-mt-15">
+            <section id="about" className="scroll-mt-15 text-[#0f1115] dark:text-[#ccc]">
                 <div className="bg-gray-800 flex flex-col items-center justify-center p-4 text-white">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">About Us</h2>
                     <p className="max-w-xl text-center">For 25 years, we've been dedicated to building safer & stronger communities through volunteer service, emergency response, and comprehensive safety education.</p>
                 </div>
 
-                <div className="container mx-auto px-2 lg:px-8 my-15">
-                    <article className="flex flex-col md:flex-row items-start justify-center gap-8 my-8 px-8">
+                <div className="">
+                    <article className="flex flex-col md:flex-row items-start justify-center gap-8 py-15 px-8 bg-[#f5f5f5] dark:bg-[#0e0f10]">
                         <div className="max-w-lg">
                             <h3 className="text-2xl font-bold mb-4">Our Missions</h3>
                             <p className="">

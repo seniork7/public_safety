@@ -59,22 +59,22 @@ function Footer() {
 
                 <div className="flex flex-col lg:flex-row justify-between items-center">
                     <div className="flex justify-center items-center mt-6">
-                        <a href="#" className="mx-2 text-gray-400 hover:text-white">
+                        <a href="https://facebook.com" target="_blank" className="mx-2 text-gray-400 hover:text-white">
                             <span className="bg-white/50 text-red-900 p-2 rounded-full mr-4 inline-block">
                                 <FaFacebookF className="text-xl" />
                             </span>
                         </a>
-                        <a href="#" className="mx-2 text-gray-400 hover:text-white">
+                        <a href="https://twitter.com" target="_blank" className="mx-2 text-gray-400 hover:text-white">
                             <span className="bg-white/50 text-red-900 p-2 rounded-full mr-4 inline-block">
                                 <FaXTwitter className="text-xl" />
                             </span>
                         </a>
-                        <a href="#" className="mx-2 text-gray-400 hover:text-white">
+                        <a href="https://instagram.com" target="_blank" className="mx-2 text-gray-400 hover:text-white">
                             <span className="bg-white/50 text-red-900 p-2 rounded-full mr-4 inline-block">
                                 <FaInstagram className="text-xl" />
                             </span>
                         </a>
-                        <a href="#" className="mx-2 text-gray-400 hover:text-white">
+                        <a href="https://linkedin.com" target="_blank" className="mx-2 text-gray-400 hover:text-white">
                             <span className="bg-white/50 text-red-900 p-2 rounded-full mr-4 inline-block">
                                 <FaLinkedinIn className="text-xl" />
                             </span>

@@ -101,7 +101,7 @@ function Contact() {
                             <Label htmlFor="message" className="block mb-2 text-gray-700 dark:text-gray-400">Message</Label>
                             <Textarea id="message" placeholder="Leave us a message..." rows={4} required />
                         </div>
-                        <Button type="submit" className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg cursor-pointer w-full mt-10">Send Message</Button>
+                        <Button type="submit" className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg cursor-pointer transition focus:outline-none focus:ring-0 w-full mt-10">Send Message</Button>
                     </form>
 
                     <div className="flex flex-col justify-center items-center gap-4 max-w-md m-4 p-4">
