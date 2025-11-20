@@ -69,7 +69,7 @@ function Contact() {
                     <p className="max-w-xl text-center">Have questions or need assistance? Our team is here to help. Reach out to us and we'll respond as soon as possible.</p>
                 </div>
 
-                <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
+                <div className="flex flex-wrap justify-center items-center gap-8 container mx-auto px-2 lg:px-8 my-15">
                     {contactMethods.map((item, index) => (
                         <Card key={index} className="max-w-sm">
                             <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-gray-900 dark:text-white">
@@ -105,7 +105,20 @@ function Contact() {
                     </form>
 
                     <div className="flex flex-col justify-center items-center gap-4 max-w-md m-4 p-4">
-                        {/* Social Contacts Card */}
+                        <Card className="flex flex-col justify-center items-center h-60 text-center bg-white border border-none dark:bg-white shadow-md w-xs md:w-md lg:w-sm">
+                            <h5 className="text-lg font-bold text-gray-900 dark:text-gray-900 text-center ">Have an Emergency?</h5>
+                            <p className="text-gray-700 dark:text-gray-400 text-sm">
+                                For immediate life threatening situations,<br /> please call:
+                                <br />
+                                <span className="text-red-500 text-3xl">911</span>
+                            </p>
+
+                            <p className="text-gray-700 dark:text-gray-400 text-sm">
+                                For non-emergency support:
+                                <br />
+                                <span className="text-gray-700 dark:text-gray-400">+1 (555) 123-HELP</span>
+                            </p>
+                        </Card>
                         <Card className="flex flex-col justify-center items-center h-60 text-center bg-white border border-none dark:bg-white shadow-md w-xs md:w-md lg:w-sm">
                             <h5 className="text-lg font-bold text-gray-900 dark:text-gray-900">Follow Us</h5>
                             <div className="flex justify-center items-center">
@@ -132,45 +145,31 @@ function Contact() {
                             </div>
                             <p className="text-gray-700 dark:text-gray-400 text-sm">Stay connected with us on social media!</p>
                         </Card>
-
-                        {/* Emergency Card */}
-                        <Card className="flex flex-col justify-center items-center h-60 text-center bg-white border border-none dark:bg-white shadow-md w-xs md:w-md lg:w-sm">
-                            <h5 className="text-lg font-bold text-gray-900 dark:text-gray-900 text-center ">Have an Emergency?</h5>
-                            <p className="text-gray-700 dark:text-gray-400 text-sm">
-                                For immediate life threatening situations,<br /> please call:
-                                <br />
-                                <span className="text-red-500 text-3xl">911</span>
-                            </p>
-
-                            <p className="text-gray-700 dark:text-gray-400 text-sm">
-                                For non-emergency support:
-                                <br />
-                                <span className="text-gray-700 dark:text-gray-400">+1 (555) 123-HELP</span>
-                            </p>
-                        </Card>
                     </div>
                 </div>
 
-                <section className="bg-gray-300 flex flex-col justify-center items-center py-8">
-                    <h3 className="text-2xl font-bold mb-4">Contact by Department</h3>
-                    <p className="text-gray-700 dark:text-gray-900 text-center">Please reach out to the appropriate department for assistance.</p>
-                    <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
-                        {departments.map((item, index) => (
-                        <Card key={index} className="max-w-sm">
-                            <h5 className="text-lg font-bold text-gray-900 dark:text-white">
-                                {item.name}
-                            </h5>
-                            <p className="text-gray-700 dark:text-gray-400 w-[300px]">
-                                {item.text}
-                            </p>
-                            <p className="text-gray-700 dark:text-gray-400 flex items-center gap-2">
-                                {item.phoneIcon} {item.call}
-                            </p>
-                            <p className="text-gray-700 dark:text-gray-400 flex items-center gap-2">
-                                {item.emailIcon} {item.contact}
-                            </p>
-                        </Card>
-                        ))}
+                <section className="bg-gray-300">
+                    <div className="container mx-auto px-2 lg:px-8 py-10 flex flex-col justify-center items-center">
+                        <h3 className="text-2xl font-bold mb-4">Contact by Department</h3>
+                        <p className="text-gray-700 dark:text-gray-900 text-center">Please reach out to the appropriate department for assistance.</p>
+                        <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-2">
+                            {departments.map((item, index) => (
+                            <Card key={index} className="max-w-sm">
+                                <h5 className="text-lg font-bold text-gray-900 dark:text-white">
+                                    {item.name}
+                                </h5>
+                                <p className="text-gray-700 dark:text-gray-400 w-[300px]">
+                                    {item.text}
+                                </p>
+                                <p className="text-gray-700 dark:text-gray-400 flex items-center gap-2">
+                                    {item.phoneIcon} {item.call}
+                                </p>
+                                <p className="text-gray-700 dark:text-gray-400 flex items-center gap-2">
+                                    {item.emailIcon} {item.contact}
+                                </p>
+                            </Card>
+                            ))}
+                        </div>
                     </div>
                 </section>
             </section>

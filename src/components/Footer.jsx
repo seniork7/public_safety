@@ -8,7 +8,7 @@ function Footer() {
                 <div className="flex justify-center md:justify-between items-center">
                     <div className="md:flex lg:flex-col md:justify-between md:items-end lg:items-start gap-15 lg:gap-8 mb-6 md:mb-0">
                         <div>
-                            <h3 className="text-2xl font-bold text-red-900 dark:text-red-400">Public Safety</h3>
+                            <a href="/" className="text-2xl font-bold text-red-900 dark:text-red-400">Public Safety</a>
                             <p className="mt-2 w-xs">Committed to building safer communities through education, training, and volunteer-driven emergency response services.</p>
                         </div>
                         <div>
@@ -27,10 +27,10 @@ function Footer() {
                     <div className="mb-6 md:mb-0 hidden lg:block">
                         <h4 className="font-bold mb-2 text-red-900 dark:text-red-400">Quick Links</h4>
                         <ul>
-                            <li><a href="#" className="hover:underline">About Us</a></li>
-                            <li><a href="#" className="hover:underline">Our Services</a></li>
-                            <li><a href="#" className="hover:underline">Join Us</a></li>
-                            <li><a href="#" className="hover:underline">Contact</a></li>
+                            <li><a href="#about" className="hover:underline">About Us</a></li>
+                            <li><a href="#services" className="hover:underline">Our Services</a></li>
+                            <li><a href="#joinUs" className="hover:underline">Join Us</a></li>
+                            <li><a href="#contact" className="hover:underline">Contact</a></li>
                         </ul>
                     </div>
 

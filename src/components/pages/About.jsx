@@ -28,66 +28,70 @@ function About() {
     return (
         <>
             <section id="about" className="mt-8 scroll-mt-15">
-                <div className="bg-gray-800 flex flex-col items-center justify-center p-8 text-white">
+                <div className="bg-gray-800 flex flex-col items-center justify-center p-4 text-white">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">About Us</h2>
                     <p className="max-w-xl text-center">For 25 years, we've been dedicated to building safer & stronger communities through volunteer service, emergency response, and comprehensive safety education.</p>
                 </div>
 
-                <article className="flex flex-col md:flex-row items-start justify-center gap-8 my-8 px-8">
-                    <div className="max-w-lg">
-                        <h3 className="text-2xl font-bold mb-4">Our Missions</h3>
-                        <p className="">
-                            Public Safety is dedicated to enhancing community safety through training, resources, and support. Our mission is to empower communities through comprehensive safety education, rapid emergency response, and volunteer-driven initiatives that protect lives, prevent crises, and build long-term resilience in the face of challenges.
-                        </p>
-                    </div>
-
-                    <div className="max-w-lg">
-                        <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
-                        <p>
-                            A world where every community member has the knowledge, skills, and support to protect themselves and others in emergencies, creating a network of prepared and compassionate citizens ready to make a difference.
-                        </p>
-                    </div>
-                </article>
-            </section>
-
-            <section className="bg-gray-300 flex flex-col justify-center items-center py-8">
-                <h3 className="text-2xl font-bold mb-4">Our Core Values</h3>
-                <p className="text-center md:w-1/2">These principles guide everything we do and shape how we serve our community.</p>
-                <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
-                    {values.map((item, index) => (
-                        <Card key={index} className="w-xs md:w-2xl lg:w-lg bg-gray-900 dark:bg-red-700 text-gray-800 dark:text-gray-100 shadow-lg">
-                            <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-gray-900 dark:text-white">
-                                <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
-                                {item.icon}
-                                </span>
-                                {item.title}
-                            </h5>
-                            <p className="font-normal text-gray-700 dark:text-gray-400">
-                                {item.text}
+                <div className="container mx-auto px-2 lg:px-8 my-15">
+                    <article className="flex flex-col md:flex-row items-start justify-center gap-8 my-8 px-8">
+                        <div className="max-w-lg">
+                            <h3 className="text-2xl font-bold mb-4">Our Missions</h3>
+                            <p className="">
+                                Public Safety is dedicated to enhancing community safety through training, resources, and support. Our mission is to empower communities through comprehensive safety education, rapid emergency response, and volunteer-driven initiatives that protect lives, prevent crises, and build long-term resilience in the face of challenges.
                             </p>
-                        </Card>
-                    ))}
+                        </div>
+                        <div className="max-w-lg">
+                            <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
+                            <p>
+                                A world where every community member has the knowledge, skills, and support to protect themselves and others in emergencies, creating a network of prepared and compassionate citizens ready to make a difference.
+                            </p>
+                        </div>
+                    </article>
                 </div>
             </section>
 
-            <section className="bg-gray-100 flex flex-col justify-center items-center py-8">
-                <h3 className="text-2xl font-bold mb-4">Meet Our Team</h3>
-                <p className="text-center max-w-lg px-4">Our dedicated team of volunteers is the backbone of our organization, working tirelessly to keep our community safe.</p>
-
-                <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
-                    {team.map((item, index) => (
-                        <div key={index} className="w-xs md:w-lg overflow-hidden shadow-lg rounded-lg">
-                            <img src={item.image} alt={item.name} className="w-full h-80 object-cover" />
-                            <div className="p-4">
-                                <h5 className="text-lg font-bold text-gray-900 dark:text-gray-900">
-                                    {item.name}
+            <section className="bg-gray-300 py-8">
+                <div className="container mx-auto px-2 lg:px-8 my-15 flex flex-col justify-center items-center">
+                    <h3 className="text-2xl font-bold mb-4">Our Core Values</h3>
+                    <p className="text-center md:w-1/2">These principles guide everything we do and shape how we serve our community.</p>
+                    <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
+                        {values.map((item, index) => (
+                            <Card key={index} className="w-xs md:w-2xl lg:w-lg bg-gray-900 dark:bg-red-700 text-gray-800 dark:text-gray-100 shadow-lg">
+                                <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-gray-900 dark:text-white">
+                                    <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
+                                    {item.icon}
+                                    </span>
+                                    {item.title}
                                 </h5>
-                                <p className="font-normal text-gray-700 dark:text-gray-700">
-                                    {item.role}
+                                <p className="font-normal text-gray-700 dark:text-gray-400">
+                                    {item.text}
                                 </p>
+                            </Card>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="">
+                <div className="container mx-auto px-2 lg:px-8 my-15 flex flex-col justify-center items-center py-8">
+                    <h3 className="text-2xl font-bold mb-4">Meet Our Team</h3>
+                    <p className="text-center max-w-lg px-4">Our dedicated team of volunteers is the backbone of our organization, working tirelessly to keep our community safe.</p>
+                    <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
+                        {team.map((item, index) => (
+                            <div key={index} className="w-xs md:w-lg overflow-hidden shadow-lg rounded-lg">
+                                <img src={item.image} alt={item.name} className="w-full h-80 object-cover" />
+                                <div className="p-4">
+                                    <h5 className="text-lg font-bold text-gray-900 dark:text-gray-900">
+                                        {item.name}
+                                    </h5>
+                                    <p className="font-normal text-gray-700 dark:text-gray-700">
+                                        {item.role}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </section>
         </>

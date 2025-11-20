@@ -183,7 +183,7 @@ function Services() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
+                <div className="flex flex-wrap justify-center items-center gap-8 container mx-auto px-2 lg:px-8 my-15">
                     {filteredPrograms.length === 0 ? (
                         <p className="text-gray-900">No program found matching your search.</p>
                     ) : (
@@ -218,24 +218,25 @@ function Services() {
                 </div>
             </section>
 
-            <section className="bg-gray-100 flex flex-col justify-center items-center py-8">
-                <h3 className="text-2xl font-bold mb-4">Why Choose Our Programs?</h3>
-                <p className="text-center max-w-lg px-4">We're committed to providing the highest quality safety education and emergency services.</p>
-
-                <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
-                    {whyChoosePrograms.map((item, index) => (
-                        <Card key={index} className="w-xs md:w-2xl lg:w-sm">
-                            <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-gray-900 dark:text-white">
-                                <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
-                                    {item.icon}
-                                </span>
-                                {item.title}
-                            </h5>
-                            <p className="font-normal text-gray-700 dark:text-gray-400">
-                                {item.text}
-                            </p>
-                        </Card>
-                    ))}
+            <section className="bg-gray-100">
+                <div className="container mx-auto px-2 lg:px-8 my-15 py-10 flex flex-col justify-center items-center">
+                    <h3 className="text-2xl font-bold mb-4">Why Choose Our Programs?</h3>
+                    <p className="text-center max-w-lg px-4">We're committed to providing the highest quality safety education and emergency services.</p>
+                    <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
+                        {whyChoosePrograms.map((item, index) => (
+                            <Card key={index} className="w-xs md:w-2xl lg:w-sm">
+                                <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-gray-900 dark:text-white">
+                                    <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
+                                        {item.icon}
+                                    </span>
+                                    {item.title}
+                                </h5>
+                                <p className="font-normal text-gray-700 dark:text-gray-400">
+                                    {item.text}
+                                </p>
+                            </Card>
+                        ))}
+                    </div>
                 </div>
             </section>
 
