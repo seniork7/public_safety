@@ -10,7 +10,7 @@ import DisasterPreparedness from '../../assets/images/disaster-preparedness.jpg'
 import HomeSafety from '../../assets/images/home-safety.jpg'
 import BabySitting from '../../assets/images/baby-sitting.jpg'
 import HandleBtnClick from '../../components/HandleBtnClick.jsx'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const programs = [
     { 
@@ -148,42 +148,41 @@ const whyChoosePrograms = [
 ]
 
 function Services() {
-    const [filteredPrograms, setFilteredPrograms] = useState(programs)
     const [searchItem, setSearchItem] = useState("")
+    const [filteredPrograms, setFilteredPrograms] = useState(programs)
 
-    const handleSearch = (e) => {
-        e.preventDefault()
-        const searchProgram = programs.filter(program => 
-            program.title.toLowerCase().includes(searchItem.toLowerCase()) ||
-            program.text.toLowerCase().includes(searchItem.toLowerCase())
-        )
-        setFilteredPrograms(searchProgram)
-    }
+    useEffect(() => {
+        const searchProgram = programs.filter(program =>
+            program.title.toLowerCase().includes(searchItem.toLowerCase())
+        );
+        setFilteredPrograms(searchProgram);
+    }, [searchItem]);
+
     return (
         <>          
             <section id="services" className="scroll-mt-15">
                 <div className="bg-gray-800 flex flex-col items-center justify-center p-8 text-white">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Our Programs & Services</h2>
                     <p className="max-w-xl text-center">Comprehensive safety programs designed to protect, educate, and empower every member of our community through expert training and support.</p>
-                </div>
+                    <div className="flex justify-center items-center w-full">
+                        <div className="flex flex-col md:flex-row gap-2 w-full  max-w-md mt-8 mx-4">
+                            <TextInput
+                                onChange={(e) => setSearchItem(e.target.value)}
+                                id="search"
+                                value={searchItem}
+                                type="text"
+                                placeholder="Search Programs..."
+                                className="w-full"
+                            />
 
-                <div className="flex justify-center items-center">
-                    <form onSubmit={handleSearch} className="flex w-full  max-w-md my-8 mx-4">
-                        <TextInput
-                            onChange={(e) => setSearchItem(e.target.value)}
-                            id="search"
-                            type="text"
-                            placeholder="Search Programs..."
-                            className="w-full"
-                        />
-                        <Button 
-                            type="submit" 
-                            className="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg cursor-pointer">
-                                Search
-                        </Button>
-                    </form>
+                            <Button className="bg-red-500 hover:bg-red-700 text-white font-bold cursor-pointer"
+                            onClick={() => setSearchItem("")}
+                            value={setSearchItem}>
+                                Clear
+                            </Button>
+                        </div>
+                    </div>
                 </div>
-
                 <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                     {filteredPrograms.length === 0 ? (
                         <p className="text-gray-900">No program found matching your search.</p>
