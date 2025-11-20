@@ -1,5 +1,6 @@
-import { Button, Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
+import { Button, Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react"
 import HeroBanner from './HeroBanner.jsx'
+import HandleBtnClick from './HandleBtnClick.jsx'
 
 function Header() {
   return (
@@ -9,16 +10,16 @@ function Header() {
           <span className="self-center whitespace-nowrap text-xl font-semibold text-[#FF4E5B] dark:text-[#FF6E7A]">Public Safety</span>
         </NavbarBrand>
         <div className="flex md:order-2">
-          <Button className="bg-[#FF4E5B] hover:bg-[#ff5462] text-[#FFFFFF] dark:bg-[#FF6E7A] font-bold py-2 px-4 rounded-lg hidden md:block cursor-pointer">Get Involved</Button>
+          <Button onClick={() => HandleBtnClick("getInvolved")} className="bg-[#FF4E5B] hover:bg-[#ff5462] text-[#FFFFFF] dark:bg-[#FF6E7A] font-bold py-2 px-4 rounded-lg hidden md:block cursor-pointer">Get Involved</Button>
           <NavbarToggle />
         </div>
         <NavbarCollapse className="">
-          <NavbarLink className="text-[#3A415A] dark:text-[#484F66] hover:text-[#FF6E7A]" href="#">Home</NavbarLink> 
-          <NavbarLink className="text-[#3A415A] dark:text-[#484F66] hover:text-[#FF6E7A]" href="#">About</NavbarLink>
-          <NavbarLink className="text-[#3A415A] dark:text-[#484F66] hover:text-[#FF6E7A]" href="#">Services</NavbarLink>
-          <NavbarLink className="text-[#3A415A] dark:text-[#484F66] hover:text-[#FF6E7A]" href="#">Join Us</NavbarLink>
-          <NavbarLink className="text-[#3A415A] dark:text-[#484F66] hover:text-[#FF6E7A]" href="#">Contact</NavbarLink>
-          <Button className="bg-[#FF4E5B] hover:bg-[#ff5462] text-[#FFFFFF] dark:bg-[#FF6E7A] font-bold mt-4 py-2 px-4 rounded-lg md:hidden cursor-pointer">Get Involved</Button>
+          <NavbarLink className="text-[#3A415A] dark:text-[#484F66] hover:text-[#FF6E7A]" href="/">Home</NavbarLink> 
+          <NavbarLink className="text-[#3A415A] dark:text-[#484F66] hover:text-[#FF6E7A]" href="#about">About</NavbarLink>
+          <NavbarLink className="text-[#3A415A] dark:text-[#484F66] hover:text-[#FF6E7A]" href="#services">Services</NavbarLink>
+          <NavbarLink className="text-[#3A415A] dark:text-[#484F66] hover:text-[#FF6E7A]" href="#joinUs">Join Us</NavbarLink>
+          <NavbarLink className="text-[#3A415A] dark:text-[#484F66] hover:text-[#FF6E7A]" href="#contact">Contact</NavbarLink>
+          <Button onClick={() => HandleBtnClick("getInvolved")} className="bg-[#FF4E5B] hover:bg-[#ff5462] text-[#FFFFFF] dark:bg-[#FF6E7A] font-bold mt-4 py-2 px-4 rounded-lg md:hidden cursor-pointer">Get Involved</Button>
         </NavbarCollapse>
       </Navbar>
 

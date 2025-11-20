@@ -3,7 +3,7 @@ import { Dropdown, DropdownItem, TextInput, Textarea, Button, Label, Checkbox } 
 function JoinUs() {
     return (
         <>          
-            <section className="my-8">
+            <section id="joinUs" className="my-8 scroll-mt-15">
                 <div className="bg-gray-800 flex flex-col items-center justify-center mb-8 p-8 text-white">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Join Our Team</h2>
                     <p className="max-w-xl text-center">Be part of something meaningful. Whether you want to volunteer, receive training, or stay updated with our initiatives, we'd love to have you join us.</p>
@@ -45,8 +45,8 @@ function JoinUs() {
                     </div>
                 </div>
             </section>
-            
-            <section className="bg-gray-300 flex flex-col justify-center items-center py-8">
+
+            <section id="getInvolved" className="bg-gray-300 flex flex-col justify-center items-center py-8 scroll-mt-15">
                 <h3 className="text-2xl font-bold mb-4">Volunteer Application</h3>
                 <p className="max-w-xl text-center">Fill out the form below and we'll be in touch within 48 hours.</p>
 

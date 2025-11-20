@@ -2,6 +2,7 @@ import { HiOutlineShieldCheck, HiOutlineClock, HiOutlineTrendingUp, HiShieldChec
 import { HiMiniBellAlert, HiHeart, HiMiniArrowRight } from "react-icons/hi2"
 import { Card, Button } from "flowbite-react"
 import Community from '../../assets/images/image-1.jpg'
+import HandleBtnClick from '../../components/HandleBtnClick.jsx'
 
 const card = [
     { title: "Emergency Response Training", text: "Our Emergency Response Training program equips individuals with the skills and knowledge needed to respond effectively in crisis situations.", icon: <HiMiniBellAlert />, link: "Learn More" },
@@ -78,7 +79,7 @@ function Home() {
                         </Card>
                     ))}
                 </div>
-                <Button className="bg-red-500 hover:bg-red-700 text-white font-bold my-8 py-2 px-8 rounded-lg cursor-pointer"><a href="#">View All Programs</a></Button>
+                <Button onClick={() => HandleBtnClick("services")} className="bg-red-500 hover:bg-red-700 text-white font-bold my-8 py-2 px-8 rounded-lg cursor-pointer">View All Programs</Button>
             </section>
         </>
     )

@@ -9,6 +9,7 @@ import AwarenessCampaigns from '../../assets/images/awareness-campaigns.jpg'
 import DisasterPreparedness from '../../assets/images/disaster-preparedness.jpg'
 import HomeSafety from '../../assets/images/home-safety.jpg'
 import BabySitting from '../../assets/images/baby-sitting.jpg'
+import HandleBtnClick from '../../components/HandleBtnClick.jsx';
 
 
 const programs = [
@@ -140,7 +141,7 @@ const whyChoosePrograms = [
 function Services() {
     return (
         <>          
-            <section className="">
+            <section id="services" className="scroll-mt-15">
                 <div className="bg-gray-800 flex flex-col items-center justify-center p-8 text-white">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Our Programs & Services</h2>
                     <p className="max-w-xl text-center">Comprehensive safety programs designed to protect, educate, and empower every member of our community through expert training and support.</p>
@@ -183,11 +184,11 @@ function Services() {
                                     </li>
                                 ))}
                             </ul>
-                            
-                            <a href="#" className="flex justify-center items-center gap-2 bg-red-500 hover:bg-red-700 text-white hover:underline rounded-lg px-4 py-2 mt-2"> 
+
+                            <Button onClick={() => HandleBtnClick("getInvolved")} className="flex justify-center items-center gap-2 bg-red-500 hover:bg-red-700 text-white hover:underline rounded-lg px-4 py-2 mt-2">
                                 Enroll Now
                                 <HiMiniArrowRight />
-                                </a>
+                            </Button>
                         </Card>
                     ))}
                 </div>

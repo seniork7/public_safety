@@ -63,7 +63,7 @@ const departments = [
 function Contact() {
     return (
         <>
-            <section className="">
+            <section id="contact" className="scroll-mt-15">
                 <div className="bg-gray-800 flex flex-col items-center justify-center mb-8 p-8 text-white">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Get in Touch</h2>
                     <p className="max-w-xl text-center">Have questions or need assistance? Our team is here to help. Reach out to us and we'll respond as soon as possible.</p>

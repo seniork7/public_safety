@@ -1,4 +1,4 @@
-import { HiPhone, HiMiniEnvelope, HiMapPin } from "react-icons/hi2";
+import { HiPhone, HiMiniEnvelope, HiMapPin } from "react-icons/hi2"
 import { FaLinkedinIn, FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6"
 
 function Footer() {

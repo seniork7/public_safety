@@ -1,6 +1,7 @@
 import HomeBanner from '../assets/images/HomeBanner.jpg'
 import SafetyAlert from './SafetyAlert.jsx'
 import { Button } from 'flowbite-react'
+import HandleBtnClick from './HandleBtnClick.jsx'
 
 function HeroBanner() {
     return (
@@ -16,8 +17,8 @@ function HeroBanner() {
                     Join our dedicated team of volunteers committed to protecting lives, providing emergency response, and building a safer tomorrow for everyone.
                     </p>
                     <div className="flex flex-col md:flex-row w-full gap-4 my-4">
-                        <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-lg cursor-pointer"><a href="#">Join Volunteers</a></Button>
-                        <Button className="bg-transparent border border-white text-white hover:bg-blue-600 hover:text-white transition font-bold py-2 px-8 rounded-lg cursor-pointer"><a href="#">Learn More</a></Button>
+                        <Button onClick={() => HandleBtnClick("joinUs")} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-lg cursor-pointer">Join Volunteers</Button>
+                        <Button onClick={() => HandleBtnClick("about")} className="bg-transparent border border-white text-white hover:bg-blue-600 hover:text-white transition font-bold py-2 px-8 rounded-lg cursor-pointer">Learn More</Button>
                     </div>
                 </div>
             </article>
