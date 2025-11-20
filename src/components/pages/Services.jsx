@@ -188,7 +188,7 @@ function Services() {
                         <p className="text-gray-900">No program found matching your search.</p>
                     ) : (
                         filteredPrograms.map((item, index) => (
-                            <Card key={index} className="max-w-sm" imgSrc={item.image}>
+                            <Card key={index} className="w-xs md:w-2xl lg:w-sm" imgSrc={item.image}>
                                 <h5 className="flex items-center justify-start gap-2 text-2lg font-bold text-gray-900 dark:text-white">
                                     <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
                                         {item.icon}
@@ -224,7 +224,7 @@ function Services() {
 
                 <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                     {whyChoosePrograms.map((item, index) => (
-                        <Card key={index} className="max-w-sm">
+                        <Card key={index} className="w-xs md:w-2xl lg:w-sm">
                             <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-gray-900 dark:text-white">
                                 <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
                                     {item.icon}

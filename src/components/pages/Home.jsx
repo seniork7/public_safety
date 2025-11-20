@@ -62,9 +62,9 @@ function Home() {
                 <h2 className="text-3xl md:text-4xl text-center font-bold">Featured Programs</h2>
                 <p className="max-w-lg text-center">Explore our most popular programs designed to protect and empower your community.</p>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 my-8 px-4 md:px-8">
+                <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                     {card.map((item, index) => (
-                        <Card key={index} className="max-w-sm bg-red-200 dark:bg-red-700 text-gray-800 dark:text-gray-100 shadow-lg">
+                        <Card key={index} className="w-xs md:w-2xl lg:w-sm bg-gray-700 dark:bg-red-700 text-gray-800 dark:text-gray-100 shadow-lg">
                             <h5 className="flex items-center justify-start gap-2 text-lg font-bold">
                                 <span className="bg-red-500 p-2 rounded-full mr-4 inline-block">
                                     {item.icon}

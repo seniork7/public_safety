@@ -19,7 +19,7 @@ const team = [
     { name: "First Aid Team", role: "First aiders trained in basic life support ready to respond", image: EmergencyResponse },
     { name: "Training & Education", role: "Certified instructors providing safety education and training", image: Education },
     { name: "Community Outreach", role: "Building connections through engagement and support", image: OutReach },
-    { name: "Management Team", role: "Experienced leaders guiding our mission ensuring effective operations", image: Leadership },
+    { name: "Management Team", role: "Experienced leaders guiding our mission and vision", image: Leadership },
     { name: "Disaster Preparedness", role: "Planning for emergency situations and response strategies", image: Disaster },
     { name: "Medical Services", role: "Healthcare professionals on standby to provide immediate care", image: Medical }
 ]
@@ -33,7 +33,7 @@ function About() {
                     <p className="max-w-xl text-center">For 25 years, we've been dedicated to building safer & stronger communities through volunteer service, emergency response, and comprehensive safety education.</p>
                 </div>
 
-                <article className="flex flex-col md:flex-row items-start justify-center gap-8 my-8 px-4">
+                <article className="flex flex-col md:flex-row items-start justify-center gap-8 my-8 px-8">
                     <div className="max-w-lg">
                         <h3 className="text-2xl font-bold mb-4">Our Missions</h3>
                         <p className="">
@@ -52,11 +52,10 @@ function About() {
 
             <section className="bg-gray-300 flex flex-col justify-center items-center py-8">
                 <h3 className="text-2xl font-bold mb-4">Our Core Values</h3>
-                <p className="text-center">These principles guide everything we do and shape how we serve our community.</p>
-
+                <p className="text-center md:w-1/2">These principles guide everything we do and shape how we serve our community.</p>
                 <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                     {values.map((item, index) => (
-                        <Card key={index} className="max-w-sm">
+                        <Card key={index} className="w-xs md:w-2xl lg:w-lg bg-gray-900 dark:bg-red-700 text-gray-800 dark:text-gray-100 shadow-lg">
                             <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-gray-900 dark:text-white">
                                 <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
                                 {item.icon}
@@ -77,7 +76,7 @@ function About() {
 
                 <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                     {team.map((item, index) => (
-                        <div key={index} className="max-w-sm overflow-hidden shadow-lg rounded-lg">
+                        <div key={index} className="w-xs md:w-lg overflow-hidden shadow-lg rounded-lg">
                             <img src={item.image} alt={item.name} className="w-full h-80 object-cover" />
                             <div className="p-4">
                                 <h5 className="text-lg font-bold text-gray-900 dark:text-gray-900">

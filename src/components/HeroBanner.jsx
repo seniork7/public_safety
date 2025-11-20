@@ -7,13 +7,13 @@ function HeroBanner() {
     return (
         <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: `url(${HomeBanner})` }}>
             <div className="absolute inset-0 bg-gray-900/50"></div>
-            <article className="relative flex flex-col items-start justify-center gap-2 h-full max-w-xl px-4 md:px-8 z-10">
+            <article className="relative flex flex-col items-start justify-center gap-2 h-full max-w-8xl lg:max-w-xl px-4 md:px-8 z-10">
                 <SafetyAlert className="mt-8" />
                 <div>
                     <h1 className="text-5xl md:text-6xl text-[#1A1B1F] dark:text-[#E6E7EB] font-bold mt-5">
                     <span className="text-green-500">Together</span> <br /> we keep our community safe
                     </h1>
-                    <p className="text-lg text-white">
+                    <p className="text-lg text-white py-2">
                     Join our dedicated team of volunteers committed to protecting lives, providing emergency response, and building a safer tomorrow for everyone.
                     </p>
                     <div className="flex flex-col md:flex-row w-full gap-4 my-4">

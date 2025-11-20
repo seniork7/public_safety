@@ -53,7 +53,7 @@ const departments = [
     { 
         name: "General Inquiries", 
         contact: "info@publicsafety.org",
-        text: "For general questions and information",
+        text: "For general questions and information about our organization",
         call: "(123) 524-3355",
         phoneIcon: <HiPhone className="text-red-700 dark:text-red-400" />,
         emailIcon: <HiMiniEnvelope className="text-red-700 dark:text-red-400" />
@@ -106,7 +106,7 @@ function Contact() {
 
                     <div className="flex flex-col justify-center items-center gap-4 max-w-md m-4 p-4">
                         {/* Social Contacts Card */}
-                        <Card className="flex flex-col justify-center items-center h-60 text-center bg-white border border-none dark:bg-white shadow-md">
+                        <Card className="flex flex-col justify-center items-center h-60 text-center bg-white border border-none dark:bg-white shadow-md w-xs md:w-md lg:w-sm">
                             <h5 className="text-lg font-bold text-gray-900 dark:text-gray-900">Follow Us</h5>
                             <div className="flex justify-center items-center">
                                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-red-500">
@@ -134,7 +134,7 @@ function Contact() {
                         </Card>
 
                         {/* Emergency Card */}
-                        <Card className="flex flex-col justify-center items-center h-60 text-center bg-white border border-none dark:bg-white shadow-md">
+                        <Card className="flex flex-col justify-center items-center h-60 text-center bg-white border border-none dark:bg-white shadow-md w-xs md:w-md lg:w-sm">
                             <h5 className="text-lg font-bold text-gray-900 dark:text-gray-900 text-center ">Have an Emergency?</h5>
                             <p className="text-gray-700 dark:text-gray-400 text-sm">
                                 For immediate life threatening situations,<br /> please call:

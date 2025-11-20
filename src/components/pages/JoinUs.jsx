@@ -13,29 +13,29 @@ function JoinUs() {
                 <p className="text-center px-4">Our simple four-step process gets you from application to active volunteer.</p>
 
                 <div className="flex justify-center items-center">
-                    <div className="flex flex-wrap max-w-4xl p-8">
-                        <div className="flex flex-col justify-center items-start max-w-sm m-4 p-4 border border-gray-300 rounded-lg">
+                    <div className="flex flex-wrap justify-center items-center w-full p-4">
+                        <div className="flex flex-col justify-center items-start w-xs md:w-2xl lg:w-sm m-4 p-4 border border-gray-300 rounded-lg">
                             <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3">
                                 <span className="bg-red-500 w-7 h-7 flex items-center justify-center  font-bold rounded-full text-white text-lg">1</span>
                                 Submit Your Application
                             </h5>
                             <p>Fill out the form below with your information and interests.</p>
                         </div>
-                        <div className="flex flex-col justify-center items-start max-w-sm m-4 p-4 border border-gray-300 rounded-lg">
+                        <div className="flex flex-col justify-center items-start w-xs md:w-2xl lg:w-sm m-4 p-4 border border-gray-300 rounded-lg">
                             <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3">
                                 <span className="bg-red-500 w-7 h-7 flex items-center justify-center font-bold rounded-full text-white text-lg">2</span>
                                 Interview
                             </h5>
                             <p>We'll schedule a friendly conversation to learn more about you.</p>
                         </div>
-                        <div className="flex flex-col justify-center items-start max-w-sm m-4 p-4 border border-gray-300 rounded-lg">
+                        <div className="flex flex-col justify-center items-start w-xs md:w-2xl lg:w-sm m-4 p-4 border border-gray-300 rounded-lg">
                             <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3">
                                 <span className="bg-red-500 w-7 h-7 flex items-center justify-center font-bold rounded-full text-white text-lg">3</span>
                                 Training
                             </h5>
                             <p>Complete our comprehensive orientation and role-specific training.</p>
                         </div>
-                        <div className="flex flex-col justify-center items-start max-w-sm m-4 p-4 border border-gray-300 rounded-lg">
+                        <div className="flex flex-col justify-center items-start w-xs md:w-2xl lg:w-sm m-4 p-4 border border-gray-300 rounded-lg">
                             <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3">
                                 <span className="bg-red-500 w-7 h-7 flex items-center justify-center font-bold rounded-full text-white text-lg">4</span>
                                 Get Started
