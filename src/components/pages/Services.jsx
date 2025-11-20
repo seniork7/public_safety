@@ -9,8 +9,8 @@ import AwarenessCampaigns from '../../assets/images/awareness-campaigns.jpg'
 import DisasterPreparedness from '../../assets/images/disaster-preparedness.jpg'
 import HomeSafety from '../../assets/images/home-safety.jpg'
 import BabySitting from '../../assets/images/baby-sitting.jpg'
-import HandleBtnClick from '../../components/HandleBtnClick.jsx';
-
+import HandleBtnClick from '../../components/HandleBtnClick.jsx'
+import { useState } from "react"
 
 const programs = [
     { 
@@ -133,12 +133,32 @@ const programs = [
 ]
 
 const whyChoosePrograms = [
-    { title: "Certified Instructors", text: "All our trainers are certified professionals with years of real-world experience in emergency services and safety education.", icon: <HiAcademicCap /> },
-    { title: "Recognized Certification", text: "Receive nationally recognized certifications that are accepted by employers and organizations nationwide.", icon: <HiCheckCircle /> },
-    { title: "Small Class Sizes", text: "We maintain small class sizes to ensure personalized attention and hands-on practice for every participant.", icon: <HiMiniUserGroup /> }
+    { 
+        title: "Certified Instructors", 
+        text: "All our trainers are certified professionals with years of real-world experience in emergency services and safety education.", 
+        icon: <HiAcademicCap /> },
+    { 
+        title: "Recognized Certification", 
+        text: "Receive nationally recognized certifications that are accepted by employers and organizations nationwide.", 
+        icon: <HiCheckCircle /> },
+    { 
+        title: "Small Class Sizes", 
+        text: "We maintain small class sizes to ensure personalized attention and hands-on practice for every participant.", 
+        icon: <HiMiniUserGroup /> }
 ]
 
 function Services() {
+    const [filteredPrograms, setFilteredPrograms] = useState(programs)
+    const [searchItem, setSearchItem] = useState("")
+
+    const handleSearch = (e) => {
+        e.preventDefault()
+        const searchProgram = programs.filter(program => 
+            program.title.toLowerCase().includes(searchItem.toLowerCase()) ||
+            program.text.toLowerCase().includes(searchItem.toLowerCase())
+        )
+        setFilteredPrograms(searchProgram)
+    }
     return (
         <>          
             <section id="services" className="scroll-mt-15">
@@ -148,8 +168,9 @@ function Services() {
                 </div>
 
                 <div className="flex justify-center items-center">
-                    <form className="flex w-full  max-w-md my-8 mx-4">
+                    <form onSubmit={handleSearch} className="flex w-full  max-w-md my-8 mx-4">
                         <TextInput
+                            onChange={(e) => setSearchItem(e.target.value)}
                             id="search"
                             type="text"
                             placeholder="Search Programs..."
@@ -164,33 +185,37 @@ function Services() {
                 </div>
 
                 <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
-                    {programs.map((item, index) => (
-                        <Card key={index} className="max-w-sm" imgSrc={item.image}>
-                            <h5 className="flex items-center justify-start gap-2 text-2lg font-bold text-gray-900 dark:text-white">
-                                <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
-                                    {item.icon}
-                                </span>
-                                {item.title}
-                            </h5>
-                            <p className="font-normal text-gray-700 dark:text-gray-400">
-                                {item.text}
-                            </p>
-                            <p className="font-normal text-gray-700 dark:text-gray-400">What's included:</p>
-                            <ul className="mb-2">
-                                {item.features.map((feature, Index) => (
-                                    <li key={Index} className="font-normal text-gray-700 dark:text-gray-400">
-                                        <HiCheckCircle className="inline-block mr-2 text-red-500" /> 
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
+                    {filteredPrograms.length === 0 ? (
+                        <p className="text-gray-900">No program found matching your search.</p>
+                    ) : (
+                        filteredPrograms.map((item, index) => (
+                            <Card key={index} className="max-w-sm" imgSrc={item.image}>
+                                <h5 className="flex items-center justify-start gap-2 text-2lg font-bold text-gray-900 dark:text-white">
+                                    <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
+                                        {item.icon}
+                                    </span>
+                                    {item.title}
+                                </h5>
+                                <p className="font-normal text-gray-700 dark:text-gray-400">
+                                    {item.text}
+                                </p>
+                                <p className="font-normal text-gray-700 dark:text-gray-400">What's included:</p>
+                                <ul className="mb-2">
+                                    {item.features.map((feature, Index) => (
+                                        <li key={Index} className="font-normal text-gray-700 dark:text-gray-400">
+                                            <HiCheckCircle className="inline-block mr-2 text-red-500" /> 
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
 
-                            <Button onClick={() => HandleBtnClick("getInvolved")} className="flex justify-center items-center gap-2 bg-red-500 hover:bg-red-700 text-white hover:underline rounded-lg px-4 py-2 mt-2">
-                                Enroll Now
-                                <HiMiniArrowRight />
-                            </Button>
-                        </Card>
-                    ))}
+                                <Button onClick={() => HandleBtnClick("getInvolved")} className="flex justify-center items-center gap-2 bg-red-500 hover:bg-red-700 text-white hover:underline rounded-lg px-4 py-2 mt-2">
+                                    Enroll Now
+                                    <HiMiniArrowRight />
+                                </Button>
+                            </Card>
+                        ))
+                    )}
                 </div>
             </section>
 
