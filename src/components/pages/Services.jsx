@@ -160,8 +160,8 @@ function Services() {
 
     return (
         <>          
-            <section id="services" className="scroll-mt-15">
-                <div className="bg-gray-800 flex flex-col items-center justify-center p-8 text-white">
+            <section id="services" className="scroll-mt-15 text-[#080808] dark:text-[#f5f5f5]">
+                <div className="bg-[#080808] flex flex-col items-center justify-center p-8 text-white">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Our Programs & Services</h2>
                     <p className="max-w-xl text-center">Comprehensive safety programs designed to protect, educate, and empower every member of our community through expert training and support.</p>
                     <div className="flex justify-center items-center w-full">
@@ -175,7 +175,7 @@ function Services() {
                                 className="w-full"
                             />
 
-                            <Button className="bg-red-500 hover:bg-red-700 text-white font-bold cursor-pointer transition focus:outline-none focus:ring-0"
+                            <Button className="bg-[#E53935] hover:bg-[#ff3243] dark:bg-[#eed202] dark:hover:bg-[#fff312] text-[#f5f5f5] dark:text-[#0f1115] font-bold cursor-pointer transition focus:outline-none focus:ring-0"
                             onClick={() => setSearchItem("")}
                             value={setSearchItem}>
                                 Clear
@@ -183,55 +183,56 @@ function Services() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-wrap justify-center items-center gap-8 container mx-auto px-2 lg:px-8 my-15">
-                    {filteredPrograms.length === 0 ? (
-                        <p className="text-gray-900">No program found matching your search.</p>
-                    ) : (
-                        filteredPrograms.map((item, index) => (
-                            <Card key={index} className="w-xs md:w-2xl lg:w-sm" imgSrc={item.image}>
-                                <h5 className="flex items-center justify-start gap-2 text-2lg font-bold text-gray-900 dark:text-white">
-                                    <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
-                                        {item.icon}
-                                    </span>
-                                    {item.title}
-                                </h5>
-                                <p className="font-normal text-gray-700 dark:text-gray-400">
-                                    {item.text}
-                                </p>
-                                <p className="font-normal text-gray-700 dark:text-gray-400">What's included:</p>
-                                <ul className="mb-2">
-                                    {item.features.map((feature, Index) => (
-                                        <li key={Index} className="font-normal text-gray-700 dark:text-gray-400">
-                                            <HiCheckCircle className="inline-block mr-2 text-red-500" /> 
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                <Button onClick={() => HandleBtnClick("getInvolved")} className="flex justify-center items-center gap-2 bg-red-500 hover:bg-red-700 text-white hover:underline rounded-lg px-4 py-2 mt-2 transition focus:outline-none focus:ring-0">
-                                    Enroll Now
-                                    <HiMiniArrowRight />
-                                </Button>
-                            </Card>
-                        ))
-                    )}
+                <div className="bg-[#f5f5f5] dark:bg-[#080808] py-15">
+                    <div className="flex flex-wrap justify-center items-center gap-8 container mx-auto px-2 lg:px-8">
+                        {filteredPrograms.length === 0 ? (
+                            <p className="text-gray-900">No program found matching your search.</p>
+                        ) : (
+                            filteredPrograms.map((item, index) => (
+                                <Card key={index} className="w-xs md:w-2xl lg:w-sm bg-[#f5f5f5] dark:bg-[#E53935]/50 border-0" imgSrc={item.image}>
+                                    <h5 className="flex items-center justify-start gap-2 text-2lg font-bold text-gray-900 dark:text-white">
+                                        {/* <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
+                                            {item.icon}
+                                        </span> */}
+                                        {item.title}
+                                    </h5>
+                                    <p className="">
+                                        {item.text}
+                                    </p>
+                                    <p className="">What's included:</p>
+                                    <ul className="mb-2">
+                                        {item.features.map((feature, Index) => (
+                                            <li key={Index} className="">
+                                                <HiCheckCircle className="inline-block mr-2 text-[#E53935] dark:text-[#E53935]" />
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <Button onClick={() => HandleBtnClick("getInvolved")} className="flex justify-center items-center gap-2 bg-[#E53935] hover:bg-[#ff3243] dark:bg-[#eed202] dark:hover:bg-[#fff312] text-[#f5f5f5] dark:text-[#0f1115] hover:underline rounded-lg px-4 py-2 mt-2 transition focus:outline-none focus:ring-0 cursor-pointer">
+                                        Enroll Now
+                                        <HiMiniArrowRight />
+                                    </Button>
+                                </Card>
+                            ))
+                        )}
+                    </div>
                 </div>
             </section>
 
-            <section className="bg-gray-100">
-                <div className="container mx-auto px-2 lg:px-8 my-15 py-10 flex flex-col justify-center items-center">
+            <section className="bg-[#f5f5f5] dark:bg-[#080808] text-[#080808] dark:text-[#f5f5f5]">
+                <div className="container mx-auto px-2 lg:px-8 py-10 flex flex-col justify-center items-center">
                     <h3 className="text-2xl font-bold mb-4">Why Choose Our Programs?</h3>
                     <p className="text-center max-w-lg px-4">We're committed to providing the highest quality safety education and emergency services.</p>
                     <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                         {whyChoosePrograms.map((item, index) => (
-                            <Card key={index} className="w-xs md:w-2xl lg:w-sm">
+                            <Card key={index} className="w-xs md:w-2xl lg:w-sm bg-[#f5f5f5] dark:bg-[#E53935]/50  border-0 border-[#E53935] dark:border-[#E53935]">
                                 <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-gray-900 dark:text-white">
-                                    <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
+                                    <span className="bg-[#E53935] dark:bg-[#E53935] p-2 rounded-full mr-4 inline-block">
                                         {item.icon}
                                     </span>
                                     {item.title}
                                 </h5>
-                                <p className="font-normal text-gray-700 dark:text-gray-400">
+                                <p className="">
                                     {item.text}
                                 </p>
                             </Card>
@@ -240,8 +241,8 @@ function Services() {
                 </div>
             </section>
 
-            <section>
-                <article className="flex flex-col justify-center items-center py-8">
+            <section className="bg-[#f5f5f5] dark:bg-[#080808] text-[#080808] dark:text-[#f5f5f5]">
+                <article className="flex flex-col justify-center items-center py-15">
                     <h3 className="text-2xl font-bold mb-4">Day in the Life of a Volunteer</h3>
                     <p className="text-center max-w-lg px-4">Our volunteers play a crucial role in our community, dedicating their time and skills to ensure safety and preparedness.</p>
 

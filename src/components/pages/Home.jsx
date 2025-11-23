@@ -13,16 +13,16 @@ const card = [
 function Home() {
     return (
         <>
-            <section className="">
-                <section className="flex flex-col items-center justify-center px-4 py-20 bg-[#f5f5f5] dark:bg-[#0f1115]">
+            <section className="text-[#080808] dark:text-[#f5f5f5]">
+                <section className="flex flex-col items-center justify-center px-4 py-20 bg-[#f5f5f5] dark:bg-[#080808]">
                     <article className="flex flex-col lg:flex-row items-center justify-center gap-20">
-                        <div className="max-w-md md:w-full text-[#0f1115] dark:text-[#ccc]">
+                        <div className="max-w-md md:w-full">
                             <h2 className="text-3xl md:text-4xl mb-2 font-bold">Protecting Lives. Shaping the Future</h2>
                             <p className="max-w-xl">Be a part of a community dedicated to protecting lives and building a safer future for everyone.</p>
                 
                             <ul className="max-w-lg">
                                 <li className="flex justify-start items-start gap-2 my-4">
-                                    <span className="bg-blue-500 text-white p-2 rounded-full mr-4 inline-block">
+                                    <span className="bg-[#E53935] dark:bg-[#E53935] p-2 rounded-full mr-4 inline-block">
                                         <HiOutlineShieldCheck />
                                     </span>
                                     <article>
@@ -31,8 +31,8 @@ function Home() {
                                     </article>
                                 </li>
                                 <li className="flex justify-start items-start gap-2 my-4">
-                                    <span className="bg-blue-500 text-white p-2 rounded-full mr-4 inline-block">
-                                        <HiOutlineClock />
+                                    <span className="bg-[#E53935] dark:bg-[#E53935] text-[#080808] dark:text-[#f5f5f5] p-2 rounded-full mr-4 inline-block">
+                                        <HiOutlineClock className=""/>
                                     </span>
                                     <article>
                                         <h4 className="text-xl font-semibold">Always Available</h4>
@@ -40,8 +40,8 @@ function Home() {
                                     </article>
                                 </li>
                                 <li className="flex justify-start items-start gap-2 my-4">
-                                    <span className="bg-blue-500 text-white p-2 rounded-full mr-4 inline-block">
-                                        <HiOutlineTrendingUp />
+                                    <span className="bg-[#E53935] dark:bg-[#E53935] text-[#080808] dark:text-[#f5f5f5] p-2 rounded-full mr-4 inline-block">
+                                        <HiOutlineTrendingUp className=""/>
                                     </span>
                                     <article>
                                         <h4 className="text-xl font-semibold">Continuous Improvement</h4>
@@ -55,14 +55,14 @@ function Home() {
                         </div>
                     </article>
                 </section>
-                <section className="flex flex-col items-center justify-center py-20 bg-[#f5f5f5] dark:bg-[#0f1115] text-[#f5f5f5] dark:text-[#ccc]">
+                <section className="flex flex-col items-center justify-center py-20 bg-[#f5f5f5] dark:bg-[#080808]">
                     <h2 className="text-3xl md:text-4xl text-center font-bold">Featured Programs</h2>
                     <p className="max-w-lg text-center">Explore our most popular programs designed to protect and empower your community.</p>
                     <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                         {card.map((item, index) => (
-                            <Card key={index} className="w-xs md:w-2xl lg:w-sm bg-gray-700 dark:bg-red-700 shadow-lg">
+                            <Card key={index} className="w-xs md:w-2xl lg:w-sm bg-[#f5f5f5] dark:bg-[#E53935]/50  border-0 border-[#E53935] dark:border-[#E53935] shadow-lg">
                                 <h5 className="flex items-center justify-start gap-2 text-lg font-bold">
-                                    <span className="bg-red-500 p-2 rounded-full mr-4 inline-block">
+                                    <span className="bg-[#E53935] dark:bg-[#E53935] p-2 rounded-full mr-4 inline-block">
                                         {item.icon}
                                     </span>
                                     {item.title}
@@ -70,11 +70,11 @@ function Home() {
                                 <p className="font-normal">
                                     {item.text}
                                 </p>
-                                <a href="#" className="flex items-center gap-2 text-red-500 hover:underline">{item.link} <HiMiniArrowRight /></a>
+                                <a href="#" className="flex items-center gap-2 text-[#E53935] hover:text-[#ff3243] dark:text-[#eed202] dark:hover:text-[#fff312] hover:underline">{item.link} <HiMiniArrowRight /></a>
                             </Card>
                         ))}
                     </div>
-                    <Button onClick={() => HandleBtnClick("services")} className="bg-red-500 hover:bg-red-700 text-[#f5f5f5] dark:text-[#ccc] font-bold my-8 py-2 px-8 rounded-lg cursor-pointer transition focus:outline-none focus:ring-0">View All Programs</Button>
+                    <Button onClick={() => HandleBtnClick("services")} className="bg-[#E53935] hover:bg-[#ff3243] text-[#f5f5f5] dark:bg-[#eed202] dark:hover:bg-[#fff312] dark:text-[#0f1115] font-bold my-8 py-2 px-8 rounded-lg cursor-pointer transition focus:outline-none focus:ring-0">View All Programs</Button>
                 </section>
             </section>
         </>

@@ -3,7 +3,7 @@ import { HiEye, HiInformationCircle } from "react-icons/hi"
 
 function SafetyAlert() {
     return (
-        <Alert className="bg-[#E53935]/25 dark:bg-[#E53935]/25 text-[#f5f5f5] dark:text-[#f5f5f5] border border-[#E53935] dark:border-[#E53935]" additionalContent={<ExampleAdditionalContent />} icon={HiInformationCircle}>
+        <Alert className="bg-[#E53935]/25 dark:bg-[#E53935]/50 text-[#f5f5f5] dark:text-[#f5f5f5] border border-[#E53935] dark:border-[#E53935]" additionalContent={<ExampleAdditionalContent />} icon={HiInformationCircle}>
         <span className="font-medium text-[#f5f5f5] dark:text-[#f5f5f5]">Safety Tip:</span> In case of emergency, do not hesitate to call 911 or contact the local authorities.
         </Alert>
     );
