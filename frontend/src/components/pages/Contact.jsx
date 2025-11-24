@@ -5,6 +5,7 @@ import Label from '../elements/Label'
 import Textarea from '../elements/Textarea'
 import { HiMapPin, HiPhone, HiMiniEnvelope, HiClock } from "react-icons/hi2"
 import { FaLinkedinIn, FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6"
+import { useState } from 'react' 
 
 const contactMethods = [
     { 
@@ -65,6 +66,68 @@ const departments = [
 ];
 
 function Contact() {
+    const [formSuccess, setformSuccess] = useState('')
+    const [formError, setformError] = useState('')
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    })
+
+    const handleChange = (e) => {
+        setFormData({...formData, [e.target.name]:e.target.value})      
+        
+    }
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        const errors = []
+
+        if (!formData.name.trim()) {
+            errors.push('Full Name is required.')
+        }
+
+        if (!formData.name.trim()) {
+            errors.push('Email Address is required.');
+        } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+            errors.push('Please enter a valid email address.');
+        }
+
+        if (!formData.message.trim()) {
+            errors.push('Message is required.');
+        }
+
+        if (errors.length > 0) {
+            setformError(errors.join(' '))
+            setformSuccess('')
+            return
+        } else {
+            try {
+                const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+                    method: 'POST',
+                    body: JSON.stringify(formData),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    setformSuccess('Your message has been sent successfully!')
+                    setFormData({
+                        name: '',
+                        email: '',
+                        message: ''
+                    })
+                    setformError('')
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                setformError('There was a problem submitting your message. Please try again later!')
+            }
+        }
+    }
+
     return (
         <>
             <section id="contact" className="scroll-mt-15 bg-[#f5f5f5] dark:bg-[#080808] text-[#080808] dark:text-[#f5f5f5]">
@@ -75,7 +138,7 @@ function Contact() {
 
                 <div className="flex flex-wrap justify-center items-center gap-8 container mx-auto px-2 lg:px-8 my-15">
                     {contactMethods.map((item, index) => (
-                        <Card key={index} className="max-w-sm bg-[#f5f5f5] dark:bg-[#E53935]/50  border-0 border-[#E53935] dark:border-[#E53935] shadow-lg">
+                        <Card key={index} className="max-w-sm bg-[#f5f5f5] dark:bg-[#E53935]/50  border border-[#E53935] dark:border-[#E53935] shadow-lg">
                             <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-gray-900 dark:text-white">
                                 <span className="p-2 rounded-full mr-4 inline-block bg-[#E53935] dark:bg-[#E53935]">
                                     {item.icon}
@@ -93,23 +156,46 @@ function Contact() {
                     <form className="bg-[#f5f5f5] dark:bg-[#1e1e1e] p-6 rounded-lg shadow-md max-w-lg w-md">
                         <h4 className="text-xl font-bold mb-4">Send Us a Message</h4>
                         <p className="mb-5">Fill out the form below and we'll get back to you within 24 hours.</p>
+                        {formError && <p className="text-[#E53935]">{formError}</p>}
+                        {formSuccess && <p className="text-[#eed202]">{formSuccess}</p>}
                         <div className="mb-4">
                             <Label htmlFor="name" className="block mb-2">Name</Label>
-                            <TextInput id="name" name="name" type="text" placeholder="Your Name" required />
+                            <TextInput 
+                            id="name" 
+                            name="name" 
+                            value={formData.name}
+                            onChange={handleChange}
+                            type="text" 
+                            placeholder="Your Name" 
+                            required />
                         </div>
                         <div className="mb-4">
                             <Label htmlFor="email" className="block mb-2">Email</Label>
-                            <TextInput id="email" name="email" type="email" placeholder="Your Email" required />
+                            <TextInput 
+                            id="email" 
+                            name="email" 
+                            value={formData.email}
+                            onChange={handleChange}
+                            type="email" 
+                            placeholder="Your Email" 
+                            required />
                         </div>
                         <div className="mb-4">
                             <Label htmlFor="message" className="block mb-2">Message</Label>
-                            <Textarea id="message" name="message" placeholder="Leave us a message..." rows={4} required />
+                            <Textarea 
+                            id="message" 
+                            name="message" 
+                            value={formData.message}
+                            onChange={handleChange}
+                            placeholder="Leave us a message..." 
+                            rows={4} 
+                            required />
                         </div>
-                        <Button type="submit" id="submitContact" className="bg-[#E53935] hover:bg-[#ff3243] text-[#f5f5f5] dark:bg-[#eed202] dark:hover:bg-[#fff312] dark:text-[#0f1115] font-bold py-2 px-4 rounded-lg cursor-pointer transition focus:outline-none focus:ring-0 w-full mt-10">Send Message</Button>
+                        <Button onClick={handleSubmit} type="submit" id="submitContact" className="bg-[#E53935] hover:bg-[#ff3243] text-[#f5f5f5] dark:bg-[#eed202] dark:hover:bg-[#fff312] dark:text-[#0f1115] font-bold py-2 px-4 rounded-lg cursor-pointer transition focus:outline-none focus:ring-0 w-full mt-10">Send Message</Button>
                     </form>
 
                     <div className="flex flex-col justify-center items-center gap-4 max-w-md m-4 p-4">
-                        <Card className="flex flex-col justify-center items-center h-60 text-center bg-[#f5f5f5] dark:bg-[#E53935]/50  border-0 border-[#E53935] dark:border-[#E53935] shadow-lg w-xs md:w-md lg:w-sm">
+                        <Card className="flex flex-col justify-center items-center h-60 text-center bg-[#f5f5f5] dark:bg-[#E53935]/50  border border-[#E53935] dark:border-[#E53935] shadow-lg w-xs md:w-md lg:w-sm">
                             <h5 className="text-lg font-bold text-center ">Have an Emergency?</h5>
                             <p className="text-sm">
                                 For immediate life threatening situations,<br /> please call:
@@ -123,7 +209,7 @@ function Contact() {
                                 <span className="">+1 (555) 123-HELP</span>
                             </p>
                         </Card>
-                        <Card className="flex flex-col justify-center items-center h-60 text-center bg-[#f5f5f5] dark:bg-[#E53935]/50  border-0 border-[#E53935] dark:border-[#E53935] shadow-lg w-xs md:w-md lg:w-sm">
+                        <Card className="flex flex-col justify-center items-center h-60 text-center bg-[#f5f5f5] dark:bg-[#E53935]/50  border border-[#E53935] dark:border-[#E53935] shadow-lg w-xs md:w-md lg:w-sm">
                             <h5 className="text-lg font-bold">Follow Us</h5>
                             <div className="flex justify-center items-center">
                                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="">
@@ -158,7 +244,7 @@ function Contact() {
                         <p className="text-center">Please reach out to the appropriate department for assistance.</p>
                         <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-2">
                             {departments.map((item, index) => (
-                            <Card key={index} className="max-w-sm bg-[#f5f5f5] dark:bg-[#E53935]/50  border-0 border-[#E53935] dark:border-[#E53935] shadow-lg">
+                            <Card key={index} className="max-w-sm bg-[#f5f5f5] dark:bg-[#E53935]/50  border border-[#E53935] dark:border-[#E53935] shadow-lg">
                                 <h5 className="text-lg font-bold text-gray-900 dark:text-white">
                                     {item.name}
                                 </h5>
