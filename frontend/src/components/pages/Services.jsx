@@ -1,4 +1,6 @@
-import { Card, TextInput, Button } from "flowbite-react"
+import Card from '../elements/Card.jsx'
+import TextInput from '../elements/TextInput.jsx'
+import Button from '../elements/Button.jsx'
 import { HiMiniUserGroup, HiMiniBookOpen, HiFire, HiMiniBellAlert, HiHeart, HiExclamationTriangle, HiChatBubbleBottomCenterText, HiMiniCheckBadge, HiHome, HiCheckCircle, HiMiniArrowRight, HiAcademicCap } from "react-icons/hi2"
 import FirstAid from '../../assets/images/FirstAid.jpg'
 import CPRTraing from '../../assets/images/cpr-training.jpg'
@@ -161,7 +163,7 @@ function Services() {
     return (
         <>          
             <section id="services" className="scroll-mt-15 text-[#080808] dark:text-[#f5f5f5]">
-                <div className="bg-[#080808] flex flex-col items-center justify-center p-8 text-white">
+                <div className="bg-[#080808] dark:bg-[#f5f5f5] text-[#f5f5f5] dark:text-[#080808] flex flex-col items-center justify-center p-8">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Our Programs & Services</h2>
                     <p className="max-w-xl text-center">Comprehensive safety programs designed to protect, educate, and empower every member of our community through expert training and support.</p>
                     <div className="flex justify-center items-center w-full">
@@ -172,10 +174,10 @@ function Services() {
                                 value={searchItem}
                                 type="text"
                                 placeholder="Search Programs..."
-                                className="w-full"
+                                className="w-full text-[#080808] dark:text-[#f5f5f5]"
                             />
 
-                            <Button className="bg-[#E53935] hover:bg-[#ff3243] dark:bg-[#eed202] dark:hover:bg-[#fff312] text-[#f5f5f5] dark:text-[#0f1115] font-bold cursor-pointer transition focus:outline-none focus:ring-0"
+                            <Button className="bg-[#E53935] hover:bg-[#ff3243] text-[#f5f5f5] font-bold cursor-pointer transition"
                             onClick={() => setSearchItem("")}
                             value={setSearchItem}>
                                 Clear
@@ -186,11 +188,11 @@ function Services() {
                 <div className="bg-[#f5f5f5] dark:bg-[#080808] py-15">
                     <div className="flex flex-wrap justify-center items-center gap-8 container mx-auto px-2 lg:px-8">
                         {filteredPrograms.length === 0 ? (
-                            <p className="text-gray-900">No program found matching your search.</p>
+                            <p className="">No program found matching your search.</p>
                         ) : (
                             filteredPrograms.map((item, index) => (
-                                <Card key={index} className="w-xs md:w-2xl lg:w-sm bg-[#f5f5f5] dark:bg-[#E53935]/50 border-0" imgSrc={item.image}>
-                                    <h5 className="flex items-center justify-start gap-2 text-2lg font-bold text-gray-900 dark:text-white">
+                                <Card key={index} className="w-xs md:w-2xl lg:w-sm" imgSrc={item.image}>
+                                    <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-gray-900 dark:text-white">
                                         {/* <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
                                             {item.icon}
                                         </span> */}
@@ -208,7 +210,7 @@ function Services() {
                                             </li>
                                         ))}
                                     </ul>
-                                    <Button onClick={() => HandleBtnClick("getInvolved")} className="flex justify-center items-center gap-2 bg-[#E53935] hover:bg-[#ff3243] dark:bg-[#eed202] dark:hover:bg-[#fff312] text-[#f5f5f5] dark:text-[#0f1115] hover:underline rounded-lg px-4 py-2 mt-2 transition focus:outline-none focus:ring-0 cursor-pointer">
+                                    <Button onClick={() => HandleBtnClick("getInvolved")} className="flex justify-center items-center gap-2 bg-[#E53935] hover:bg-[#ff3243] dark:bg-[#eed202] dark:hover:bg-[#fff312] text-[#f5f5f5] dark:text-[#0f1115] hover:underline rounded-lg px-4 py-2 mt-2 transition focus:outline-none focus:ring-0 cursor-pointer w-full">
                                         Enroll Now
                                         <HiMiniArrowRight />
                                     </Button>

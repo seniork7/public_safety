@@ -1,10 +1,15 @@
-import { Dropdown, DropdownItem, TextInput, Textarea, Button, Label, Checkbox } from "flowbite-react"
+import Select from '../elements/Select'
+import TextInput from '../elements/TextInput'
+import Textarea from '../elements/Textarea'
+import Button from '../elements/Button'
+import Label from '../elements/Label'
+import Checkbox from '../elements/Checkbox'
 
 function JoinUs() {
     return (
         <>          
             <section id="joinUs" className="scroll-mt-15">
-                <div className="bg-[#080808] flex flex-col items-center justify-center p-8 text-white">
+                <div className="bg-[#080808] dark:bg-[#f5f5f5] text-[#f5f5f5] dark:text-[#080808] flex flex-col items-center justify-center p-8">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Join Our Team</h2>
                     <p className="max-w-xl text-center">Be part of something meaningful. Whether you want to volunteer, receive training, or stay updated with our initiatives, we'd love to have you join us.</p>
                 </div>
@@ -57,20 +62,22 @@ function JoinUs() {
                         <form className="bg-[#f5f5f5] dark:bg-[#1e1e1e] flex flex-col gap-4 my-8 px-4 w-full max-w-lg rounded-lg shadow-lg p-8">
                             <div className="flex flex-col md:flex-row gap-4">
                                 <div className="flex-col w-full">
-                                    <Label htmlFor="firstName" className="text-gray-900">First Name *</Label>
+                                    <Label htmlFor="firstName" className="">First Name *</Label>
                                     <TextInput
                                         className=""
                                         id="firstName"
+                                        name="firstName"
                                         type="text"
                                         placeholder="John"
                                         required={true}
                                     />
                                 </div>
                                 <div className="flex-col w-full">
-                                    <Label htmlFor="lastName" className="text-gray-900">Last Name *</Label>
+                                    <Label htmlFor="lastName" className="">Last Name *</Label>
                                     <TextInput
                                         className=""
                                         id="lastName"
+                                        name="lastName"
                                         type="text"
                                         placeholder="Doe"
                                         required={true}
@@ -79,20 +86,22 @@ function JoinUs() {
                             </div>
                             <div className="flex flex-col md:flex-row gap-4">
                                 <div className="flex-col w-full">
-                                    <Label htmlFor="email" className="text-gray-900">Email *</Label>
+                                    <Label htmlFor="email" className="">Email *</Label>
                                     <TextInput
                                         className=""
                                         id="email"
+                                        name="email"
                                         type="email"
                                         placeholder="john@example.com"
                                     required={true}
                                 />
                                 </div>
                                 <div className="flex-col w-full">
-                                    <Label htmlFor="phone" className="text-gray-900">Phone Number</Label>
+                                    <Label htmlFor="phone" className="">Phone Number</Label>
                                     <TextInput
                                         className=""
                                         id="phone"
+                                        name="phone"
                                         type="tel"
                                         placeholder="(123) 456-7890"
                                         required={true}
@@ -102,58 +111,65 @@ function JoinUs() {
                             <div className="flex flex-col justify-between items-center md:flex-row gap-4">
                                 <div className="w-full">
                                     <Label htmlFor="gender" className="">Gender *</Label>
-                                    <Dropdown label="Select Gender" dismissOnClick={true} className="bg-white text-gray-900 focus:outline-none focus:ring-0 cursor-pointer">
-                                        <DropdownItem>Male</DropdownItem>
-                                        <DropdownItem>Female</DropdownItem>
-                                        <DropdownItem>Non-binary</DropdownItem>
-                                        <DropdownItem>Prefer not to say</DropdownItem>
-                                        <DropdownItem>Other</DropdownItem>
-                                    </Dropdown>
+                                    <Select id="gender" name="gender">
+                                        <option>-- choose an option --</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Non-binary</option>
+                                        <option>Prefer not to say</option>
+                                        <option>Other</option>
+                                    </Select>
                                 </div>
                                 <div className="w-full">
                                     <Label htmlFor="interest" className="">Role Interested In *</Label>
-                                    <Dropdown label="Areas of Interest" dismissOnClick={true} className="bg-white text-gray-900 focus:outline-none focus:ring-0 cursor-pointer">
-                                        <DropdownItem>First Aid</DropdownItem>
-                                        <DropdownItem>Community Outreach</DropdownItem>
-                                        <DropdownItem>Disaster Response</DropdownItem>
-                                        <DropdownItem>CPR Training</DropdownItem>
-                                        <DropdownItem>Event Support</DropdownItem>
-                                        <DropdownItem>Other</DropdownItem>
-                                    </Dropdown>
+                                    <Select id="interest" name="interest">
+                                        <option>-- choose an option --</option>
+                                        <option>First Aid</option>
+                                        <option>Community Outreach</option>
+                                        <option>Disaster Response</option>
+                                        <option>CPR Training</option>
+                                        <option>Event Support</option>
+                                        <option>Other</option>
+                                    </Select>
                                 </div>
                             </div>
                             <div className="flex flex-col md:flex-row gap-4">
                                 <div className="flex-col w-full">
                                     <Label htmlFor="experience" className="">Experience Level</Label>
-                                    <Dropdown label="Experience Level" dismissOnClick={true} className="bg-white text-gray-900 focus:outline-none focus:ring-0 cursor-pointer">
-                                        <DropdownItem>No Experience</DropdownItem>
-                                        <DropdownItem>Some Experience</DropdownItem>
-                                        <DropdownItem>Certified Professional</DropdownItem>
-                                    </Dropdown>
+                                    <Select id="experience" name="experience">
+                                        <option>-- choose an option --</option>
+                                        <option>No Experience</option>
+                                        <option>Some Experience</option>
+                                        <option>Certified Professional</option>
+                                    </Select>
                                 </div>
                                 <div className="flex-col w-full">
                                     <Label htmlFor="availability" className="">Availability</Label>
-                                    <Dropdown label="Availability" dismissOnClick={true} className="bg-white text-gray-900 focus:outline-none focus:ring-0 cursor-pointer">
-                                        <DropdownItem>Weekdays</DropdownItem>
-                                        <DropdownItem>Weekends</DropdownItem>
-                                        <DropdownItem>Evenings</DropdownItem>
-                                        <DropdownItem>Flexible</DropdownItem>
-                                    </Dropdown>
+                                    <Select id="availability" name="availability">
+                                        <option>-- choose an option --</option>
+                                        <option>Weekdays</option>
+                                        <option>Weekends</option>
+                                        <option>Evenings</option>
+                                        <option>Flexible</option>
+                                    </Select>
                                 </div>
                             </div>
                             <div>
-                                <Label htmlFor="interest" className="">Why do you want to volunteer? *</Label>
+                                <Label htmlFor="whyVolunteer" className="">Why do you want to volunteer? *</Label>
                                 <Textarea
-                                    id="interest"
+                                    id="whyVolunteer"
+                                    name="whyVolunteer"
+                                    className=""
+                                    rows={4}
                                     placeholder="Tell us why you want to volunteer..."
                                     required={true}
                                 />
                             </div>
-                            <div>
-                                <Checkbox id="terms" required={true} className="transition focus:outline-none focus:ring-0 cursor-pointer"/>
+                            <div className="flex items-center">
+                                <Checkbox id="terms" name="terms" required={true} className="transition focus:outline-none focus:ring-0 cursor-pointer"/>
                                 <Label htmlFor="terms" className="ml-2">I agree to the terms and conditions and understand that a background check may be required for certain volunteer positions. *</Label>
                             </div>
-                            <Button type="submit" className="bg-[#E53935] hover:bg-[#ff3243] dark:bg-[#eed202] dark:hover:bg-[#fff312] text-[#f5f5f5] dark:text-[#0f1115] transition focus:outline-none focus:ring-0 cursor-pointer">Submit Application</Button>
+                            <Button type="submit" id="submitVolunteer" className="bg-[#E53935] hover:bg-[#ff3243] dark:bg-[#eed202] dark:hover:bg-[#fff312] text-[#f5f5f5] dark:text-[#0f1115] transition focus:outline-none focus:ring-0 cursor-pointer">Submit Application</Button>
                         </form>
                     </div>
                 </div>

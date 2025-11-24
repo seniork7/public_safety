@@ -1,4 +1,8 @@
-import { Card, TextInput, Button, Label, Textarea } from "flowbite-react"
+import Card from '../elements/Card'
+import TextInput from '../elements/TextInput'
+import Button from '../elements/Button'
+import Label from '../elements/Label'
+import Textarea from '../elements/Textarea'
 import { HiMapPin, HiPhone, HiMiniEnvelope, HiClock } from "react-icons/hi2"
 import { FaLinkedinIn, FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6"
 
@@ -64,7 +68,7 @@ function Contact() {
     return (
         <>
             <section id="contact" className="scroll-mt-15 bg-[#f5f5f5] dark:bg-[#080808] text-[#080808] dark:text-[#f5f5f5]">
-                <div className="bg-[#080808] flex flex-col items-center justify-center mb-8 p-8 text-white">
+                <div className="bg-[#080808] dark:bg-[#f5f5f5] text-[#f5f5f5] dark:text-[#080808] flex flex-col items-center justify-center mb-8 p-8">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Get in Touch</h2>
                     <p className="max-w-xl text-center">Have questions or need assistance? Our team is here to help. Reach out to us and we'll respond as soon as possible.</p>
                 </div>
@@ -86,22 +90,22 @@ function Contact() {
                 </div>
 
                 <div className="flex flex-wrap justify-center items-center mt-8 p-8 gap-8 px-4 md:px-8">
-                    <form className="bbg-[#f5f5f5] dark:bg-[#1e1e1e] p-6 rounded-lg shadow-md max-w-lg w-md">
+                    <form className="bg-[#f5f5f5] dark:bg-[#1e1e1e] p-6 rounded-lg shadow-md max-w-lg w-md">
                         <h4 className="text-xl font-bold mb-4">Send Us a Message</h4>
                         <p className="mb-5">Fill out the form below and we'll get back to you within 24 hours.</p>
                         <div className="mb-4">
                             <Label htmlFor="name" className="block mb-2">Name</Label>
-                            <TextInput id="name" type="text" placeholder="Your Name" required />
+                            <TextInput id="name" name="name" type="text" placeholder="Your Name" required />
                         </div>
                         <div className="mb-4">
                             <Label htmlFor="email" className="block mb-2">Email</Label>
-                            <TextInput id="email" type="email" placeholder="Your Email" required />
+                            <TextInput id="email" name="email" type="email" placeholder="Your Email" required />
                         </div>
                         <div className="mb-4">
                             <Label htmlFor="message" className="block mb-2">Message</Label>
-                            <Textarea id="message" placeholder="Leave us a message..." rows={4} required />
+                            <Textarea id="message" name="message" placeholder="Leave us a message..." rows={4} required />
                         </div>
-                        <Button type="submit" className="bg-[#E53935] hover:bg-[#ff3243] text-[#f5f5f5] dark:bg-[#eed202] dark:hover:bg-[#fff312] dark:text-[#0f1115] font-bold py-2 px-4 rounded-lg cursor-pointer transition focus:outline-none focus:ring-0 w-full mt-10">Send Message</Button>
+                        <Button type="submit" id="submitContact" className="bg-[#E53935] hover:bg-[#ff3243] text-[#f5f5f5] dark:bg-[#eed202] dark:hover:bg-[#fff312] dark:text-[#0f1115] font-bold py-2 px-4 rounded-lg cursor-pointer transition focus:outline-none focus:ring-0 w-full mt-10">Send Message</Button>
                     </form>
 
                     <div className="flex flex-col justify-center items-center gap-4 max-w-md m-4 p-4">

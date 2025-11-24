@@ -1,12 +1,13 @@
 import { HiOutlineShieldCheck, HiOutlineClock, HiOutlineTrendingUp, HiShieldCheck } from "react-icons/hi"
 import { HiMiniBellAlert, HiHeart, HiMiniArrowRight } from "react-icons/hi2"
-import { Card, Button } from "flowbite-react"
+import Card from '../elements/Card.jsx'
+import Button from '../elements/Button.jsx'
 import Community from '../../assets/images/image-1.jpg'
 import HandleBtnClick from '../../components/HandleBtnClick.jsx'
 
 const card = [
     { title: "Emergency Response Training", text: "Our Emergency Response Training program equips individuals with the skills and knowledge needed to respond effectively in crisis situations.", icon: <HiMiniBellAlert />, link: "Learn More" },
-    { title: "First Aid Training", text: "Comprehensive First Aid Training covering essential lifesaving techniques such as CPR, wound care, and handling medical emergencies.", icon: <HiHeart />, link: "Learn More" },
+    { title: "First Aid Training", text: "Comprehensive First Aid Training covering essential lifesaving techniques such as CPR, wound care, and handling medical emergencies that require immediate intervention.", icon: <HiHeart />, link: "Learn More" },
     { title: "Community Safety Workshops", text: "Engage in our Community Safety Workshops to learn about crime prevention, disaster preparedness, and creating safer neighborhoods.", icon: <HiOutlineShieldCheck />, link: "Learn More" }
 ] 
 
@@ -60,7 +61,7 @@ function Home() {
                     <p className="max-w-lg text-center">Explore our most popular programs designed to protect and empower your community.</p>
                     <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                         {card.map((item, index) => (
-                            <Card key={index} className="w-xs md:w-2xl lg:w-sm bg-[#f5f5f5] dark:bg-[#E53935]/50  border-0 border-[#E53935] dark:border-[#E53935] shadow-lg">
+                            <Card key={index} className="w-xs md:w-2xl lg:w-sm shadow-lg">
                                 <h5 className="flex items-center justify-start gap-2 text-lg font-bold">
                                     <span className="bg-[#E53935] dark:bg-[#E53935] p-2 rounded-full mr-4 inline-block">
                                         {item.icon}

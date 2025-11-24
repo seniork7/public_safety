@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { HiExclamation, HiArrowNarrowLeft } from 'react-icons/hi'
-import { Button } from 'flowbite-react'
+import Button from '../elements/Button'
 
 function Error404() {
     return (

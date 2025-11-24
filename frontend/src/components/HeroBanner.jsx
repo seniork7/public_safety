@@ -1,6 +1,6 @@
 import HomeBanner from '../assets/images/HomeBanner.jpg'
 import SafetyAlert from './SafetyAlert.jsx'
-import { Button } from 'flowbite-react'
+import Button from './elements/Button.jsx'
 import HandleBtnClick from './HandleBtnClick.jsx'
 
 function HeroBanner() {

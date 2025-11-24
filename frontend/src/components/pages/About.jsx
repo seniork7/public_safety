@@ -1,6 +1,5 @@
-import { Card } from "flowbite-react"
+import Card from '../elements/Card'
 import { HiMiniUserGroup, HiHeart, HiExclamationTriangle, HiMiniRocketLaunch } from "react-icons/hi2"
-import FirstAid from '../../assets/images/FirstAid.jpg'
 import EmergencyResponse from '../../assets/images/emergency-response.jpg'
 import Education from '../../assets/images/education.jpg'
 import OutReach from '../../assets/images/outreach.jpg'
@@ -21,14 +20,14 @@ const team = [
     { name: "Community Outreach", role: "Building connections through engagement and support", image: OutReach },
     { name: "Management Team", role: "Experienced leaders guiding our mission and vision", image: Leadership },
     { name: "Disaster Preparedness", role: "Planning for emergency situations and response strategies", image: Disaster },
-    { name: "Medical Services", role: "Healthcare professionals on standby to provide immediate care", image: Medical }
+    { name: "Medical Services", role: "Healthcare professionals on standby", image: Medical }
 ]
 
 function About() {
     return (
         <>
             <section id="about" className="scroll-mt-15 text-[#080808] dark:text-[#f5f5f5]">
-                <div className="bg-[#080808] flex flex-col items-center justify-center p-4 text-white">
+                <div className="bg-[#080808] dark:bg-[#f5f5f5] text-[#f5f5f5] dark:text-[#080808] flex flex-col items-center justify-center p-4">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">About Us</h2>
                     <p className="max-w-xl text-center">For 25 years, we've been dedicated to building safer & stronger communities through volunteer service, emergency response, and comprehensive safety education.</p>
                 </div>
@@ -57,7 +56,7 @@ function About() {
                     <p className="text-center md:w-1/2">These principles guide everything we do and shape how we serve our community.</p>
                     <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                         {values.map((item, index) => (
-                            <Card key={index} className="w-xs md:w-2xl lg:w-lg bg-[#f5f5f5] dark:bg-[#E53935]/50  border-0 border-[#E53935] dark:border-[#E53935] shadow-lg">
+                            <Card key={index} className="w-xs md:w-2xl lg:w-lg">
                                 <h5 className="flex items-center justify-start gap-2 text-lg font-bold">
                                     <span className="bg-[#E53935] dark:bg-[#E53935] text-[#080808] dark:text-[#f5f5f5] p-2 rounded-full mr-4 inline-block">
                                     {item.icon}
@@ -79,8 +78,8 @@ function About() {
                     <p className="text-center max-w-lg px-4">Our dedicated team of volunteers is the backbone of our organization, working tirelessly to keep our community safe.</p>
                     <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                         {team.map((item, index) => (
-                            <div key={index} className="w-xs md:w-lg bg-[#f5f5f5] dark:bg-[#E53935]/50 overflow-hidden shadow-lg rounded-lg">
-                                <img src={item.image} alt={item.name} className="w-full h-80 object-cover" />
+                            <Card key={index} className="w-xs md:w-lg bg-[#f5f5f5] dark:bg-[#E53935]/50 overflow-hidden shadow-lg rounded-lg">
+                                <img src={item.image} alt={item.name} className="w-full h-80 object-cover rounded-lg" />
                                 <div className="p-4">
                                     <h5 className="text-lg font-bold">
                                         {item.name}
@@ -89,7 +88,7 @@ function About() {
                                         {item.role}
                                     </p>
                                 </div>
-                            </div>
+                            </Card>
                         ))}
                     </div>
                 </div>

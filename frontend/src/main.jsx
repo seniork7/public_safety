@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import Error404 from './components/pages/Error404.jsx'
-import 'flowbite'
+// flowbite removed — using custom Tailwind components
 
 const router = createBrowserRouter([
   {
