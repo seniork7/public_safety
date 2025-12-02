@@ -4,8 +4,86 @@ import Textarea from '../elements/Textarea'
 import Button from '../elements/Button'
 import Label from '../elements/Label'
 import Checkbox from '../elements/Checkbox'
+// import InputMask from "react-input-mask"
+import { useState } from 'react'
 
 function JoinUs() {
+    const [invalidFields, setInvalidFields] = useState([])
+    const [formSuccess, setformSuccess] = useState('')
+    const [formError, setformError] = useState('')
+    const [formData, setFormData] = useState({
+        fName: '',
+        lName: '',
+        email: '',
+        phone: '',
+        gender: '',
+        role: '',
+        experience: '',
+        availability: '',
+        whyVolunteer: '',
+        checkbox: false
+    })
+
+    const handleChange = (e) => {
+        const { name, type, value, checked } = e.target;
+
+        setFormData({
+            ...formData,
+            [name]: type === "checkbox" ? checked : value
+        });      
+        
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        const emptyFields = Object.keys(formData).filter(key => {
+        if (key === 'checkbox') return !formData[key]
+            return !formData[key].trim()
+        })
+
+        if (emptyFields.length > 0) {
+            setformError('Please complete all required fields.')
+            setformSuccess('')
+
+            setInvalidFields(emptyFields)
+
+            return
+        }
+
+        try {
+            const response = await fetch('http://localhost:3000/api/volunteers', {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                setformSuccess('Your application has been submitted successfully! Please check your email.')
+                setFormData({
+                    fName: '',
+                    lName: '',
+                    email: '',
+                    phone: '',
+                    gender: '',
+                    role: '',
+                    experience: '',
+                    availability: '',
+                    whyVolunteer: '',
+                    checkbox: false
+                })
+                setformError('')
+                setInvalidFields([])
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            setformError('There was a problem submitting your application. Please try again later!')
+        }
+    }
+
     return (
         <>          
             <section id="joinUs" className="scroll-mt-15">
@@ -58,71 +136,85 @@ function JoinUs() {
                 <div className="container mx-auto px-2 lg:px-8 py-15 flex flex-col justify-center items-center">
                     <h3 className="text-2xl font-bold mb-4">Volunteer Application</h3>
                     <p className="max-w-xl text-center">Fill out the form below and we'll be in touch within 48 hours.</p>
+                    {formError && <p className="text-[#E53935]">{formError}</p>}
+                    {formSuccess && <p className="text-[#eed202]">{formSuccess}</p>}
                     <div className="px-4 w-full flex justify-center items-center">
-                        <form className="bg-[#f5f5f5] dark:bg-[#1e1e1e] flex flex-col gap-4 my-8 px-4 w-full max-w-lg rounded-lg shadow-lg p-8">
+                        <form onSubmit={handleSubmit} className="bg-[#f5f5f5] dark:bg-[#1e1e1e] flex flex-col gap-4 my-8 px-4 w-full max-w-lg rounded-lg shadow-lg p-8">
                             <div className="flex flex-col md:flex-row gap-4">
                                 <div className="flex-col w-full">
-                                    <Label htmlFor="firstName" className="">First Name *</Label>
+                                    <Label htmlFor="fName" className="">*First Name</Label>
                                     <TextInput
                                         className=""
-                                        id="firstName"
-                                        name="firstName"
+                                        id="fName"
+                                        name="fName"
+                                        value={formData.fName}
+                                        onChange={handleChange}
                                         type="text"
                                         placeholder="John"
-                                        required={true}
                                     />
                                 </div>
                                 <div className="flex-col w-full">
-                                    <Label htmlFor="lastName" className="">Last Name *</Label>
+                                    <Label htmlFor="lName" className="">*Last Name</Label>
                                     <TextInput
                                         className=""
-                                        id="lastName"
-                                        name="lastName"
+                                        id="lName"
+                                        name="lName"
+                                        value={formData.lName}
+                                        onChange={handleChange}
                                         type="text"
                                         placeholder="Doe"
-                                        required={true}
                                     />
                                 </div>
                             </div>
                             <div className="flex flex-col md:flex-row gap-4">
                                 <div className="flex-col w-full">
-                                    <Label htmlFor="email" className="">Email *</Label>
+                                    <Label htmlFor="email" className="">*Email</Label>
                                     <TextInput
                                         className=""
                                         id="email"
                                         name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
                                         type="email"
                                         placeholder="john@example.com"
-                                    required={true}
-                                />
+                                    />
                                 </div>
                                 <div className="flex-col w-full">
-                                    <Label htmlFor="phone" className="">Phone Number</Label>
+                                    <Label htmlFor="phone" className="">*Phone Number</Label>
+                                    {/* <InputMask
+                                        mask="999-999-9999"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        placeholder="123-456-7890"
+                                    >
+                                        {(inputProps) => <input type="tel" {...inputProps} />}
+                                    </InputMask> */}
                                     <TextInput
                                         className=""
                                         id="phone"
                                         name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
                                         type="tel"
                                         placeholder="(123) 456-7890"
-                                        required={true}
                                     />
                                 </div>
                             </div>
                             <div className="flex flex-col justify-between items-center md:flex-row gap-4">
                                 <div className="w-full">
-                                    <Label htmlFor="gender" className="">Gender *</Label>
-                                    <Select id="gender" name="gender">
-                                        <option>-- choose an option --</option>
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                        <option>Non-binary</option>
-                                        <option>Prefer not to say</option>
-                                        <option>Other</option>
+                                    <Label htmlFor="gender" className="">*Gender</Label>
+                                    <Select id="gender" name="gender" value={formData.gender} onChange={handleChange}>
+                                        <option value="">-- choose an option --</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="non-binary">Non-binary</option>
+                                        <option value="none">Prefer not to say</option>
+                                        <option value="other">Other</option>
                                     </Select>
                                 </div>
                                 <div className="w-full">
-                                    <Label htmlFor="interest" className="">Role Interested In *</Label>
-                                    <Select id="interest" name="interest">
+                                    <Label htmlFor="role" className="">*Role Interested In</Label>
+                                    <Select id="role" name="role" value={formData.role} onChange={handleChange}>
                                         <option>-- choose an option --</option>
                                         <option>First Aid</option>
                                         <option>Community Outreach</option>
@@ -135,8 +227,8 @@ function JoinUs() {
                             </div>
                             <div className="flex flex-col md:flex-row gap-4">
                                 <div className="flex-col w-full">
-                                    <Label htmlFor="experience" className="">Experience Level</Label>
-                                    <Select id="experience" name="experience">
+                                    <Label htmlFor="experience" className="">*Experience Level</Label>
+                                    <Select id="experience" name="experience" value={formData.experience} onChange={handleChange}>
                                         <option>-- choose an option --</option>
                                         <option>No Experience</option>
                                         <option>Some Experience</option>
@@ -144,8 +236,8 @@ function JoinUs() {
                                     </Select>
                                 </div>
                                 <div className="flex-col w-full">
-                                    <Label htmlFor="availability" className="">Availability</Label>
-                                    <Select id="availability" name="availability">
+                                    <Label htmlFor="availability" className="">*Availability</Label>
+                                    <Select id="availability" name="availability" value={formData.availability} onChange={handleChange}>
                                         <option>-- choose an option --</option>
                                         <option>Weekdays</option>
                                         <option>Weekends</option>
@@ -155,19 +247,20 @@ function JoinUs() {
                                 </div>
                             </div>
                             <div>
-                                <Label htmlFor="whyVolunteer" className="">Why do you want to volunteer? *</Label>
+                                <Label htmlFor="whyVolunteer" className="">*Why do you want to volunteer?</Label>
                                 <Textarea
                                     id="whyVolunteer"
                                     name="whyVolunteer"
+                                    value={formData.whyVolunteer}
+                                    onChange={handleChange}
                                     className=""
                                     rows={4}
                                     placeholder="Tell us why you want to volunteer..."
-                                    required={true}
                                 />
                             </div>
                             <div className="flex items-center">
-                                <Checkbox id="terms" name="terms" required={true} className="transition focus:outline-none focus:ring-0 cursor-pointer"/>
-                                <Label htmlFor="terms" className="ml-2">I agree to the terms and conditions and understand that a background check may be required for certain volunteer positions. *</Label>
+                                <Checkbox id="checkbox" name="checkbox" checked={formData.checkbox} onChange={handleChange} className="transition focus:outline-none focus:ring-0 cursor-pointer"/>
+                                <Label htmlFor="checkbox" className="ml-2">*I agree to the terms and conditions and understand that a background check may be required for certain volunteer positions.</Label>
                             </div>
                             <Button type="submit" id="submitVolunteer" className="bg-[#E53935] hover:bg-[#ff3243] dark:bg-[#eed202] dark:hover:bg-[#fff312] text-[#f5f5f5] dark:text-[#0f1115] transition focus:outline-none focus:ring-0 cursor-pointer">Submit Application</Button>
                         </form>

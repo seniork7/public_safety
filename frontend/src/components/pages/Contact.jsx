@@ -6,6 +6,7 @@ import Textarea from '../elements/Textarea'
 import { HiMapPin, HiPhone, HiMiniEnvelope, HiClock } from "react-icons/hi2"
 import { FaLinkedinIn, FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6"
 import { useState } from 'react' 
+import { FORMSPREE_URL } from '../../utils'
 
 const contactMethods = [
     { 
@@ -87,7 +88,7 @@ function Contact() {
             errors.push('Full Name is required.')
         }
 
-        if (!formData.name.trim()) {
+        if (!formData.email.trim()) {
             errors.push('Email Address is required.');
         } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
             errors.push('Please enter a valid email address.');
@@ -103,7 +104,7 @@ function Contact() {
             return
         } else {
             try {
-                const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+                const response = await fetch(FORMSPREE_URL, {
                     method: 'POST',
                     body: JSON.stringify(formData),
                     headers: {
@@ -153,45 +154,45 @@ function Contact() {
                 </div>
 
                 <div className="flex flex-wrap justify-center items-center mt-8 p-8 gap-8 px-4 md:px-8">
-                    <form className="bg-[#f5f5f5] dark:bg-[#1e1e1e] p-6 rounded-lg shadow-md max-w-lg w-md">
+                    <form onSubmit={handleSubmit} className="bg-[#f5f5f5] dark:bg-[#1e1e1e] p-6 rounded-lg shadow-md max-w-lg w-md">
                         <h4 className="text-xl font-bold mb-4">Send Us a Message</h4>
                         <p className="mb-5">Fill out the form below and we'll get back to you within 24 hours.</p>
                         {formError && <p className="text-[#E53935]">{formError}</p>}
                         {formSuccess && <p className="text-[#eed202]">{formSuccess}</p>}
                         <div className="mb-4">
-                            <Label htmlFor="name" className="block mb-2">Name</Label>
+                            <Label htmlFor="name" className="block mb-2">*Name</Label>
                             <TextInput 
-                            id="name" 
-                            name="name" 
-                            value={formData.name}
-                            onChange={handleChange}
-                            type="text" 
-                            placeholder="Your Name" 
-                            required />
+                                id="name" 
+                                name="name" 
+                                value={formData.name}
+                                onChange={handleChange}
+                                type="text" 
+                                placeholder="Your Name" 
+                            />
                         </div>
                         <div className="mb-4">
-                            <Label htmlFor="email" className="block mb-2">Email</Label>
+                            <Label htmlFor="email" className="block mb-2">*Email</Label>
                             <TextInput 
-                            id="email" 
-                            name="email" 
-                            value={formData.email}
-                            onChange={handleChange}
-                            type="email" 
-                            placeholder="Your Email" 
-                            required />
+                                id="email" 
+                                name="email" 
+                                value={formData.email}
+                                onChange={handleChange}
+                                type="email" 
+                                placeholder="Your Email" 
+                            />
                         </div>
                         <div className="mb-4">
-                            <Label htmlFor="message" className="block mb-2">Message</Label>
+                            <Label htmlFor="message" className="block mb-2">*Message</Label>
                             <Textarea 
-                            id="message" 
-                            name="message" 
-                            value={formData.message}
-                            onChange={handleChange}
-                            placeholder="Leave us a message..." 
-                            rows={4} 
-                            required />
+                                id="message" 
+                                name="message" 
+                                value={formData.message}
+                                onChange={handleChange}
+                                placeholder="Leave us a message..." 
+                                rows={4} 
+                            />
                         </div>
-                        <Button onClick={handleSubmit} type="submit" id="submitContact" className="bg-[#E53935] hover:bg-[#ff3243] text-[#f5f5f5] dark:bg-[#eed202] dark:hover:bg-[#fff312] dark:text-[#0f1115] font-bold py-2 px-4 rounded-lg cursor-pointer transition focus:outline-none focus:ring-0 w-full mt-10">Send Message</Button>
+                        <Button type="submit" id="submitContact" className="bg-[#E53935] hover:bg-[#ff3243] text-[#f5f5f5] dark:bg-[#eed202] dark:hover:bg-[#fff312] dark:text-[#0f1115] font-bold py-2 px-4 rounded-lg cursor-pointer transition focus:outline-none focus:ring-0 w-full mt-10">Send Message</Button>
                     </form>
 
                     <div className="flex flex-col justify-center items-center gap-4 max-w-md m-4 p-4">
