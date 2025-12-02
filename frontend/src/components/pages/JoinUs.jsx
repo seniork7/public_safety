@@ -5,6 +5,7 @@ import Button from '../elements/Button'
 import Label from '../elements/Label'
 import Checkbox from '../elements/Checkbox'
 // import InputMask from "react-input-mask"
+import { API_URL } from '../../utils'
 import { useState } from 'react'
 
 function JoinUs() {
@@ -52,7 +53,7 @@ function JoinUs() {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/api/volunteers', {
+            const response = await fetch(`${API_URL}/api/volunteers`, {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {
