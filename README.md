@@ -67,7 +67,7 @@ POST /api/volunteers
 ### What I Learned
 
 - How to structure and organize a React project
-- Building and consuming REST APIs
+- Building a REST API to POST data
 - Connecting Node/Express apps to MongoDB Atlas
 - How deployment works for full-stack apps
 - How to debug errors
