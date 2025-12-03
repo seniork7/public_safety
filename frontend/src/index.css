@@ -1,2 +1,91 @@
 @import "tailwindcss";
 @import './App.css';
+
+:root {
+	--bg: #0D0D0D;       
+	--surface: #1A1A1A;        
+	--text-primary: #F5F5F5;   
+	--text-secondary: #CCCCCC; 
+	--border: #333333;
+	--accent-primary: #E63946;
+	--accent-secondary: #F77F00;
+	--success: #06D6A0;       
+	--error: #EF233C;         
+	--alert-bg: rgba(239, 35, 60, 0.2);  
+	--alert-text: #F5F5F5;    
+	--input-bg: #262626;      
+	--input-border: #444444;  
+	--input-placeholder: #999999;
+	--input-text: #F5F5F5;
+	--input-focus: #E63946;  
+}
+
+.bg-bg { 
+    background-color: var(--bg); 
+}
+.bg-surface { 
+    background-color: var(--surface); 
+}
+.text-primary { 
+    color: var(--text-primary); 
+}
+.text-secondary { 
+    color: var(--text-secondary); 
+}
+.border-color { 
+    border-color: var(--border); 
+}
+.bg-accent-primary { 
+    background-color: var(--accent-primary); 
+}
+.bg-accent-secondary { 
+    background-color: var(--accent-secondary); 
+}
+.text-accent-primary { 
+    color: var(--accent-primary); 
+}
+.text-accent-secondary { 
+    color: var(--accent-secondary); 
+}
+.bg-success { 
+    background-color: var(--success); 
+}
+.bg-error { 
+    background-color: var(--error); 
+}
+.text-success { 
+    color: var(--success); 
+}
+.text-error { 
+    color: var(--error); 
+}
+.border-success { 
+    border-color: var(--success); 
+}
+.border-error { 
+    border-color: var(--error); 
+}
+.bg-alert { 
+	background-color: var(--alert-bg); 
+}
+.alert-text { 
+	color: var(--alert-text); 
+}
+.border-alert { 
+	border-color: var(--alert-bg); 
+}
+.input-bg { 
+	background-color: var(--input-bg); 
+}
+.input-border { 
+	border-color: var(--input-border); 
+}
+.input-placeholder { 
+	color: var(--input-placeholder); 
+}
+.input-text { 
+	color: var(--input-text); 
+}
+.input-focus { 
+	border-color: var(--input-focus); 
+}

@@ -26,23 +26,23 @@ const team = [
 function About() {
     return (
         <>
-            <section id="about" className="scroll-mt-15 text-[#080808] dark:text-[#f5f5f5]">
-                <div className="bg-[#080808] dark:bg-[#f5f5f5] text-[#f5f5f5] dark:text-[#080808] flex flex-col items-center justify-center p-4">
+            <section id="about" className="scroll-mt-15 text-primary bg-bg">
+                <div className="flex flex-col items-center justify-center p-4">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">About Us</h2>
                     <p className="max-w-xl text-center">For 25 years, we've been dedicated to building safer & stronger communities through volunteer service, emergency response, and comprehensive safety education.</p>
                 </div>
 
                 <div className="">
-                    <article className="flex flex-col md:flex-row items-start justify-center gap-8 py-15 px-8 bg-[#f5f5f5] dark:bg-[#080808]">
+                    <article className="flex flex-col md:flex-row items-start justify-center gap-8 py-15 px-8 bg-surface">
                         <div className="max-w-lg">
-                            <h3 className="text-2xl font-bold mb-4">Our Missions</h3>
-                            <p className="">
+                            <h3 className="text-2xl font-bold mb-4 text-primary">Our Missions</h3>
+                            <p className="text-secondary">
                                 Public Safety is dedicated to enhancing community safety through training, resources, and support. Our mission is to empower communities through comprehensive safety education, rapid emergency response, and volunteer-driven initiatives that protect lives, prevent crises, and build long-term resilience in the face of challenges.
                             </p>
                         </div>
                         <div className="max-w-lg">
-                            <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
-                            <p>
+                            <h3 className="text-2xl font-bold mb-4 text-primary">Our Vision</h3>
+                            <p className="text-secondary">
                                 A world where every community member has the knowledge, skills, and support to protect themselves and others in emergencies, creating a network of prepared and compassionate citizens ready to make a difference.
                             </p>
                         </div>
@@ -50,20 +50,20 @@ function About() {
                 </div>
             </section>
 
-            <section className="text-[#080808] dark:text-[#f5f5f5] bg-[#f5f5f5] dark:bg-[#080808] py-8">
+            <section className="text-primary bg-bg py-8">
                 <div className="container mx-auto px-2 lg:px-8 my-15 flex flex-col justify-center items-center">
                     <h3 className="text-2xl font-bold mb-4">Our Core Values</h3>
-                    <p className="text-center md:w-1/2">These principles guide everything we do and shape how we serve our community.</p>
+                    <p className="text-center md:w-1/2 text-secondary">These principles guide everything we do and shape how we serve our community.</p>
                     <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                         {values.map((item, index) => (
-                            <Card key={index} className="w-xs md:w-2xl lg:w-lg">
-                                <h5 className="flex items-center justify-start gap-2 text-lg font-bold">
-                                    <span className="bg-[#E53935] dark:bg-[#E53935] text-[#080808] dark:text-[#f5f5f5] p-2 rounded-full mr-4 inline-block">
+                            <Card key={index} className="w-xs md:w-2xl lg:w-lg bg-surface border border-color">
+                                <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-primary">
+                                    <span className="bg-accent-primary text-surface p-2 rounded-full mr-4 inline-block">
                                     {item.icon}
                                     </span>
                                     {item.title}
                                 </h5>
-                                <p className="">
+                                <p className="text-secondary">
                                     {item.text}
                                 </p>
                             </Card>
@@ -72,19 +72,19 @@ function About() {
                 </div>
             </section>
 
-            <section className="text-[#080808] dark:text-[#f5f5f5] bg-[#f5f5f5] dark:bg-[#080808]">
+            <section className="text-primary bg-surface">
                 <div className="container mx-auto px-2 lg:px-8 flex flex-col justify-center items-center py-8">
                     <h3 className="text-2xl font-bold mb-4">Meet Our Team</h3>
-                    <p className="text-center max-w-lg px-4">Our dedicated team of volunteers is the backbone of our organization, working tirelessly to keep our community safe.</p>
+                    <p className="text-center max-w-lg px-4 text-secondary">Our dedicated team of volunteers is the backbone of our organization, working tirelessly to keep our community safe.</p>
                     <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                         {team.map((item, index) => (
-                            <Card key={index} className="w-xs md:w-lg bg-[#f5f5f5] dark:bg-[#E53935]/50 overflow-hidden shadow-lg rounded-lg">
+                            <Card key={index} className="w-xs md:w-lg bg-bg border border-color overflow-hidden shadow-lg rounded-lg">
                                 <img src={item.image} alt={item.name} className="w-full h-80 object-cover rounded-lg" />
                                 <div className="p-4">
-                                    <h5 className="text-lg font-bold">
+                                    <h5 className="text-lg font-bold text-primary">
                                         {item.name}
                                     </h5>
-                                    <p className="">
+                                    <p className="text-secondary">
                                         {item.role}
                                     </p>
                                 </div>

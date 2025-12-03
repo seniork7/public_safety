@@ -162,8 +162,8 @@ function Services() {
 
     return (
         <>          
-            <section id="services" className="scroll-mt-15 text-[#080808] dark:text-[#f5f5f5]">
-                <div className="bg-[#080808] dark:bg-[#f5f5f5] text-[#f5f5f5] dark:text-[#080808] flex flex-col items-center justify-center p-8">
+            <section id="services" className="scroll-mt-15 text-primary bg-bg">
+                <div className="text-surface flex flex-col items-center justify-center p-8">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Our Programs & Services</h2>
                     <p className="max-w-xl text-center">Comprehensive safety programs designed to protect, educate, and empower every member of our community through expert training and support.</p>
                     <div className="flex justify-center items-center w-full">
@@ -174,10 +174,10 @@ function Services() {
                                 value={searchItem}
                                 type="text"
                                 placeholder="Search Programs..."
-                                className="w-full text-[#080808] dark:text-[#f5f5f5]"
+                                className="w-full"
                             />
 
-                            <Button className="bg-[#E53935] hover:bg-[#ff3243] text-[#f5f5f5] font-bold cursor-pointer transition"
+                            <Button className="bg-accent-primary hover:bg-accent-secondary text-surface font-bold cursor-pointer transition"
                             onClick={() => setSearchItem("")}
                             value={setSearchItem}>
                                 Clear
@@ -185,32 +185,29 @@ function Services() {
                         </div>
                     </div>
                 </div>
-                <div className="bg-[#f5f5f5] dark:bg-[#080808] py-15">
+                <div className="bg-bg py-15  bg-surface">
                     <div className="flex flex-wrap justify-center items-center gap-8 container mx-auto px-2 lg:px-8">
                         {filteredPrograms.length === 0 ? (
-                            <p className="">No program found matching your search.</p>
+                            <p className="text-primary">No program found matching your search.</p>
                         ) : (
                             filteredPrograms.map((item, index) => (
-                                <Card key={index} className="w-xs md:w-2xl lg:w-sm" imgSrc={item.image}>
-                                    <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-gray-900 dark:text-white">
-                                        {/* <span className="bg-red-500 text-white p-2 rounded-full mr-4 inline-block">
-                                            {item.icon}
-                                        </span> */}
+                                <Card key={index} className="w-xs md:w-2xl lg:w-sm bg-bg border border-color" imgSrc={item.image}>
+                                    <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-primary">
                                         {item.title}
                                     </h5>
-                                    <p className="">
+                                    <p className="text-secondary">
                                         {item.text}
                                     </p>
-                                    <p className="">What's included:</p>
+                                    <p className="text-primary font-semibold">What's included:</p>
                                     <ul className="mb-2">
                                         {item.features.map((feature, Index) => (
-                                            <li key={Index} className="">
-                                                <HiCheckCircle className="inline-block mr-2 text-[#E53935] dark:text-[#E53935]" />
+                                            <li key={Index} className="text-secondary">
+                                                <HiCheckCircle className="inline-block mr-2 text-success" />
                                                 {feature}
                                             </li>
                                         ))}
                                     </ul>
-                                    <Button onClick={() => HandleBtnClick("getInvolved")} className="flex justify-center items-center gap-2 bg-[#E53935] hover:bg-[#ff3243] dark:bg-[#eed202] dark:hover:bg-[#fff312] text-[#f5f5f5] dark:text-[#0f1115] hover:underline rounded-lg px-4 py-2 mt-2 transition focus:outline-none focus:ring-0 cursor-pointer w-full">
+                                    <Button onClick={() => HandleBtnClick("getInvolved")} className="flex justify-center items-center gap-2 bg-accent-primary hover:bg-accent-secondary text-surface hover:underline rounded-lg px-4 py-2 mt-2 transition focus:outline-none focus:ring-0 cursor-pointer w-full">
                                         Enroll Now
                                         <HiMiniArrowRight />
                                     </Button>
@@ -221,20 +218,20 @@ function Services() {
                 </div>
             </section>
 
-            <section className="bg-[#f5f5f5] dark:bg-[#080808] text-[#080808] dark:text-[#f5f5f5]">
+            <section className="bg-bg text-primary">
                 <div className="container mx-auto px-2 lg:px-8 py-10 flex flex-col justify-center items-center">
                     <h3 className="text-2xl font-bold mb-4">Why Choose Our Programs?</h3>
-                    <p className="text-center max-w-lg px-4">We're committed to providing the highest quality safety education and emergency services.</p>
+                    <p className="text-center max-w-lg px-4 text-secondary">We're committed to providing the highest quality safety education and emergency services.</p>
                     <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                         {whyChoosePrograms.map((item, index) => (
-                            <Card key={index} className="w-xs md:w-2xl lg:w-sm bg-[#f5f5f5] dark:bg-[#E53935]/50  border-0 border-[#E53935] dark:border-[#E53935]">
-                                <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-gray-900 dark:text-white">
-                                    <span className="bg-[#E53935] dark:bg-[#E53935] p-2 rounded-full mr-4 inline-block">
+                            <Card key={index} className="w-xs md:w-2xl lg:w-sm bg-surface border border-color">
+                                <h5 className="flex items-center justify-start gap-2 text-lg font-bold text-primary">
+                                    <span className="bg-accent-primary text-surface p-2 rounded-full mr-4 inline-block">
                                         {item.icon}
                                     </span>
                                     {item.title}
                                 </h5>
-                                <p className="">
+                                <p className="text-secondary">
                                     {item.text}
                                 </p>
                             </Card>
@@ -243,10 +240,10 @@ function Services() {
                 </div>
             </section>
 
-            <section className="bg-[#f5f5f5] dark:bg-[#080808] text-[#080808] dark:text-[#f5f5f5]">
+            <section className=" bg-surface text-primary">
                 <article className="flex flex-col justify-center items-center py-15">
                     <h3 className="text-2xl font-bold mb-4">Day in the Life of a Volunteer</h3>
-                    <p className="text-center max-w-lg px-4">Our volunteers play a crucial role in our community, dedicating their time and skills to ensure safety and preparedness.</p>
+                    <p className="text-center max-w-lg px-4 text-secondary">Our volunteers play a crucial role in our community, dedicating their time and skills to ensure safety and preparedness.</p>
 
                     <iframe className="rounded-lg my-8" width="80%" height="500" src="https://www.youtube-nocookie.com/embed/RA4uZJz9BeI?si=u2D2Tj6bdmJ_FTQr" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                 </article>

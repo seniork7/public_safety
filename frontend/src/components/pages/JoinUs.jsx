@@ -62,7 +62,7 @@ function JoinUs() {
             });
 
             if (response.ok) {
-                setformSuccess('Your application has been submitted successfully! Please check your email.')
+                setformSuccess('Your application has been submitted successfully!')
                 setFormData({
                     fName: '',
                     lName: '',
@@ -87,45 +87,45 @@ function JoinUs() {
 
     return (
         <>          
-            <section id="joinUs" className="scroll-mt-15">
-                <div className="bg-[#080808] dark:bg-[#f5f5f5] text-[#f5f5f5] dark:text-[#080808] flex flex-col items-center justify-center p-8">
+            <section id="joinUs" className="scroll-mt-15  bg-bg text-primary">
+                <div className="flex flex-col items-center justify-center p-8">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Join Our Team</h2>
                     <p className="max-w-xl text-center">Be part of something meaningful. Whether you want to volunteer, receive training, or stay updated with our initiatives, we'd love to have you join us.</p>
                 </div>
 
-                <div className="bg-[#f5f5f5] dark:bg-[#080808] text-[#080808] dark:text-[#f5f5f5] py-15">
+                <div className="bg-surface py-15">
                     <div className="container mx-auto px-2 lg:px-8 flex flex-col justify-center items-center">
                         <h3 className="text-2xl font-bold mb-4 text-center">How to Get Started</h3>
-                        <p className="text-center px-4">Our simple four-step process gets you from application to active volunteer.</p>
+                        <p className="text-center px-4 text-secondary">Our simple four-step process gets you from application to active volunteer.</p>
                         <div className="flex justify-center items-center">
                             <div className="flex flex-wrap justify-center items-center w-full p-4">
-                                <div className="flex flex-col justify-center items-start w-xs md:w-2xl bg-[#f5f5f5] dark:bg-[#E53935]/50 shadow-lg border dark:border-[#E53935] lg:w-sm m-4 p-4 rounded-lg">
+                                <div className="flex flex-col justify-center items-start w-xs md:w-2xl bg-bg border border-color shadow-lg lg:w-sm m-4 p-4 rounded-lg">
                                     <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3">
-                                        <span className="bg-[#E53935] dark:bg-[#E53935] w-7 h-7 flex items-center justify-center  font-bold rounded-full text-white text-lg">1</span>
+                                        <span className="bg-accent-primary text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg">1</span>
                                         Submit Your Application
                                     </h5>
-                                    <p>Fill out the form below with your information and interests.</p>
+                                    <p className="text-secondary">Fill out the form below with your information and interests.</p>
                                 </div>
-                                <div className="flex flex-col justify-center items-start bg-[#f5f5f5] dark:bg-[#E53935]/50 shadow-lg border  dark:border-[#E53935] w-xs md:w-2xl lg:w-sm m-4 p-4 rounded-lg">
+                                <div className="flex flex-col justify-center items-start bg-bg border border-color shadow-lg w-xs md:w-2xl lg:w-sm m-4 p-4 rounded-lg">
                                     <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3">
-                                        <span className="bg-red-500 w-7 h-7 flex items-center justify-center font-bold rounded-full text-white text-lg">2</span>
+                                        <span className="bg-accent-primary text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg">2</span>
                                         Interview
                                     </h5>
-                                    <p>We'll schedule a friendly conversation to learn more about you.</p>
+                                    <p className="text-secondary">We'll schedule a friendly conversation to learn more about you.</p>
                                 </div>
-                                <div className="flex flex-col justify-center items-start w-xs md:w-2xl lg:w-sm m-4 p-4 bg-[#f5f5f5] dark:bg-[#E53935]/50 shadow-lg border dark:border-[#E53935] rounded-lg">
+                                <div className="flex flex-col justify-center items-start w-xs md:w-2xl lg:w-sm m-4 p-4 bg-bg border border-color shadow-lg rounded-lg">
                                     <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3">
-                                        <span className="bg-red-500 w-7 h-7 flex items-center justify-center font-bold rounded-full text-white text-lg">3</span>
+                                        <span className="bg-accent-primary text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg">3</span>
                                         Training
                                     </h5>
-                                    <p>Complete our comprehensive orientation and role-specific training.</p>
+                                    <p className="text-secondary">Complete our comprehensive orientation and role-specific training.</p>
                                 </div>
-                                <div className="flex flex-col justify-center items-start w-xs md:w-2xl lg:w-sm m-4 p-4 bg-[#f5f5f5] dark:bg-[#E53935]/50 shadow-lg border dark:border-[#E53935] rounded-lg">
+                                <div className="flex flex-col justify-center items-start w-xs md:w-2xl lg:w-sm m-4 p-4 bg-bg border border-color shadow-lg rounded-lg">
                                     <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3">
-                                        <span className="bg-[#E53935] dark:bg-[#E53935] w-7 h-7 flex items-center justify-center font-bold rounded-full text-white text-lg">4</span>
+                                        <span className="bg-accent-primary text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg">4</span>
                                         Get Started
                                     </h5>
-                                    <p>Begin making an impact in your community by volunteering your time and skills.</p>
+                                    <p className="text-secondary">Begin making an impact in your community by volunteering your time and skills.</p>
                                 </div>
                             </div>
                         </div>
@@ -133,14 +133,14 @@ function JoinUs() {
                 </div>
             </section>
 
-            <section id="getInvolved" className="bg-[#f5f5f5] dark:bg-[#080808] text-[#080808] dark:text-[#f5f5f5] scroll-mt-15">
+            <section id="getInvolved" className="bg-surface text-primary scroll-mt-15">
                 <div className="container mx-auto px-2 lg:px-8 py-15 flex flex-col justify-center items-center">
                     <h3 className="text-2xl font-bold mb-4">Volunteer Application</h3>
-                    <p className="max-w-xl text-center">Fill out the form below and we'll be in touch within 48 hours.</p>
-                    {formError && <p className="text-[#E53935]">{formError}</p>}
-                    {formSuccess && <p className="text-[#eed202]">{formSuccess}</p>}
+                    <p className="max-w-xl text-center text-secondary">Fill out the form below and we'll be in touch within 48 hours.</p>
+                    {formError && <p className="text-error">{formError}</p>}
+                    {formSuccess && <p className="text-success">{formSuccess}</p>}
                     <div className="px-4 w-full flex justify-center items-center">
-                        <form onSubmit={handleSubmit} className="bg-[#f5f5f5] dark:bg-[#1e1e1e] flex flex-col gap-4 my-8 px-4 w-full max-w-lg rounded-lg shadow-lg p-8">
+                        <form onSubmit={handleSubmit} className="bg-bg flex flex-col gap-4 my-8 px-4 w-full max-w-lg rounded-lg shadow-lg p-8">
                             <div className="flex flex-col md:flex-row gap-4">
                                 <div className="flex-col w-full">
                                     <Label htmlFor="fName" className="">*First Name</Label>
@@ -261,9 +261,9 @@ function JoinUs() {
                             </div>
                             <div className="flex items-center">
                                 <Checkbox id="checkbox" name="checkbox" checked={formData.checkbox} onChange={handleChange} className="transition focus:outline-none focus:ring-0 cursor-pointer"/>
-                                <Label htmlFor="checkbox" className="ml-2">*I agree to the terms and conditions and understand that a background check may be required for certain volunteer positions.</Label>
+                                <Label htmlFor="checkbox" className="ml-2 text-secondary">*I agree to the terms and conditions and understand that a background check may be required for certain volunteer positions.</Label>
                             </div>
-                            <Button type="submit" id="submitVolunteer" className="bg-[#E53935] hover:bg-[#ff3243] dark:bg-[#eed202] dark:hover:bg-[#fff312] text-[#f5f5f5] dark:text-[#0f1115] transition focus:outline-none focus:ring-0 cursor-pointer">Submit Application</Button>
+                            <Button type="submit" id="submitVolunteer" className="bg-accent-primary hover:bg-accent-secondary text-surface transition focus:outline-none focus:ring-0 cursor-pointer">Submit Application</Button>
                         </form>
                     </div>
                 </div>
