@@ -87,45 +87,45 @@ function JoinUs() {
 
     return (
         <>          
-            <section id="joinUs" className="scroll-mt-15  bg-bg text-primary">
+            <section id="joinUs" className="scroll-mt-30  bg-bg text-text-primary">
                 <div className="flex flex-col items-center justify-center p-8">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Join Our Team</h2>
-                    <p className="max-w-xl text-center">Be part of something meaningful. Whether you want to volunteer, receive training, or stay updated with our initiatives, we'd love to have you join us.</p>
+                    <p className="max-w-xl text-center text-text-secondary">Be part of something meaningful. Whether you want to volunteer, receive training, or stay updated with our initiatives, we'd love to have you join us.</p>
                 </div>
 
                 <div className="bg-surface py-15">
                     <div className="container mx-auto px-2 lg:px-8 flex flex-col justify-center items-center">
                         <h3 className="text-2xl font-bold mb-4 text-center">How to Get Started</h3>
-                        <p className="text-center px-4 text-secondary">Our simple four-step process gets you from application to active volunteer.</p>
+                        <p className="text-center md:w-1/2 text-text-secondary">Our simple four-step process gets you from application to active volunteer.</p>
                         <div className="flex justify-center items-center">
-                            <div className="flex flex-wrap justify-center items-center w-full p-4">
-                                <div className="flex flex-col justify-center items-start w-xs md:w-2xl bg-bg border border-color shadow-lg lg:w-sm m-4 p-4 rounded-lg">
-                                    <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3">
-                                        <span className="bg-accent-primary text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg">1</span>
+                            <div className="flex flex-wrap justify-center items-center gap-7 my-10 px-4 md:px-8">
+                                <div className="group w-md pl-6 border-l-4 border-accent-primary  hover:border-accent-secondary transition-all duration-700">
+                                    <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3 group-hover:text-accent-secondary transition duration-700">
+                                        <span className="bg-accent-primary text-text-primary group-hover:text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg group-hover:bg-accent-secondary transition duration-700">1</span>
                                         Submit Your Application
                                     </h5>
-                                    <p className="text-secondary">Fill out the form below with your information and interests.</p>
+                                    <p className="text-text-secondary mt-1  max-w-lg overflow-hidden transition-all duration-700">Fill out the form below with your information and interests.</p>
                                 </div>
-                                <div className="flex flex-col justify-center items-start bg-bg border border-color shadow-lg w-xs md:w-2xl lg:w-sm m-4 p-4 rounded-lg">
-                                    <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3">
-                                        <span className="bg-accent-primary text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg">2</span>
+                                <div className="group w-md pl-6 border-l-4 border-accent-primary  hover:border-accent-secondary transition-all duration-700">
+                                    <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3 group-hover:text-accent-secondary transition duration-700">
+                                        <span className="bg-accent-primary text-text-primary group-hover:text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg group-hover:bg-accent-secondary transition duration-700">2</span>
                                         Interview
                                     </h5>
-                                    <p className="text-secondary">We'll schedule a friendly conversation to learn more about you.</p>
+                                    <p className="text-text-secondary mt-1  max-w-lg overflow-hidden transition-all duration-700">We'll schedule a friendly conversation to learn more about you.</p>
                                 </div>
-                                <div className="flex flex-col justify-center items-start w-xs md:w-2xl lg:w-sm m-4 p-4 bg-bg border border-color shadow-lg rounded-lg">
-                                    <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3">
-                                        <span className="bg-accent-primary text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg">3</span>
+                                <div className="group w-md pl-6 border-l-4 border-accent-primary  hover:border-accent-secondary transition-all duration-700">
+                                    <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3 group-hover:text-accent-secondary transition duration-700">
+                                        <span className="bg-accent-primary text-text-primary group-hover:text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg group-hover:bg-accent-secondary transition duration-700">3</span>
                                         Training
                                     </h5>
-                                    <p className="text-secondary">Complete our comprehensive orientation and role-specific training.</p>
+                                    <p className="text-text-secondary mt-1  max-w-lg overflow-hidden transition-all duration-700">Complete our comprehensive orientation and role-specific training.</p>
                                 </div>
-                                <div className="flex flex-col justify-center items-start w-xs md:w-2xl lg:w-sm m-4 p-4 bg-bg border border-color shadow-lg rounded-lg">
-                                    <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3">
-                                        <span className="bg-accent-primary text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg">4</span>
+                                <div className="group w-md pl-6 border-l-4 border-accent-primary  hover:border-accent-secondary transition-all duration-700">
+                                    <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3 group-hover:text-accent-secondary transition duration-700">
+                                        <span className="bg-accent-primary text-text-primary group-hover:text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg group-hover:bg-accent-secondary transition duration-700">4</span>
                                         Get Started
                                     </h5>
-                                    <p className="text-secondary">Begin making an impact in your community by volunteering your time and skills.</p>
+                                    <p className="text-text-secondary mt-1  max-w-lg overflow-hidden transition-all duration-700">Begin making an impact in your community by volunteering your time and skills.</p>
                                 </div>
                             </div>
                         </div>
@@ -134,9 +134,9 @@ function JoinUs() {
             </section>
 
             <section id="getInvolved" className="bg-surface text-primary scroll-mt-15">
-                <div className="container mx-auto px-2 lg:px-8 py-15 flex flex-col justify-center items-center">
+                <div className="container text-text-primary mx-auto px-2 lg:px-8 py-5 flex flex-col justify-center items-center">
                     <h3 className="text-2xl font-bold mb-4">Volunteer Application</h3>
-                    <p className="max-w-xl text-center text-secondary">Fill out the form below and we'll be in touch within 48 hours.</p>
+                    <p className="max-w-xl text-center text-text-secondary">Fill out the form below and we'll be in touch within 48 hours.</p>
                     {formError && <p className="text-error">{formError}</p>}
                     {formSuccess && <p className="text-success">{formSuccess}</p>}
                     <div className="px-4 w-full flex justify-center items-center">
@@ -263,7 +263,7 @@ function JoinUs() {
                                 <Checkbox id="checkbox" name="checkbox" checked={formData.checkbox} onChange={handleChange} className="transition focus:outline-none focus:ring-0 cursor-pointer"/>
                                 <Label htmlFor="checkbox" className="ml-2 text-secondary">*I agree to the terms and conditions and understand that a background check may be required for certain volunteer positions.</Label>
                             </div>
-                            <Button type="submit" id="submitVolunteer" className="bg-accent-primary hover:bg-accent-secondary text-surface transition focus:outline-none focus:ring-0 cursor-pointer">Submit Application</Button>
+                            <Button type="submit" id="submitVolunteer" className="w-full p-2 mt-5 rounded-lg font-semibold bg-accent-secondary hover:bg-accent-primary hover:text-text-primary text-bg cursor-pointer transition duration-700 hover:scale-98">Submit Application</Button>
                         </form>
                     </div>
                 </div>

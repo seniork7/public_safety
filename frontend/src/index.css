@@ -1,91 +1,26 @@
 @import "tailwindcss";
 @import './App.css';
 
-:root {
-	--bg: #0D0D0D;       
-	--surface: #1A1A1A;        
-	--text-primary: #F5F5F5;   
-	--text-secondary: #CCCCCC; 
-	--border: #333333;
-	--accent-primary: #E63946;
-	--accent-secondary: #F77F00;
-	--success: #06D6A0;       
-	--error: #EF233C;         
-	--alert-bg: rgba(239, 35, 60, 0.2);  
-	--alert-text: #F5F5F5;    
-	--input-bg: #262626;      
-	--input-border: #444444;  
-	--input-placeholder: #999999;
-	--input-text: #F5F5F5;
-	--input-focus: #E63946;  
-}
-
-.bg-bg { 
-    background-color: var(--bg); 
-}
-.bg-surface { 
-    background-color: var(--surface); 
-}
-.text-primary { 
-    color: var(--text-primary); 
-}
-.text-secondary { 
-    color: var(--text-secondary); 
-}
-.border-color { 
-    border-color: var(--border); 
-}
-.bg-accent-primary { 
-    background-color: var(--accent-primary); 
-}
-.bg-accent-secondary { 
-    background-color: var(--accent-secondary); 
-}
-.text-accent-primary { 
-    color: var(--accent-primary); 
-}
-.text-accent-secondary { 
-    color: var(--accent-secondary); 
-}
-.bg-success { 
-    background-color: var(--success); 
-}
-.bg-error { 
-    background-color: var(--error); 
-}
-.text-success { 
-    color: var(--success); 
-}
-.text-error { 
-    color: var(--error); 
-}
-.border-success { 
-    border-color: var(--success); 
-}
-.border-error { 
-    border-color: var(--error); 
-}
-.bg-alert { 
-	background-color: var(--alert-bg); 
-}
-.alert-text { 
-	color: var(--alert-text); 
-}
-.border-alert { 
-	border-color: var(--alert-bg); 
-}
-.input-bg { 
-	background-color: var(--input-bg); 
-}
-.input-border { 
-	border-color: var(--input-border); 
-}
-.input-placeholder { 
-	color: var(--input-placeholder); 
-}
-.input-text { 
-	color: var(--input-text); 
-}
-.input-focus { 
-	border-color: var(--input-focus); 
+@theme {
+	--color-bg: #0a0d14;         
+	--color-surface: #141a23;      
+	--color-nav-bg: #10151d;       
+	--color-border: #1f2733;     
+	--color-text-primary: #f0f4f8;  
+	--color-text-secondary: #a0a8b7;
+	--color-text-muted: #6c7380;   
+	--color-accent-primary: #ff4d6d;  
+	--color-accent-secondary: #ffa500;
+	--color-accent-info: #3dd5f3;     
+	--color-success: #2ed2a0; 
+	--color-error: #ff4d6d;   
+	--color-alert-bg: rgba(255, 165, 0, 0.2); 
+	--color-alert-text: #f0f4f8;     
+	--color-input-bg: #141a23;       
+	--color-input-border: #a0a8b7;   
+	--color-input-placeholder: #6c7380;
+	--color-input-text: #f0f4f8;
+	--color-input-focus: #ff4d6d;    
+	--color-hover-bg: #1a222d;   
+	--color-hover-text: #ffffff;    
 }

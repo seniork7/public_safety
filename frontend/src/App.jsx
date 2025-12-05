@@ -1,4 +1,5 @@
 import Header from './components/Header.jsx'
+import HeroBanner from './components/HeroBanner.jsx'
 import Home from './components/pages/Home.jsx'
 import About from './components/pages/About.jsx'
 import Services from './components/pages/Services.jsx'
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <Header />
+      <HeroBanner />
       <main>
         <Home />
         <About />
