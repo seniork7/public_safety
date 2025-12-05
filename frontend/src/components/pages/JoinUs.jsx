@@ -99,28 +99,28 @@ function JoinUs() {
                         <p className="text-center md:w-1/2 text-text-secondary">Our simple four-step process gets you from application to active volunteer.</p>
                         <div className="flex justify-center items-center">
                             <div className="flex flex-wrap justify-center items-center gap-7 my-10 px-4 md:px-8">
-                                <div className="group w-md pl-6 border-l-4 border-accent-primary  hover:border-accent-secondary transition-all duration-700">
+                                <div className="group w-xs md:w-lg pl-6 border-l-4 border-accent-primary  hover:border-accent-secondary transition-all duration-700">
                                     <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3 group-hover:text-accent-secondary transition duration-700">
                                         <span className="bg-accent-primary text-text-primary group-hover:text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg group-hover:bg-accent-secondary transition duration-700">1</span>
                                         Submit Your Application
                                     </h5>
                                     <p className="text-text-secondary mt-1  max-w-lg overflow-hidden transition-all duration-700">Fill out the form below with your information and interests.</p>
                                 </div>
-                                <div className="group w-md pl-6 border-l-4 border-accent-primary  hover:border-accent-secondary transition-all duration-700">
+                                <div className="group w-xs md:w-lg pl-6 border-l-4 border-accent-primary  hover:border-accent-secondary transition-all duration-700">
                                     <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3 group-hover:text-accent-secondary transition duration-700">
                                         <span className="bg-accent-primary text-text-primary group-hover:text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg group-hover:bg-accent-secondary transition duration-700">2</span>
                                         Interview
                                     </h5>
                                     <p className="text-text-secondary mt-1  max-w-lg overflow-hidden transition-all duration-700">We'll schedule a friendly conversation to learn more about you.</p>
                                 </div>
-                                <div className="group w-md pl-6 border-l-4 border-accent-primary  hover:border-accent-secondary transition-all duration-700">
+                                <div className="group w-xs md:w-lg pl-6 border-l-4 border-accent-primary  hover:border-accent-secondary transition-all duration-700">
                                     <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3 group-hover:text-accent-secondary transition duration-700">
                                         <span className="bg-accent-primary text-text-primary group-hover:text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg group-hover:bg-accent-secondary transition duration-700">3</span>
                                         Training
                                     </h5>
                                     <p className="text-text-secondary mt-1  max-w-lg overflow-hidden transition-all duration-700">Complete our comprehensive orientation and role-specific training.</p>
                                 </div>
-                                <div className="group w-md pl-6 border-l-4 border-accent-primary  hover:border-accent-secondary transition-all duration-700">
+                                <div className="group w-xs md:w-lg pl-6 border-l-4 border-accent-primary  hover:border-accent-secondary transition-all duration-700">
                                     <h5 className="text-lg font-bold flex items-center justify-start gap-2 mb-3 group-hover:text-accent-secondary transition duration-700">
                                         <span className="bg-accent-primary text-text-primary group-hover:text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg group-hover:bg-accent-secondary transition duration-700">4</span>
                                         Get Started

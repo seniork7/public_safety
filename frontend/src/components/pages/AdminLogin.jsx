@@ -2,7 +2,7 @@ import AdminBg from '../../assets/images/admin-bg.png'
 
 function AdminLogin() {
     return (
-        <section className="flex items-center justify-center min-h-screen bg-bg text-text-primary px-4"
+        <section className="flex items-center justify-center h-screen bg-bg text-text-primary px-4"
             style={{ backgroundImage: `url(${AdminBg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
         >
             <div className="w-full max-w-md bg-cover bg-center bg-no-repeat backdrop-blur-lg p-8 rounded-2xl shadow-xl border border-white/5 hover:border-b-5 hover:border-b-accent-secondary transition-all duration-700">
