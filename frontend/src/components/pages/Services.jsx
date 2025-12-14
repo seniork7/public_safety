@@ -148,9 +148,9 @@ function Services() {
     useEffect(() => {
         const searchProgram = programs.filter(program =>
             program.title.toLowerCase().includes(searchItem.toLowerCase())
-        );
-        setFilteredPrograms(searchProgram);
-    }, [searchItem]);
+        )
+        setFilteredPrograms(searchProgram)
+    }, [searchItem])
 
     return (
         <>          

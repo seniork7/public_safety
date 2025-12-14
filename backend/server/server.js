@@ -1,26 +1,19 @@
 import express from 'express'
 import cors from 'cors'
 import connectDB from '../database/app_db.js'
-import ApplicationForm from '../database/shema.js'
+import volunteerApplicationRoutes from '../router/volunteerApplicationRoutes.js'
+import contactFormRoutes from '../router/contactFormRoutes'
 
 const port = process.env.PORT
 const app = express()
 app.use(cors())
 app.use(express.json())
+app.use('/api/volunteers', volunteerApplicationRoutes)
+app.use('/api/contact', contactFormRoutes)
 
-connectDB().catch(error => console.error('Database connection error', error)
-)
+connectDB().catch(error => console.error('Database connection error', error))
 
 app.get('/', (req, res) => res.send('Server is working!'))
-
-app.post('/api/volunteers', async (req, res) => {
-  try {
-    const newApplicant = await ApplicationForm.create(req.body)
-    res.status(201).json({ success: true, data: newApplicant })
-  }catch(error) {
-    res.status(400).json({ success: false, error: error.message })
-  }
-})
 
 app.listen(port, () => console.log(`Server running on port ${port}`)
 )

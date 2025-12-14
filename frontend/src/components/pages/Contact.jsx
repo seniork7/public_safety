@@ -6,7 +6,7 @@ import Textarea from '../elements/Textarea'
 import { HiMapPin, HiPhone, HiMiniEnvelope, HiClock } from "react-icons/hi2"
 import { FaLinkedinIn, FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6"
 import { useState } from 'react' 
-import { FORMSPREE_URL } from '../../utils'
+import { API_URL } from '../../utils'
 
 const contactMethods = [
     { 
@@ -104,7 +104,7 @@ function Contact() {
             return
         } else {
             try {
-                const response = await fetch(FORMSPREE_URL, {
+                const response = await fetch(`${API_URL}/api/contact`, {
                     method: 'POST',
                     body: JSON.stringify(formData),
                     headers: {
