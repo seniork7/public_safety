@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     errorElement: <Error404 />,
   },
   {
-    path: '/AdminLogin',
+    path: '/admin',
     element: <AdminLogin />,
     errorElement: <Error404 />,
   },

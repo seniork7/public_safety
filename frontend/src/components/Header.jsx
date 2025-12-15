@@ -32,7 +32,7 @@ function Header() {
               {/* <Button onClick={() => HandleBtnClick('getInvolved')} className="bg-accent-secondary hover:bg-accent-primary hover:text-text-primary text-bg md:ml-10 py-2 px-4 rounded-lg cursor-pointer transition  duration-700 hover:scale-105">Get Involved</Button> */}
             </div>
 
-              <Link to="/AdminLogin">
+              <Link to="/admin">
                 <Button id="admin-login" type="button" className="hidden lg:flex gap-2 bg-transparent text-text-secondary hover:text-accent-primary ml-10 cursor-pointer transition  duration-700">
                   <HiUser className="hidden lg:flex text-lg" />
                   <span className="hidden lg:flex">Admin</span>
