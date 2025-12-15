@@ -1,5 +1,4 @@
-import ContactForm from "../models/contactForm.js"
-
+import ContactForm from "../models/contact_form_schema.js"
 
 const submitContactForm = async (req, res) => {
     try {

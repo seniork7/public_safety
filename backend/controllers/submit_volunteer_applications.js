@@ -1,4 +1,4 @@
-import ApplicationForm from '../models/volunteerApplication.js'
+import ApplicationForm from '../models/volunteer_application_schema.js'
 
 
 const submitVolunteerApplication = async (req, res) => {

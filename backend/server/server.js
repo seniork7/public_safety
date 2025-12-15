@@ -1,8 +1,8 @@
 import express from 'express'
 import cors from 'cors'
 import connectDB from '../database/app_db.js'
-import volunteerApplicationRoutes from '../router/volunteerApplicationRoutes.js'
-import contactFormRoutes from '../router/contactFormRoutes'
+import volunteerApplicationRoutes from '../router/volunteer_application_routes.js'
+import contactFormRoutes from '../router/contact_form_routes.js'
 
 const port = process.env.PORT
 const app = express()
