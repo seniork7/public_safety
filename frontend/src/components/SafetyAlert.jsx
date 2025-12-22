@@ -28,12 +28,12 @@ function SafetyAlert() {
                     <p><span className="">Safety Alert:</span> {currentAlert?.alertText}</p>
                 </div>
                 <div className="flex items-center justify-center gap-2">
-                    <a href={`/safety-tip/${currentAlert?.id}`}>
+                    <Link to={`/safety-tip/${currentAlert?.id}`}>
                         <button type="button" className="mr-2 inline-flex items-center rounded-lg bg-accent-secondary hover:bg-accent-primary hover:text-text-primary px-3 py-1.5 text-xs font-medium text-surface transition  duration-700 cursor-pointer">
                             <HiEye className="ml-0.5 mr-2 h-4 w-4" />
                             View more
                         </button>
-                    </a>
+                    </Link>
                     <button onClick={() => HandleDismissBtn()} type="button" className="rounded-lg border border-accent-secondary bg-transparent px-3 py-1.5 text-xs font-medium hover:bg-accent-primary text-text-primary hover:border-accent-primary transition duration-700 cursor-pointer">Dismiss</button>
                 </div>
             </div>
