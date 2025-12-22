@@ -26,12 +26,12 @@ function JoinUs() {
     })
 
     const handleChange = (e) => {
-        const { name, type, value, checked } = e.target;
+        const { name, type, value, checked } = e.target
 
         setFormData({
             ...formData,
             [name]: type === "checkbox" ? checked : value
-        });      
+        })
         
     }
 
@@ -78,7 +78,7 @@ function JoinUs() {
                 setformError('')
                 setInvalidFields([])
             } else {
-                throw new Error('Form submission failed');
+                throw new Error('Form submission failed')
             }
         } catch (error) {
             setformError('There was a problem submitting your application. Please try again later!')
@@ -87,7 +87,7 @@ function JoinUs() {
 
     return (
         <>          
-            <section id="joinUs" className="scroll-mt-30  bg-bg text-text-primary">
+            <section id="joinUs" className="scroll-mt-45 lg:scroll-mt-30  bg-bg text-text-primary">
                 <div className="flex flex-col items-center justify-center p-8">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Join Our Team</h2>
                     <p className="max-w-xl text-center text-text-secondary">Be part of something meaningful. Whether you want to volunteer, receive training, or stay updated with our initiatives, we'd love to have you join us.</p>
@@ -133,7 +133,7 @@ function JoinUs() {
                 </div>
             </section>
 
-            <section id="getInvolved" className="bg-surface text-primary scroll-mt-15">
+            <section id="getInvolved" className="bg-surface text-primary scroll-mt-30">
                 <div className="container text-text-primary mx-auto px-2 lg:px-8 py-5 flex flex-col justify-center items-center">
                     <h3 className="text-2xl font-bold mb-4">Volunteer Application</h3>
                     <p className="max-w-xl text-center text-text-secondary">Fill out the form below and we'll be in touch within 48 hours.</p>

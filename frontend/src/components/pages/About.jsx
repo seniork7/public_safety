@@ -62,7 +62,7 @@ const team = [
 function About() {
     return (
         <>
-            <section id="about" className="scroll-mt-30 text-text-primary bg-bg">
+            <section id="about" className="scroll-mt-45 lg:scroll-mt-30 text-text-primary bg-bg">
                 <div className="flex flex-col items-center justify-center p-4">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">About Us</h2>
                     <p className="max-w-xl text-center text-text-secondary">For 25 years, we've been dedicated to building safer & stronger communities through volunteer service, emergency response, and comprehensive safety education.</p>

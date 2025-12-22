@@ -154,7 +154,7 @@ function Services() {
 
     return (
         <>          
-            <section id="services" className="scroll-mt-30 text-primary">
+            <section id="services" className="scroll-mt-45 lg:scroll-mt-30 text-primary">
                 <div className="flex flex-col items-center justify-center p-8 text-text-primary bg-bg">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Our Programs & Services</h2>
                     <p className="max-w-xl text-center text-text-secondary">Comprehensive safety programs designed to protect, educate, and empower every member of our community through expert training and support.</p>

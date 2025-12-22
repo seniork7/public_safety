@@ -1,8 +1,9 @@
 import express from 'express'
 import cors from 'cors'
-import connectDB from '../database/app_db.js'
-import volunteerApplicationRoutes from '../router/volunteer_application_routes.js'
-import contactFormRoutes from '../router/contact_form_routes.js'
+import connectDB from './database/app_db.js'
+import volunteerApplicationRoutes from './router/volunteer_application_routes.js'
+import contactFormRoutes from './router/contact_form_routes.js'
+import adminFormRoutes from './router/admin_form_routes.js'
 
 const port = process.env.PORT
 const app = express()
@@ -10,6 +11,7 @@ app.use(cors())
 app.use(express.json())
 app.use('/api/volunteers', volunteerApplicationRoutes)
 app.use('/api/contact', contactFormRoutes)
+app.use('/api/admin', adminFormRoutes)
 
 connectDB().catch(error => console.error('Database connection error', error))
 

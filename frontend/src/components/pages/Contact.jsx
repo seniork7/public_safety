@@ -131,7 +131,7 @@ function Contact() {
 
     return (
         <>
-            <section id="contact" className="scroll-mt-30 bg-surface text-text-primary">
+            <section id="contact" className="scroll-mt-45 lg:scroll-mt-30 bg-surface text-text-primary">
                 <div className="flex flex-col items-center justify-center mb-8 p-8 bg-bg">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Get in Touch</h2>
                     <p className="max-w-xl text-center text-text-secondary">Have questions or need assistance? Our team is here to help. Reach out to us and we'll respond as soon as possible.</p>

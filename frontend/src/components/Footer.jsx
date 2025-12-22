@@ -60,22 +60,22 @@ function Footer() {
                 <div className="flex flex-col lg:flex-row justify-between items-center">
                     <div className="flex justify-center items-center mt-6">
                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="mx-2">
-                            <span className="bg-accent-primary text-surface p-2 rounded-full mr-4 inline-block transition duration-300 hover:bg-accent-secondary">
+                            <span className="bg-accent-primary hover:scale-95 text-text-primary hover:text-surface p-2 rounded-full mr-4 inline-block transition duration-700 hover:bg-accent-secondary">
                                 <FaFacebookF className="text-xl" />
                             </span>
                         </a>
                         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="mx-2">
-                            <span className="bg-accent-primary text-surface p-2 rounded-full mr-4 inline-block transition duration-300 hover:bg-accent-secondary">
+                            <span className="bg-accent-primary hover:scale-95 text-text-primary hover:text-surface p-2 rounded-full mr-4 inline-block transition duration-700 hover:bg-accent-secondary">
                                 <FaXTwitter className="text-xl" />
                             </span>
                         </a>
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="mx-2">
-                            <span className="bg-accent-primary text-surface p-2 rounded-full mr-4 inline-block transition duration-300 hover:bg-accent-secondary">
+                            <span className="bg-accent-primary hover:scale-95 text-text-primary hover:text-surface p-2 rounded-full mr-4 inline-block transition duration-700 hover:bg-accent-secondary">
                                 <FaInstagram className="text-xl" />
                             </span>
                         </a>
                         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="mx-2">
-                            <span className="bg-accent-primary text-surface p-2 rounded-full mr-4 inline-block transition duration-300 hover:bg-accent-secondary">
+                            <span className="bg-accent-primary hover:scale-95 text-text-primary hover:text-surface p-2 rounded-full mr-4 inline-block transition duration-700 hover:bg-accent-secondary">
                                 <FaLinkedinIn className="text-xl" />
                             </span>
                         </a>
@@ -86,12 +86,12 @@ function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col md:flex-row justify-between items-center mt-15 py-4 px-10 bg-primary bg-bg">
+            <div className="flex flex-col lg:flex-row justify-between items-center mt-15 py-4 px-10 bg-primary bg-bg">
                 <p> &copy; 2025 Public Safety. All rights reserved.</p>
                 <div className="hidden lg:flex gap-4 mt-2 md:mt-0">
-                    <p className="hover:underline hover:text-accent-secondary transition duration-300">Privacy Policy</p>
-                    <p className="hover:underline hover:text-accent-secondary transition duration-300">Terms of Service</p>
-                    <p className="hover:underline hover:text-accent-secondary transition duration-300">Accessibility</p>
+                    <p className="hover:underline hover:text-accent-secondary transition duration-700">Privacy Policy</p>
+                    <p className="hover:underline hover:text-accent-secondary transition duration-700">Terms of Service</p>
+                    <p className="hover:underline hover:text-accent-secondary transition duration-700">Accessibility</p>
                 </div>
             </div>
         </footer>

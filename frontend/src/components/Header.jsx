@@ -18,8 +18,7 @@ function Header() {
   
   return (
     <header>
-      <div className="w-full fixed top-0 left-0 right-0 z-50 backdrop-blur-md shadow-md">
-        <SafetyAlert className="" />
+      <div className="">
         <nav className="bg-nav-bg text-text-primary py-3">
           <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between">
             <a href="./" className="text-xl font-semibold text-accent-primary">Public Safety</a>

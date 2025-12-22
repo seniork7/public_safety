@@ -6,6 +6,7 @@ const adminFormSchema = new Schema({
     // unique: true ensures each email in the DB is different
     email: { type: String, required: true, unique: true },
     passwordHash: { type: String, required: true  },  
+    // enum restricts the field to only allow the values in the array
     role: { type: String, enum: ["Admin", "Demo_Admin"], default: "Demo_Admin" },
     createdAt: { type: Date, default: Date.now },
 });

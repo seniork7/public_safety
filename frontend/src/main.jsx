@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     errorElement: <Error404 />,
   },
   {
-    path: '/SafetyTips',
+    path: '/safety-tip/:id',
     element: <SafetyTips />,
     errorElement: <Error404 />,
   },
