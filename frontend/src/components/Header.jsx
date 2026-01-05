@@ -63,7 +63,7 @@ function Header() {
                 </Button>
               </Link>
 
-              <Link to="/AdminLogin">
+              <Link to="/admin">
                 <div className="mt-8 flex items-center justify-center">
                   <Button id="admin-login" type="button" className="flex lg:hidden gap-2 text-lg bg-transparent text-text-secondary hover:text-accent-primary cursor-pointer transition  duration-700">
                     <HiUser className="flex lg:hidden text-2xl" />
