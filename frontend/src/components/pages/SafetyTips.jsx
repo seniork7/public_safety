@@ -42,7 +42,7 @@ function SafetyTip() {
                         <div className="lg:col-span-2">
                             <div className="flex items-center gap-4 mb-4">
                                 <div>
-                                    <h1 id="tip-title" className="w-md text-3xl lg:text-4xl font-bold">
+                                    <h1 id="tip-title" className="text-2xl lg:text-4xl font-bold">
                                         {alert.title}
                                     </h1>
                                     <p className="text-text-secondary mt-1">{alert.alertText}</p>
@@ -124,10 +124,10 @@ function SafetyTip() {
 
             <aside
                 id="resources-widget"
-                className={`fixed right-0 top-20 z-40 h-[70vh] w-80 sm:w-96 transform transition-transform duration-300 ${widgetOpen ? 'translate-x-0' : 'translate-x-full'}`}
+                className={`fixed right-0 top-20 z-40 h-[75vh] w-80 sm:w-96 transform transition-transform duration-300 ${widgetOpen ? 'translate-x-0' : 'translate-x-full'}`}
                 aria-hidden={!widgetOpen}
             >
-                <div className="h-full flex flex-col bg-surface border-l-4 border-border shadow-xl rounded-l-lg">
+                <div className="flex flex-col bg-surface border-l-4 border-border shadow-xl rounded-l-lg">
                     <div className="p-4 border-b border-border flex items-center justify-between">
                         <h4 className="text-lg font-semibold text-text-primary">Resources & Actions</h4>
                         <button onClick={() => setWidgetOpen(false)} className="p-2 rounded-md text-text-secondary hover:text-accent-primary">
@@ -140,7 +140,7 @@ function SafetyTip() {
 
                         <div className="flex flex-col gap-3">
                             <Link to="/#services" className="block w-full text-center bg-accent-secondary hover:text-text-primary hover:bg-accent-primary text-surface font-semibold py-2 rounded-lg hover:scale-95 transition duration-700">View Programs</Link>
-                            <Link to="/#getInvolved" className="block w-full text-center border border-border bg-bg hover:bg-surface text-text-primary hover:text-accent-primary py-2 rounded-lg hover:scale-95 transition duration-700">Join as Volunteer</Link>
+                            <a href="/#getInvolved" className="block w-full text-center border border-border bg-bg hover:bg-surface text-text-primary hover:text-accent-primary py-2 rounded-lg hover:scale-95 transition duration-700">Join as Volunteer</a>
                             <Link to="/#contact" className="block w-full text-center bg-transparent hover:bg-accent-primary text-text-primary border border-border py-2 rounded-lg hover:scale-95 transition duration-700">Contact Us</Link>
                         </div>
 
