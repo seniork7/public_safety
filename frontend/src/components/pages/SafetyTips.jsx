@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import Alerts from "../../alerts.json"
 import Footer from "../Footer"
-import { HiClipboardCopy, HiShare, HiX } from "react-icons/hi"
+import { HiClipboardCopy, HiOutlineDotsVertical, HiX, HiShare } from "react-icons/hi"
+import SafetyTipBanner from '../../assets/images/safety_tip_banner.jpg'
 
 function SafetyTip() {
     const { id } = useParams()
@@ -36,7 +37,7 @@ function SafetyTip() {
     return (
         <>
         <main className="bg-bg text-text-primary min-h-screen">
-            <section className="relative bg-surface/60 border-b border-border" aria-labelledby="tip-title">
+            <section className="relative bg-surface/60 border-b border-border bg-cover bg-top" aria-labelledby="tip-title" style={{ backgroundImage: `url(${SafetyTipBanner})` }}>
                 <div className="container mx-auto px-6 lg:px-12 py-12">
                     <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                         <div className="lg:col-span-2">
@@ -45,11 +46,11 @@ function SafetyTip() {
                                     <h1 id="tip-title" className="text-2xl lg:text-4xl font-bold">
                                         {alert.title}
                                     </h1>
-                                    <p className="text-text-secondary mt-1">{alert.alertText}</p>
+                                    <p className="text-text-primary mt-1">{alert.alertText}</p>
                                 </div>
                             </div>
 
-                            <p className="text-text-secondary max-w-3xl mb-6">{alert.summary}</p>
+                            <p className="text-text-primary max-w-3xl mb-6">{alert.summary}</p>
 
                             <nav className="mb-6">
                                 <h4 className="text-sm font-semibold text-text-primary mb-2">Contents</h4>
@@ -59,11 +60,11 @@ function SafetyTip() {
                                     </li>
                                     {alert.content.sections.map((section, i) => (
                                         <li key={i}>
-                                            <a href={`#section-${i}`} className="text-text-secondary hover:text-accent-primary transition">{section.heading}</a>
+                                            <a href={`#section-${i}`} className="text-text-primary hover:text-accent-primary transition">{section.heading}</a>
                                         </li>
                                     ))}
                                     <li>
-                                        <a href="#conclusion" className="text-text-secondary hover:text-accent-primary transition">Conclusion</a>
+                                        <a href="#conclusion" className="text-text-primary hover:text-accent-primary transition">Conclusion</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -119,7 +120,7 @@ function SafetyTip() {
                 className="fixed right-6 bottom-12 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition hover:scale-95 duration-700 cursor-pointer bg-accent-secondary text-surface hover:bg-accent-primary hover:text-text-primary"
                 title={widgetOpen ? "Close resources" : "Open resources"}
             >
-                {widgetOpen ? <HiX className="w-6 h-6" /> : <HiShare className="w-6 h-6" />}
+                {widgetOpen ? <HiX className="w-6 h-6" /> : <HiOutlineDotsVertical className="w-6 h-6" />}
             </button>
 
             <aside
