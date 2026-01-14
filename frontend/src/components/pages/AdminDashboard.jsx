@@ -10,7 +10,7 @@ function AdminDashboard() {
     useEffect(() => {
         const fetchApplications = async () => {
             try {
-                const data = await adminFetch('/api/admin/dashboard')
+                const data = await adminFetch('api/admin/dashboard')
 
                 // setTimeout(() => {
                     setApplications(data)
@@ -19,6 +19,10 @@ function AdminDashboard() {
                 alert('The dashboard is under development. Please check back later!')
 
             }catch (error) {
+                if (error.message === 'Unauthorized!') {
+                        navigate('/admin/login')
+                        return
+                }
                 console.error(error)
             }
         }

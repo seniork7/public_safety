@@ -1,7 +1,6 @@
 import AdminBg from '../../assets/images/admin-bg.png'
 import { useState } from 'react'
-import { useNavigate } from "react-router-dom"
-import { Link } from 'react-router-dom'
+import { useNavigate, Link } from "react-router-dom"
 import { adminFetch } from '../../utils/adminFetch'
 import { HiOutlineArrowLeft } from 'react-icons/hi'
 
