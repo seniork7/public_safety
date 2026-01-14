@@ -9,7 +9,7 @@ import cookieParser from 'cookie-parser'
 const port = process.env.PORT
 const app = express()
 const corsOrigin = process.env.NODE_ENV === 'production'
-    ? 'https://public-safety.netlify.app/'
+    ? 'https://public-safety.netlify.app'
     : 'http://localhost:5174'
 
 app.use(express.json())
