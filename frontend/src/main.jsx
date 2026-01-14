@@ -7,6 +7,7 @@ import App from './App.jsx'
 import Error404 from './components/pages/Error404.jsx'
 import SafetyTips from './components/pages/SafetyTips.jsx'
 import AdminLogin from './components/pages/AdminLogin.jsx'
+import AdminDashboard from './components/pages/AdminDashboard.jsx'
 import 'tippy.js/dist/tippy.css'
 
 const router = createBrowserRouter([
@@ -21,8 +22,13 @@ const router = createBrowserRouter([
     errorElement: <Error404 />,
   },
   {
-    path: '/admin',
+    path: '/admin/login',
     element: <AdminLogin />,
+    errorElement: <Error404 />,
+  },
+    {
+    path: '/admin/dashboard',
+    element: <AdminDashboard />,
     errorElement: <Error404 />,
   },
 ])

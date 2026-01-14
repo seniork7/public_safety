@@ -55,9 +55,6 @@ function SafetyTip() {
                             <nav className="mb-6">
                                 <h4 className="text-sm font-semibold text-text-primary mb-2">Contents</h4>
                                 <ul className="flex flex-wrap gap-3">
-                                    <li>
-                                        <a href="#introduction" className="text-accent-primary hover:text-accent-secondary">Introduction</a>
-                                    </li>
                                     {alert.content.sections.map((section, i) => (
                                         <li key={i}>
                                             <a href={`#section-${i}`} className="text-text-primary hover:text-accent-primary transition">{section.heading}</a>

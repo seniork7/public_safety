@@ -9,8 +9,6 @@ function SafetyAlert() {
     useEffect(() => {
         const randomAlert = Alerts[Math.floor(Math.random() * Alerts.length)];
         setCurrentAlert(randomAlert);
-        console.log(randomAlert);
-        
     }, [])
 
     const HandleDismissBtn = () => {

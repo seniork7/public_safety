@@ -6,7 +6,7 @@ import Textarea from '../elements/Textarea'
 import { HiMapPin, HiPhone, HiMiniEnvelope, HiClock } from "react-icons/hi2"
 import { FaLinkedinIn, FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6"
 import { useState } from 'react' 
-import { API_URL } from '../../utils'
+import { API_URL } from '../../utils/api_url'
 
 const contactMethods = [
     { 
@@ -102,30 +102,29 @@ function Contact() {
             setformError(errors.join(' '))
             setformSuccess('')
             return
-        } else {
-            try {
-                const response = await fetch(`${API_URL}/api/contact`, {
-                    method: 'POST',
-                    body: JSON.stringify(formData),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    setformSuccess('Your message has been sent successfully!')
-                    setFormData({
-                        name: '',
-                        email: '',
-                        message: ''
-                    })
-                    setformError('')
-                } else {
-                    throw new Error('Form submission failed');
+        }
+        try {
+            const response = await fetch(`${API_URL}/api/contact`, {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-            } catch (error) {
-                setformError('There was a problem submitting your message. Please try again later!')
-            }
+            });
+
+                
+            if (!response.ok) throw new Error('Form submission failed')
+
+            setformSuccess('Your message has been sent successfully!')
+            setFormData({
+                name: '',
+                email: '',
+                message: ''
+            })
+            setformError('')
+
+        } catch (error) {
+            setformError(`There was a problem submitting your message. Please try again later! ${error.message}`)
         }
     }
 
@@ -139,7 +138,7 @@ function Contact() {
                     <div className="flex flex-col items-center">
                         <div className="flex flex-col md:grid md:grid-cols-2 justify-center items-start mt-10 gap-7 px-4 md:px-8">
                             {contactMethods.map((item, index) => (
-                                <div key={index} className="flex flex-col justify-center items-center group max-w-xs pl-6 border-l-4 rounded-lg border-accent-primary lg:hover:rotate-y-20 hover:border-accent-secondary shadow-sm shadow-accent-primary/15 hover:shadow-accent-secondary/15 p-4  transition-all duration-700">
+                                <div key={index} className="flex flex-col justify-center items-center group w-xs pl-6 border-l-4 rounded-lg border-accent-primary lg:hover:rotate-y-20 hover:border-accent-secondary shadow-sm shadow-accent-primary/15 hover:shadow-accent-secondary/15 p-4  transition-all duration-700">
                                     <h5 className="text-lg font-bold flex items-center justify-start gap-4 mb-3 group-hover:text-accent-secondary transition duration-700">
                                         <span className="bg-accent-primary text-text-primary group-hover:text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg group-hover:bg-accent-secondary transition duration-700">
                                             {item.icon}
@@ -196,7 +195,7 @@ function Contact() {
                             <Button type="submit" id="submitContact" className="w-full p-2 mt-5 rounded-lg font-semibold bg-accent-secondary hover:bg-accent-primary hover:text-text-primary text-bg cursor-pointer transition duration-700 hover:scale-98">Send Message</Button>
                         </form>
                         <div className="flex flex-col justify-center items-center gap-4 max-w-md m-4 p-4">
-                            <div className="flex flex-col justify-center items-center group max-w-xs pl-6 border-l-4 rounded-lg border-accent-primary lg:hover:rotate-y-20 hover:border-accent-secondary shadow-sm shadow-accent-primary/15 hover:shadow-accent-secondary/15 p-4  transition-all duration-700">
+                            <div className="flex flex-col justify-center items-center group md:w-sm pl-6 border-l-4 rounded-lg border-accent-primary lg:hover:rotate-y-20 hover:border-accent-secondary shadow-sm shadow-accent-primary/15 hover:shadow-accent-secondary/15 p-4  transition-all duration-700">
                                 <h5 className="text-lg font-bold text-primary text-center group-hover:text-accent-secondary transition duration-700">Have an Emergency?</h5>
                                 <a href="tel:+911" className="text-sm text-center text-text-secondary">
                                     For immediate life threatening situations,<br /> please call:
@@ -210,7 +209,7 @@ function Contact() {
                                     <span className="text-accent-primary group-hover:text-accent-secondary transition duration-700">+1 (555) 123-HELP</span>
                                 </a>
                             </div>
-                            <div className="group max-w-xs pl-6 border-l-4 text-text-primary shadow-sm shadow-accent-primary/15 hover:shadow-accent-secondary/15 rounded-lg p-4  border-accent-primary  hover:border-accent-secondary transition-all lg:hover:rotate-y-20 duration-700">
+                            <div className="group md:w-sm pl-6 border-l-4 text-text-primary shadow-sm shadow-accent-primary/15 hover:shadow-accent-secondary/15 rounded-lg p-4  border-accent-primary  hover:border-accent-secondary transition-all lg:hover:rotate-y-20 duration-700">
                                 <h5 className="text-lg font-bold text-text-primary text-center mb-2 group-hover:text-accent-secondary transition duration-700">Follow Us</h5>
                                 <div className="flex justify-center items-center">
                                     <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="">
@@ -234,7 +233,7 @@ function Contact() {
                                         </span>
                                     </a>
                                 </div>
-                                <p className="text-sm text-text-secondary mt-2">Stay connected with us on social media!</p>
+                                <p className="text-sm text-center text-text-secondary mt-2">Stay connected with us on social media!</p>
                             </div>
                         </div>
                     </div>

@@ -4,8 +4,7 @@ import Textarea from '../elements/Textarea'
 import Button from '../elements/Button'
 import Label from '../elements/Label'
 import Checkbox from '../elements/Checkbox'
-// import InputMask from "react-input-mask"
-import { API_URL } from '../../utils'
+import { API_URL } from '../../utils/api_url'
 import { useState } from 'react'
 
 function JoinUs() {
@@ -61,7 +60,8 @@ function JoinUs() {
                 }
             });
 
-            if (response.ok) {
+            if (!response.ok) throw new Error('Form submission failed')
+
                 setformSuccess('Your application has been submitted successfully!')
                 setFormData({
                     fName: '',
@@ -77,11 +77,9 @@ function JoinUs() {
                 })
                 setformError('')
                 setInvalidFields([])
-            } else {
-                throw new Error('Form submission failed')
-            }
+
         } catch (error) {
-            setformError('There was a problem submitting your application. Please try again later!')
+            setformError(`There was a problem submitting your application. Please try again later! ${error.message}`)
         }
     }
 

@@ -3,6 +3,8 @@ import mongoose from 'mongoose'
 const { Schema, model } = mongoose
 
 const adminFormSchema = new Schema({
+    fName: { type: String },
+    lName: { type: String },
     // unique: true ensures each email in the DB is different
     email: { type: String, required: true, unique: true },
     passwordHash: { type: String, required: true  },  
