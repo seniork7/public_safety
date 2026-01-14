@@ -31,7 +31,7 @@ const submitAdminForm = async (req, res) => {
     res.cookie('admin_token', token, {
         httpOnly: true,     
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        sameSite: 'none',
         maxAge: 30 * 1000
     })
 
