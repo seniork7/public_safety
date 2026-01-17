@@ -13,6 +13,11 @@ const applicationFormSchema = new Schema({
   availability: { type: String, required: true  },
   whyVolunteer: { type: String, required: true  },     
   checkbox: { type: Boolean, required: true  },
+  status: { 
+    type: String, 
+    enum: ["Pending", "Approved", "Rejected"], 
+    default: "Pending" 
+  },
   createdAt: { type: Date, default: Date.now },
 });
 
