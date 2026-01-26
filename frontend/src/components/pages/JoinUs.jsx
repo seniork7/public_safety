@@ -1,13 +1,16 @@
 import Select from '../elements/Select'
 import TextInput from '../elements/TextInput'
 import Textarea from '../elements/Textarea'
-import Button from '../elements/Button'
+import Submit from '../elements/Submit'
 import Label from '../elements/Label'
 import Checkbox from '../elements/Checkbox'
+import LoadingOverlay from '../elements/LoadingOverlay'
 import { API_URL } from '../../utils/api_url'
 import { useState } from 'react'
 
+
 function JoinUs() {
+    const [loading, setLoading] = useState(false)
     const [invalidFields, setInvalidFields] = useState([])
     const [formSuccess, setformSuccess] = useState('')
     const [formError, setformError] = useState('')
@@ -31,28 +34,30 @@ function JoinUs() {
             ...formData,
             [name]: type === "checkbox" ? checked : value
         })
-        
+
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setLoading(true)
 
         const emptyFields = Object.keys(formData).filter(key => {
-        if (key === 'checkbox') return !formData[key]
+            if (key === 'checkbox') return !formData[key]
             return !formData[key].trim()
         })
 
         if (emptyFields.length > 0) {
             setformError('Please complete all required fields.')
             setformSuccess('')
-
             setInvalidFields(emptyFields)
+            setLoading(false)
 
             return
         }
 
         try {
-            const response = await fetch(`${API_URL}/api/volunteers`, {
+            await new Promise(resolve => setTimeout(resolve, 10000))
+            const response = await fetch('http://localhost:3000/api/volunteers', {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {
@@ -62,29 +67,32 @@ function JoinUs() {
 
             if (!response.ok) throw new Error('Form submission failed')
 
-                setformSuccess('Your application has been submitted successfully!')
-                setFormData({
-                    fName: '',
-                    lName: '',
-                    email: '',
-                    phone: '',
-                    gender: '',
-                    role: '',
-                    experience: '',
-                    availability: '',
-                    whyVolunteer: '',
-                    checkbox: false
-                })
-                setformError('')
-                setInvalidFields([])
+            setformSuccess('Your application has been submitted successfully!')
+            setFormData({
+                fName: '',
+                lName: '',
+                email: '',
+                phone: '',
+                gender: '',
+                role: '',
+                experience: '',
+                availability: '',
+                whyVolunteer: '',
+                checkbox: false
+            })
+            setformError('')
+            setInvalidFields([])
 
         } catch (error) {
             setformError(`There was a problem submitting your application. Please try again later! ${error.message}`)
+        } finally {
+            setLoading(false)
         }
     }
 
     return (
-        <>          
+        <>
+        {loading && <LoadingOverlay />} 
             <section id="joinUs" className="scroll-mt-45 lg:scroll-mt-30  bg-bg text-text-primary">
                 <div className="flex flex-col items-center justify-center p-8">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Join Our Team</h2>
@@ -258,10 +266,10 @@ function JoinUs() {
                                 />
                             </div>
                             <div className="flex items-center">
-                                <Checkbox id="checkbox" name="checkbox" checked={formData.checkbox} onChange={handleChange} className="transition focus:outline-none focus:ring-0 cursor-pointer"/>
+                                <Checkbox id="checkbox" name="checkbox" checked={formData.checkbox} onChange={handleChange} className="transition focus:outline-none focus:ring-0 cursor-pointer" />
                                 <Label htmlFor="checkbox" className="ml-2 text-secondary">*I agree to the terms and conditions and understand that a background check may be required for certain volunteer positions.</Label>
                             </div>
-                            <Button type="submit" id="submitVolunteer" className="w-full p-2 mt-5 rounded-lg font-semibold bg-accent-secondary hover:bg-accent-primary hover:text-text-primary text-bg cursor-pointer transition duration-700 hover:scale-98">Submit Application</Button>
+                            <Submit loading={loading} loadingText="Submitting..." buttonText="Submit Application" />
                         </form>
                     </div>
                 </div>

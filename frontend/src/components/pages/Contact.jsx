@@ -3,61 +3,63 @@ import TextInput from '../elements/TextInput'
 import Button from '../elements/Button'
 import Label from '../elements/Label'
 import Textarea from '../elements/Textarea'
+import Submit from '../elements/Submit'
+import LoadingOverlay from '../elements/LoadingOverlay'
 import { HiMapPin, HiPhone, HiMiniEnvelope, HiClock } from "react-icons/hi2"
 import { FaLinkedinIn, FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6"
-import { useState } from 'react' 
+import { useState } from 'react'
 import { API_URL } from '../../utils/api_url'
 
 const contactMethods = [
-    { 
-        title: "Visit Us", 
-        address: "123 Main St, Ottawa, ON K1A 0B1", 
-        icon: <HiMapPin /> 
+    {
+        title: "Visit Us",
+        address: "123 Main St, Ottawa, ON K1A 0B1",
+        icon: <HiMapPin />
     },
-    { 
-        title: "Call Us", 
-        phone: "(123) 456-7890", 
-        icon: <HiPhone /> 
+    {
+        title: "Call Us",
+        phone: "(123) 456-7890",
+        icon: <HiPhone />
     },
-    { 
-        title: "Email Us", 
-        email: "info@publicsafety.org", 
-        icon: <HiMiniEnvelope /> 
+    {
+        title: "Email Us",
+        email: "info@publicsafety.org",
+        icon: <HiMiniEnvelope />
     },
-    { 
-        title: "Office Hours", 
-        hours: "Mon-Fri: 9 AM - 5 PM", 
-        icon: <HiClock /> 
+    {
+        title: "Office Hours",
+        hours: "Mon-Fri: 9 AM - 5 PM",
+        icon: <HiClock />
     },
 ];
 
 const departments = [
-    { 
-        name: "Emergency Services", 
+    {
+        name: "Emergency Services",
         contact: "emergency@publicsafety.org",
         text: "For urgent matters requiring immediate attention",
         call: "(123) 548-7890",
         phoneIcon: <HiPhone />,
         emailIcon: <HiMiniEnvelope />
     },
-    { 
-        name: "Training & Education", 
+    {
+        name: "Training & Education",
         contact: "training@publicsafety.org",
         text: "For inquiries related to training programs and educational resources",
         call: "(123) 365-8759",
         phoneIcon: <HiPhone />,
         emailIcon: <HiMiniEnvelope />
     },
-    { 
-        name: "Community Outreach", 
+    {
+        name: "Community Outreach",
         contact: "outreach@publicsafety.org",
         text: "For questions about community programs and initiatives",
         call: "(123) 754-8798",
         phoneIcon: <HiPhone />,
         emailIcon: <HiMiniEnvelope />
     },
-    { 
-        name: "General Inquiries", 
+    {
+        name: "General Inquiries",
         contact: "info@publicsafety.org",
         text: "For general questions and information about our organization",
         call: "(123) 524-3355",
@@ -67,6 +69,7 @@ const departments = [
 ];
 
 function Contact() {
+    const [loading, setLoading] = useState(false)
     const [formSuccess, setformSuccess] = useState('')
     const [formError, setformError] = useState('')
     const [formData, setFormData] = useState({
@@ -76,11 +79,12 @@ function Contact() {
     })
 
     const handleChange = (e) => {
-        setFormData({...formData, [e.target.name]:e.target.value})      
-        
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setLoading(true)
 
         const errors = []
 
@@ -101,9 +105,12 @@ function Contact() {
         if (errors.length > 0) {
             setformError(errors.join(' '))
             setformSuccess('')
+            setLoading(false)
+
             return
         }
         try {
+            await new Promise(resolve => setTimeout(resolve, 10000))
             const response = await fetch(`${API_URL}/api/contact`, {
                 method: 'POST',
                 body: JSON.stringify(formData),
@@ -112,7 +119,7 @@ function Contact() {
                 }
             });
 
-                
+
             if (!response.ok) throw new Error('Form submission failed')
 
             setformSuccess('Your message has been sent successfully!')
@@ -125,36 +132,39 @@ function Contact() {
 
         } catch (error) {
             setformError(`There was a problem submitting your message. Please try again later! ${error.message}`)
+        } finally {
+            setLoading(false)
         }
     }
 
     return (
         <>
+            {loading && <LoadingOverlay />}
             <section id="contact" className="scroll-mt-45 lg:scroll-mt-30 bg-surface text-text-primary">
                 <div className="flex flex-col items-center justify-center mb-8 p-8 bg-bg">
                     <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Get in Touch</h2>
                     <p className="max-w-xl text-center text-text-secondary">Have questions or need assistance? Our team is here to help. Reach out to us and we'll respond as soon as possible.</p>
                 </div>
-                    <div className="flex flex-col items-center">
-                        <div className="flex flex-col md:grid md:grid-cols-2 justify-center items-start mt-10 gap-7 px-4 md:px-8">
-                            {contactMethods.map((item, index) => (
-                                <div key={index} className="flex flex-col justify-center items-center group w-xs pl-6 border-l-4 rounded-lg border-accent-primary lg:hover:rotate-y-20 hover:border-accent-secondary shadow-sm shadow-accent-primary/15 hover:shadow-accent-secondary/15 p-4  transition-all duration-700">
-                                    <h5 className="text-lg font-bold flex items-center justify-start gap-4 mb-3 group-hover:text-accent-secondary transition duration-700">
-                                        <span className="bg-accent-primary text-text-primary group-hover:text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg group-hover:bg-accent-secondary transition duration-700">
-                                            {item.icon}
-                                        </span>
-                                        {item.title}
-                                    </h5>
-                                    <p className="text-text-secondary mt-1 pr-2  max-w-xs overflow-hidden transition-all duration-700">
-                                        {item.address || item.phone || item.email || item.hours}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
+                <div className="flex flex-col items-center">
+                    <div className="flex flex-col md:grid md:grid-cols-2 justify-center items-start mt-10 gap-7 px-4 md:px-8">
+                        {contactMethods.map((item, index) => (
+                            <div key={index} className="flex flex-col justify-center items-center group w-xs pl-6 border-l-4 rounded-lg border-accent-primary lg:hover:rotate-y-20 hover:border-accent-secondary shadow-sm shadow-accent-primary/15 hover:shadow-accent-secondary/15 p-4  transition-all duration-700">
+                                <h5 className="text-lg font-bold flex items-center justify-start gap-4 mb-3 group-hover:text-accent-secondary transition duration-700">
+                                    <span className="bg-accent-primary text-text-primary group-hover:text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg group-hover:bg-accent-secondary transition duration-700">
+                                        {item.icon}
+                                    </span>
+                                    {item.title}
+                                </h5>
+                                <p className="text-text-secondary mt-1 pr-2  max-w-xs overflow-hidden transition-all duration-700">
+                                    {item.address || item.phone || item.email || item.hours}
+                                </p>
+                            </div>
+                        ))}
                     </div>
+                </div>
                 <div className="mt-20 p-8 gap-8 px-4 md:px-8">
-                        <h4 className="text-xl font-bold text-center">Send Us a Message</h4>
-                        <p className="mb-10 text-text-secondary text-center">Fill out the form below and we'll get back to you within 24 hours.</p>
+                    <h4 className="text-xl font-bold text-center">Send Us a Message</h4>
+                    <p className="mb-10 text-text-secondary text-center">Fill out the form below and we'll get back to you within 24 hours.</p>
                     <div className="flex flex-col lg:flex-row justify-center items-center m-4 p-4">
                         <form onSubmit={handleSubmit} className="bg-bg p-6 rounded-lg shadow-md max-w-lg w-full md:w-md">
                             {formError && <p className="text-error">{formError}</p>}
@@ -192,7 +202,8 @@ function Contact() {
                                     rows={4}
                                 />
                             </div>
-                            <Button type="submit" id="submitContact" className="w-full p-2 mt-5 rounded-lg font-semibold bg-accent-secondary hover:bg-accent-primary hover:text-text-primary text-bg cursor-pointer transition duration-700 hover:scale-98">Send Message</Button>
+                            <Submit loading={loading} loadingText="Submitting..." buttonText="Send Message" />
+
                         </form>
                         <div className="flex flex-col justify-center items-center gap-4 max-w-md m-4 p-4">
                             <div className="flex flex-col justify-center items-center group md:w-sm pl-6 border-l-4 rounded-lg border-accent-primary lg:hover:rotate-y-20 hover:border-accent-secondary shadow-sm shadow-accent-primary/15 hover:shadow-accent-secondary/15 p-4  transition-all duration-700">
@@ -245,20 +256,20 @@ function Contact() {
                         <p className="text-center text-text-secondary">Please reach out to the appropriate department for assistance.</p>
                         <div className="flex flex-col lg:grid lg:grid-cols-2 justify-center items-start m-10 gap-7 px-4 md:px-8">
                             {departments.map((item, index) => (
-                            <div key={index} className="flex flex-col group w-xs md:w-sm pl-6 border-l-4 rounded-lg border-accent-primary lg:hover:rotate-y-20 hover:border-accent-secondary shadow-sm shadow-accent-primary/15 hover:shadow-accent-secondary/15 p-4  transition-all duration-700">
-                                <h5 className="text-lg font-bold text-text-primary group-hover:text-accent-secondary transition duration-700">
-                                    {item.name}
-                                </h5>
-                                <p className="w-[300px] text-text-secondary">
-                                    {item.text}
-                                </p>
-                                <a href={`tel:${item.call}`} className="flex items-center gap-2 text-text-secondary hover:scale-90 transition duration-700">
-                                    <span className="text-accent-primary group-hover:text-accent-secondary transition duration-700">{item.phoneIcon}</span> <span className="hover:text-accent-secondary group-hover:underline transition duration-700">{item.call}</span>
-                                </a>
-                                <a href={`mailto:${item.contact}`} className="flex items-center gap-2 text-text-secondary hover:scale-90 transition duration-700">
-                                    <span className="text-accent-primary group-hover:text-accent-secondary transition duration-700">{item.emailIcon}</span> <span className="hover:text-accent-secondary group-hover:underline transition duration-700">{item.contact}</span>
-                                </a>
-                            </div>
+                                <div key={index} className="flex flex-col group w-xs md:w-sm pl-6 border-l-4 rounded-lg border-accent-primary lg:hover:rotate-y-20 hover:border-accent-secondary shadow-sm shadow-accent-primary/15 hover:shadow-accent-secondary/15 p-4  transition-all duration-700">
+                                    <h5 className="text-lg font-bold text-text-primary group-hover:text-accent-secondary transition duration-700">
+                                        {item.name}
+                                    </h5>
+                                    <p className="w-[300px] text-text-secondary">
+                                        {item.text}
+                                    </p>
+                                    <a href={`tel:${item.call}`} className="flex items-center gap-2 text-text-secondary hover:scale-90 transition duration-700">
+                                        <span className="text-accent-primary group-hover:text-accent-secondary transition duration-700">{item.phoneIcon}</span> <span className="hover:text-accent-secondary group-hover:underline transition duration-700">{item.call}</span>
+                                    </a>
+                                    <a href={`mailto:${item.contact}`} className="flex items-center gap-2 text-text-secondary hover:scale-90 transition duration-700">
+                                        <span className="text-accent-primary group-hover:text-accent-secondary transition duration-700">{item.emailIcon}</span> <span className="hover:text-accent-secondary group-hover:underline transition duration-700">{item.contact}</span>
+                                    </a>
+                                </div>
                             ))}
                         </div>
                     </div>
