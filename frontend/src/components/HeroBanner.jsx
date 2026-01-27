@@ -22,7 +22,7 @@ export default function HeroBanner() {
                 </div>
             </article>
 
-            <div aria-hidden="true" className="absolute inset-0 z-0 bg-black/80 pointer-events-none" />
+            <div aria-hidden="true" className="absolute inset-0 z-0 bg-black/65 pointer-events-none" />
         </div>
     )
 }

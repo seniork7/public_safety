@@ -152,7 +152,7 @@ export default function JoinUs() {
                     <div className="px-4 w-full flex justify-center items-center">
                         <form
                             onSubmit={handleSubmit}
-                            className="bg-surface flex flex-col gap-4 my-8 px-6 w-[50%] rounded-lg border border-border p-8"
+                            className="bg-surface flex flex-col gap-4 my-8 px-6 w-full lg:w-[50%] rounded-lg border border-border p-8"
                             aria-labelledby="volunteer-form-title"
                         >
                             <h4 id="volunteer-form-title" className="sr-only">Volunteer application form</h4>
