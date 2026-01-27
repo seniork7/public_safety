@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import Alerts from "../alerts.json"
 import { useState, useEffect } from "react"
 
-function SafetyAlert() {
+export default function SafetyAlert() {
     const [currentAlert, setCurrentAlert] = useState()
 
     useEffect(() => {
@@ -19,7 +19,7 @@ function SafetyAlert() {
     }
 
     return (
-        <div id="dismiss-alert" className="flex items-center justify-center gap-3 text-accent-secondary bg-alert-bg alert-text border border-accent-primary p-3 text-sm md:text-base">
+        <div id="dismiss-alert" className="flex items-center justify-center gap-3 text-surface bg-alert-bg border border-alert-border p-3 text-sm md:text-base">
             <div className="flex flex-col lg:flex-row items-start justify-center gap-4 lg:gap-10">
                 <div className="font-medium flex items-start lg:items-center justify-center gap-2">
                     <HiInformationCircle className="w-6 h-6 mt-1 " />
@@ -27,16 +27,14 @@ function SafetyAlert() {
                 </div>
                 <div className="flex items-center justify-center gap-2">
                     <Link to={`/safety-tip/${currentAlert?.id}`}>
-                        <button type="button" className="mr-2 inline-flex items-center rounded-lg bg-accent-secondary hover:bg-accent-primary hover:text-text-primary px-3 py-1.5 text-xs font-medium text-surface transition  duration-700 cursor-pointer">
+                        <button type="button" className="mr-2 inline-flex items-center rounded-lg text-text-primary hover:bg-accent-primary bg-accent-secondary px-3 py-1.5 text-xs font-medium hover:text-surface transition duration-700 cursor-pointer">
                             <HiEye className="ml-0.5 mr-2 h-4 w-4" />
                             View more
                         </button>
                     </Link>
-                    <button onClick={() => HandleDismissBtn()} type="button" className="rounded-lg border border-accent-secondary bg-transparent px-3 py-1.5 text-xs font-medium hover:bg-accent-primary text-text-primary hover:border-accent-primary transition duration-700 cursor-pointer">Dismiss</button>
+                    <button onClick={() => HandleDismissBtn()} type="button" className="rounded-lg border border-accent-secondary bg-transparent px-3 py-1.5 text-xs font-medium text-surface hover:border-accent-primary transition duration-700 cursor-pointer">Dismiss</button>
                 </div>
             </div>
         </div>
     )
 }
-
-export default SafetyAlert
