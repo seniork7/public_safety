@@ -1,6 +1,6 @@
+import { motion, easeInOut } from 'motion/react'
 import Card from '../components/Card'
 import TextInput from '../components/form_elements/TextInput'
-import Button from '../components/form_elements/Button'
 import Label from '../components/form_elements/Label'
 import Textarea from '../components/form_elements/Textarea'
 import Submit from '../components/form_elements/Submit'
@@ -166,7 +166,13 @@ export default function Contact() {
                     <h4 className="text-xl font-bold text-center">Send Us a Message</h4>
                     <p className="mb-10 text-text-secondary text-center">Fill out the form below and we'll get back to you within 24 hours.</p>
                     <div className="flex flex-col lg:flex-row justify-center items-center m-4 p-4">
-                        <form onSubmit={handleSubmit} className="bg-bg p-6 rounded-lg border border-border max-w-lg w-full md:w-md" aria-labelledby="contact-form-title">
+                        <motion.form
+                            onSubmit={handleSubmit}
+                            className="bg-bg p-6 rounded-lg border border-border max-w-lg w-full md:w-md" aria-labelledby="contact-form-title"
+                            initial={{ opacity: 0, x: -150 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6 }}
+                        >
                             <h4 id="contact-form-title" className="sr-only">Contact form</h4>
                             {formError && <p className="text-error">{formError}</p>}
                             {formSuccess && <p className="text-success">{formSuccess}</p>}
@@ -209,9 +215,15 @@ export default function Contact() {
                             <div className="pt-2">
                                 <Submit loading={loading} loadingText="Submitting..." buttonText="Send Message" />
                             </div>
-                        </form>
+                        </motion.form>
                         <div className="flex flex-col justify-center items-center gap-4 max-w-md m-4 p-4">
-                            <div className="flex flex-col justify-center items-center group md:w-sm pl-6 border-l-4 rounded-lg border-accent-primary bg-bg p-4">
+                            <motion.div
+                                className="flex flex-col justify-center items-center group md:w-sm pl-6 border-l-4 rounded-lg border-accent-primary bg-bg p-4"
+                                initial={{ opacity: 0, x: 150 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                whileHover={{ scale: 1.03 }}
+                                transition={{ duration: 0.6 }}
+                            >
                                 <h5 className="text-lg font-bold text-primary text-center group-hover:text-accent-secondary transition duration-700">Have an Emergency?</h5>
                                 <a href="tel:+911" className="text-sm text-center text-text-secondary">
                                     For immediate life threatening situations,<br /> please call:
@@ -224,8 +236,14 @@ export default function Contact() {
                                     <br />
                                     <span className="text-accent-primary font-bold group-hover:text-accent-secondary transition duration-700">+1 (555) 123-HELP</span>
                                 </a>
-                            </div>
-                            <div className="group md:w-sm pl-6 border-l-4 bg-bg text-text-primary rounded-lg p-4 border-accent-primary">
+                            </motion.div>
+                            <motion.div
+                                className="group md:w-sm pl-6 border-l-4 bg-bg text-text-primary rounded-lg p-4 border-accent-primary"
+                                initial={{ opacity: 0, x: 150 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                whileHover={{ scale: 1.03 }}
+                                transition={{ duration: 0.9 }}
+                            >
                                 <h5 className="text-lg font-bold text-text-primary text-center mb-2 group-hover:text-accent-secondary transition duration-700">Follow Us</h5>
                                 <div className="flex justify-center items-center text-surface group-hover:text-text-primary">
                                     <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:scale-90 transition duration-700">
@@ -254,7 +272,7 @@ export default function Contact() {
                                     </a>
                                 </div>
                                 <p className="text-sm text-center text-text-secondary mt-2">Stay connected with us on social media!</p>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>

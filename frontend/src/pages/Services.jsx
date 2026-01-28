@@ -1,3 +1,4 @@
+import { motion, easeInOut } from "motion/react"
 import Card from '../components/Card.jsx'
 import TextInput from '../components/form_elements/TextInput.jsx'
 import Button from '../components/form_elements/Button.jsx'
@@ -183,10 +184,13 @@ export default function Services() {
                             <p className="text-accent-primary">No program found matching your search.</p>
                         ) : (
                             filteredPrograms.map((program, index) => (
-                                <div
+                                <motion.div
                                     key={index}
-                                    className="group border border-border rounded-lg lg:max-w-[30%] bg-surface lg:hover:border-accent-primary transition-all duration-700 cursor-pointer"
+                                    className="group border border-border rounded-lg lg:max-w-[30%] bg-surface lg:hover:border-accent-primary cursor-pointer"
                                     onClick={() => setActive(active === index ? null : index)}
+                                    initial={{ opacity: 0, y: 100 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, ease: easeInOut }}
                                 >
                                     <div className="flex justify-between items-center p-4">
                                         <h3 className="text-text-primary font-semibold tracking-wide group-hover:text-accent-primary transition">
@@ -218,7 +222,7 @@ export default function Services() {
                                             <HiMiniArrowRight />
                                         </Button>
                                     </div>
-                                </div>
+                                </motion.div>
                             ))
                         )}
                     </div>
@@ -252,7 +256,13 @@ export default function Services() {
                     <h3 className="text-2xl font-bold mb-4">Day in the Life of a Volunteer</h3>
                     <p className="text-center max-w-lg px-4 text-text-secondary">Our volunteers play a crucial role in our community, dedicating their time and skills to ensure safety and preparedness.</p>
 
-                    <iframe className="rounded-lg my-8" width="80%" height="500" src="https://www.youtube-nocookie.com/embed/RA4uZJz9BeI?si=u2D2Tj6bdmJ_FTQr" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                    <motion.iframe
+                        className="rounded-lg my-8" width="80%" height="500" src="https://www.youtube-nocookie.com/embed/RA4uZJz9BeI?si=u2D2Tj6bdmJ_FTQr" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
+                        initial={{ opacity: 0}}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: 1.5, easeInOut }}
+                    >
+                    </motion.iframe>
                 </article>
             </section>
         </>

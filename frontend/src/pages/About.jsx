@@ -1,3 +1,4 @@
+import { easeInOut, motion } from "motion/react"
 import Card from '../components/Card'
 import EmergencyResponse from '../assets/images/emergency-response.jpg'
 import Education from '../assets/images/education.jpg'
@@ -71,16 +72,40 @@ export default function About() {
                 <div className="">
                     <article className="flex flex-col md:flex-row items-start justify-center gap-8 py-15 px-8 bg-surface">
                         <div className="max-w-lg">
-                            <h3 className="text-2xl font-bold mb-4 text-text-primary">Our Missions</h3>
-                            <p className="text-text-secondary">
+                            <motion.h3
+                                className="text-2xl font-bold mb-4 text-text-primary"
+                                initial={{ x: -60, opacity: 0 }}
+                                whileInView={{ x: 0, opacity: 1 }}
+                                transition={{ duration: 0.6, ease: easeInOut }}
+                            >
+                                Our Missions
+                            </motion.h3>
+                            <motion.p
+                                className="text-text-secondary"
+                                initial={{ x: -150, opacity: 0 }}
+                                whileInView={{ x: 0, opacity: 1 }}
+                                transition={{ duration: 0.6, ease: easeInOut }}
+                            >
                                 Public Safety is dedicated to enhancing community safety through training, resources, and support. Our mission is to empower communities through comprehensive safety education, rapid emergency response, and volunteer-driven initiatives that protect lives, prevent crises, and build long-term resilience in the face of challenges.
-                            </p>
+                            </motion.p>
                         </div>
                         <div className="max-w-lg">
-                            <h3 className="text-2xl font-bold mb-4 text-text-primary">Our Vision</h3>
-                            <p className="text-text-secondary">
+                            <motion.h3
+                                className="text-2xl font-bold mb-4 text-text-primary"
+                                initial={{ x: 60, opacity: 0 }}
+                                whileInView={{ x: 0, opacity: 1 }}
+                                transition={{ duration: 0.6, ease: easeInOut }}
+                            >
+                                Our Vision
+                            </motion.h3>
+                            <motion.p
+                                className="text-text-secondary"
+                                initial={{ x: 150, opacity: 0 }}
+                                whileInView={{ x: 0, opacity: 1 }}
+                                transition={{ duration: 0.6, ease: easeInOut }}
+                            >
                                 A world where every community member has the knowledge, skills, and support to protect themselves and others in emergencies, creating a network of prepared and compassionate citizens ready to make a difference.
-                            </p>
+                            </motion.p>
                         </div>
                     </article>
                 </div>

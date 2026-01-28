@@ -1,3 +1,4 @@
+import { motion, easeInOut } from 'motion/react'
 import Card from '../components/Card.jsx'
 import Select from '../components/form_elements/Select'
 import TextInput from '../components/form_elements/TextInput'
@@ -129,7 +130,7 @@ export default function JoinUs() {
                         <div className="flex flex-col md:grid md:grid-cols-2 justify-center items-center gap-8 my-8 px-4 md:px-8 lg:h-70">
                             {getStarted.map((start, index) => (
                                 <Card key={index} className="bg-bg">
-                                    <h3 className="text-lg font-bold text-text-primary flex items-center justify-start gap-2 mb-3 group-hover:text-accent-secondary transition duration-300">                                        
+                                    <h3 className="text-lg font-bold text-text-primary flex items-center justify-start gap-2 mb-3 group-hover:text-accent-secondary transition duration-300">
                                         <span className="bg-accent-primary grouphover:text-text-primary text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg group-hover:bg-accent-secondary transition duration-700">{start.id}</span>
                                         {start.title}
                                     </h3>
@@ -150,10 +151,13 @@ export default function JoinUs() {
                     {formError && <p className="text-error">{formError}</p>}
                     {formSuccess && <p className="text-success">{formSuccess}</p>}
                     <div className="px-4 w-full flex justify-center items-center">
-                        <form
+                        <motion.form
                             onSubmit={handleSubmit}
                             className="bg-surface flex flex-col gap-4 my-8 px-6 w-full lg:w-[50%] rounded-lg border border-border p-8"
                             aria-labelledby="volunteer-form-title"
+                            initial={{ opacity: 0, y: 150 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
                         >
                             <h4 id="volunteer-form-title" className="sr-only">Volunteer application form</h4>
 
@@ -274,7 +278,7 @@ export default function JoinUs() {
                             <div className="pt-2">
                                 <Submit loading={loading} loadingText="Submitting..." buttonText="Submit Application" />
                             </div>
-                        </form>
+                        </motion.form>
                     </div>
                 </div>
             </section>

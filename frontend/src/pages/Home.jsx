@@ -1,3 +1,4 @@
+import { easeInOut, motion } from "motion/react"
 import { HiClock, HiOutlineTrendingUp, HiShieldCheck, HiOutlineArrowRight } from "react-icons/hi"
 import Card from '../components/Card.jsx'
 import Button from '../components/form_elements/Button.jsx'
@@ -16,7 +17,12 @@ export default function Home() {
             <section className="text-text-primary bg-bg">
                 <section className="flex flex-col items-center justify-center px-4 py-20">
                     <article className="flex flex-col lg:flex-row items-center justify-center gap-20">
-                        <div className="max-w-md md:w-full">
+                        <motion.div
+                            className="max-w-md md:w-full"
+                            initial={{ x: -150, opacity: 0 }}
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ duration: 0.6, ease: easeInOut }}
+                        >
                             <h2 className="text-3xl md:text-4xl mb-2 font-bold text-text-primary">Protecting Lives. Shaping the Future</h2>
                             <p className="max-w-xl text-text-secondary">Be a part of a community dedicated to protecting lives and building a safer future for everyone.</p>
                             <ul className="max-w-lg">
@@ -48,12 +54,19 @@ export default function Home() {
                                     </article>
                                 </li>
                             </ul>
-                        </div>
-                        <div className="max-w-xl overflow-hidden rounded-lg">
-                            <img className="" src={Community} alt="Public Safety Workers" />
-                        </div>
+                        </motion.div>
+
+                        <motion.div
+                            className="max-w-xl overflow-hidden rounded-lg"
+                            initial={{ x: 150, opacity: 0 }}
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ duration: 0.6, ease: easeInOut }}
+                        >
+                            <img className="w-full h-auto block" src={Community} alt="Public Safety Workers" />
+                        </motion.div>
                     </article>
                 </section>
+
                 <section className="flex flex-col items-center justify-center py-20 bg-surface">
                     <h2 className="text-3xl md:text-4xl text-center font-bold text-text-primary">Featured Programs</h2>
                     <p className="max-w-lg text-center text-text-secondary">Explore our most popular programs designed to protect and empower your community.</p>
@@ -70,7 +83,17 @@ export default function Home() {
                             </Card>
                         ))}
                     </div>
-                    <Button onClick={() => HandleBtnClick("services")} className="bg-transparent border border-accent-secondary hover:bg-accent-primary hover:border-accent-primary transition  duration-700 text-text-primary hover:scale-95 hover:text-surface font-bold mt-8 py-2 px-8 rounded-lg cursor-pointer">View All Programs</Button>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 60 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        whileHover={{ scale: 0.95 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <Button onClick={() => HandleBtnClick("services")} className="bg-transparent border border-accent-secondary hover:bg-accent-primary hover:border-accent-primary transition duration-700 text-text-primary hover:text-surface font-bold mt-8 py-2 px-8 rounded-lg cursor-pointer">
+                            View All Programs
+                        </Button>
+                    </motion.div>
                 </section>
             </section>
         </>
