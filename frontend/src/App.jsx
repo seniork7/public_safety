@@ -25,7 +25,7 @@ function App() {
 
   return (
     <>
-      <div className="w-full fixed top-0 left-0 right-0 z-50 backdrop-blur-md shadow-md">
+      <div className="w-screen fixed top-0 left-0 right-0 z-50 backdrop-blur-md shadow-md">
         <SafetyAlert />
         <Header />
       </div>
