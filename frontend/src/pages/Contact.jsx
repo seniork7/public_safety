@@ -140,17 +140,17 @@ export default function Contact() {
     return (
         <>
             {loading && <LoadingOverlay />}
-            <section id="contact" className="scroll-mt-45 lg:scroll-mt-30 bg-surface text-text-primary">
+            <section id="contact" className="scroll-mt-45 lg:scroll-mt-30 bg-surface text-text-primary" role="region" aria-labelledby="contact-title" aria-describedby="contact-desc">
                 <div className="flex flex-col items-center justify-center mb-8 p-8 bg-bg">
-                    <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Get in Touch</h2>
-                    <p className="max-w-xl text-center text-text-secondary">Have questions or need assistance? Our team is here to help. Reach out to us and we'll respond as soon as possible.</p>
+                    <h2 id="contact-title" className="text-3xl md:text-4xl text-center font-bold mb-4">Get in Touch</h2>
+                    <p id="contact-desc" className="max-w-xl text-center text-text-secondary">Have questions or need assistance? Our team is here to help. Reach out to us and we'll respond as soon as possible.</p>
                 </div>
                 <div className="flex flex-col items-center">
-                    <div className="flex flex-col md:grid md:grid-cols-2 justify-center items-start mt-10 gap-7 px-4 md:px-8">
+                    <div className="flex flex-col md:grid md:grid-cols-2 justify-center items-start mt-10 gap-7 px-4 md:px-8" role="list" aria-label="Contact methods">
                         {contactMethods.map((contactMethods, index) => (
-                            <Card key={index} className="justify-center items-center w-xs bg-bg">
-                                <h5 className="text-lg font-bold flex items-center justify-start gap-4 mb-3 group-hover:text-accent-secondary transition duration-700">
-                                    <span className="bg-accent-primary group-hover:text-text-primary text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg group-hover:bg-accent-secondary transition duration-700">
+                            <Card key={index} className="justify-center items-center w-xs bg-bg" aria-labelledby={`contact-method-${index}-title`}>
+                                <h5 id={`contact-method-${index}-title`} className="text-lg font-bold flex items-center justify-start gap-4 mb-3 group-hover:text-accent-secondary transition duration-700">
+                                    <span className="bg-accent-primary group-hover:text-text-primary text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg group-hover:bg-accent-secondary transition duration-700" aria-hidden="true">
                                         {contactMethods.icon}
                                     </span>
                                     {contactMethods.title}
@@ -169,7 +169,7 @@ export default function Contact() {
                         <motion.form
                             onSubmit={handleSubmit}
                             className="bg-bg p-6 rounded-lg border border-border max-w-lg w-full md:w-md" aria-labelledby="contact-form-title"
-                            initial={{ opacity: 0, x: -150 }}
+                            initial={{ opacity: 0, x: -60 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.6 }}
                         >
@@ -219,7 +219,7 @@ export default function Contact() {
                         <div className="flex flex-col justify-center items-center gap-4 max-w-md m-4 p-4">
                             <motion.div
                                 className="flex flex-col justify-center items-center group md:w-sm pl-6 border-l-4 rounded-lg border-accent-primary bg-bg p-4"
-                                initial={{ opacity: 0, x: 150 }}
+                                initial={{ opacity: 0, x: 60 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 whileHover={{ scale: 1.03 }}
                                 transition={{ duration: 0.6 }}
@@ -239,7 +239,7 @@ export default function Contact() {
                             </motion.div>
                             <motion.div
                                 className="group md:w-sm pl-6 border-l-4 bg-bg text-text-primary rounded-lg p-4 border-accent-primary"
-                                initial={{ opacity: 0, x: 150 }}
+                                initial={{ opacity: 0, x: 60 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 whileHover={{ scale: 1.03 }}
                                 transition={{ duration: 0.9 }}
@@ -247,25 +247,25 @@ export default function Contact() {
                                 <h5 className="text-lg font-bold text-text-primary text-center mb-2 group-hover:text-accent-secondary transition duration-700">Follow Us</h5>
                                 <div className="flex justify-center items-center text-surface group-hover:text-text-primary">
                                     <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:scale-90 transition duration-700">
-                                        <span className="bg-accent-primary group-hover:bg-accent-secondary transition duration-700 p-2 rounded-full mr-4 inline-block">
+                                        <span className="bg-accent-primary group-hover:bg-accent-secondary transition duration-700 p-2 rounded-full mr-4 inline-block" aria-hidden="true">
                                             <FaFacebookF className="text-xl" />
                                         </span>
                                         <span className="sr-only">Facebook</span>
                                     </a>
                                     <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="hover:scale-90 transition duration-700">
-                                        <span className="bg-accent-primary group-hover:bg-accent-secondary transition duration-700 p-2 rounded-full mr-4 inline-block">
+                                        <span className="bg-accent-primary group-hover:bg-accent-secondary transition duration-700 p-2 rounded-full mr-4 inline-block" aria-hidden="true">
                                             <FaXTwitter className="text-xl" />
                                         </span>
                                         <span className="sr-only">X</span>
                                     </a>
                                     <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:scale-90 transition duration-700">
-                                        <span className="bg-accent-primary group-hover:bg-accent-secondary transition duration-700 p-2 rounded-full mr-4 inline-block">
+                                        <span className="bg-accent-primary group-hover:bg-accent-secondary transition duration-700 p-2 rounded-full mr-4 inline-block" aria-hidden="true">
                                             <FaInstagram className="text-xl" />
                                         </span>
                                         <span className="sr-only">Instagram</span>
                                     </a>
                                     <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:scale-90 transition duration-700">
-                                        <span className="bg-accent-primary group-hover:bg-accent-secondary transition duration-700 p-2 rounded-full mr-4 inline-block">
+                                        <span className="bg-accent-primary group-hover:bg-accent-secondary transition duration-700 p-2 rounded-full mr-4 inline-block" aria-hidden="true">
                                             <FaLinkedinIn className="text-xl" />
                                         </span>
                                         <span className="sr-only">LinkedIn</span>
@@ -281,20 +281,20 @@ export default function Contact() {
                     <div className="container mx-auto px-2 lg:px-8 py-10 flex flex-col justify-center items-center">
                         <h3 className="text-2xl font-bold mb-4">Contact by Department</h3>
                         <p className="text-center text-text-secondary">Please reach out to the appropriate department for assistance.</p>
-                        <div className="flex flex-col lg:grid lg:grid-cols-2 justify-center items-start m-10 gap-7 px-4 md:px-8">
+                        <div className="flex flex-col lg:grid lg:grid-cols-2 justify-center items-start m-10 gap-7 px-4 md:px-8" role="list" aria-label="Department contacts">
                             {departments.map((department, index) => (
-                                <Card key={index} className="bg-surface">
-                                    <h5 className="text-lg font-bold text-text-primary group-hover:text-accent-secondary transition duration-700">
+                                <Card key={index} className="bg-surface" aria-labelledby={`department-${index}-title`}>
+                                    <h5 id={`department-${index}-title`} className="text-lg font-bold text-text-primary group-hover:text-accent-secondary transition duration-700">
                                         {department.name}
                                     </h5>
                                     <p className="w-[300px] text-text-secondary">
                                         {department.text}
                                     </p>
                                     <a href={`tel:${department.call}`} className="flex items-center gap-2 text-text-secondary hover:scale-90 transition duration-700">
-                                        <span className="text-accent-primary group-hover:text-accent-secondary transition duration-700">{department.phoneIcon}</span> <span className="hover:text-accent-secondary group-hover:underline transition duration-700">{department.call}</span>
+                                        <span className="text-accent-primary group-hover:text-accent-secondary transition duration-700" aria-hidden="true">{department.phoneIcon}</span> <span className="hover:text-accent-secondary group-hover:underline transition duration-700">{department.call}</span>
                                     </a>
                                     <a href={`mailto:${department.contact}`} className="flex items-center gap-2 text-text-secondary hover:scale-90 transition duration-700">
-                                        <span className="text-accent-primary group-hover:text-accent-secondary transition duration-700">{department.emailIcon}</span> <span className="hover:text-accent-secondary group-hover:underline transition duration-700">{department.contact}</span>
+                                        <span className="text-accent-primary group-hover:text-accent-secondary transition duration-700" aria-hidden="true">{department.emailIcon}</span> <span className="hover:text-accent-secondary group-hover:underline transition duration-700">{department.contact}</span>
                                     </a>
                                 </Card>
                             ))}

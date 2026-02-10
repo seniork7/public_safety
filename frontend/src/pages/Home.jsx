@@ -1,9 +1,10 @@
-import { easeInOut, motion } from "motion/react"
+import { motion } from "motion/react"
 import { HiClock, HiOutlineTrendingUp, HiShieldCheck, HiOutlineArrowRight } from "react-icons/hi"
 import Card from '../components/Card.jsx'
 import Button from '../components/form_elements/Button.jsx'
 import Community from '../assets/images/checking_pressure.jpg'
 import HandleBtnClick from '../components/HandleBtnClick.jsx'
+import Section from '../components/Section.jsx'
 
 const card = [
     { title: "Emergency Response Training", text: "Our Emergency Response Training program equips individuals with the skills and knowledge needed to respond effectively in crisis situations.", link: "Learn More" },
@@ -14,21 +15,21 @@ const card = [
 export default function Home() {
     return (
         <>
-            <section className="text-text-primary bg-bg">
-                <section className="flex flex-col items-center justify-center px-4 py-20">
+            <Section id="home" className="bg-bg" aria-labelledby="home-title" aria-describedby="home-desc">
+                <div className="flex flex-col items-center justify-center px-4 py-20">
                     <article className="flex flex-col lg:flex-row items-center justify-center gap-20">
                         <motion.div
                             className="max-w-md md:w-full"
-                            initial={{ x: -150, opacity: 0 }}
+                            initial={{ x: -15, opacity: 0 }}
                             whileInView={{ x: 0, opacity: 1 }}
-                            transition={{ duration: 0.6, ease: easeInOut }}
+                            transition={{ duration: 0.6 }}
                         >
-                            <h2 className="text-3xl md:text-4xl mb-2 font-bold text-text-primary">Protecting Lives. Shaping the Future</h2>
-                            <p className="max-w-xl text-text-secondary">Be a part of a community dedicated to protecting lives and building a safer future for everyone.</p>
-                            <ul className="max-w-lg">
+                            <h2 id="home-title" className="text-3xl md:text-4xl mb-2 font-bold text-text-primary">Protecting Lives. Shaping the Future</h2>
+                            <p id="home-desc" className="max-w-xl text-text-secondary">Be a part of a community dedicated to protecting lives and building a safer future for everyone.</p>
+                            <ul className="max-w-lg" role="list" aria-label="Key program highlights">
                                 <li className="flex justify-start items-start gap-2 my-4">
-                                    <span className="bg-accent-primary text-surface p-2 rounded-full mr-4 inline-block">
-                                        <HiShieldCheck />
+                                    <span className="bg-accent-primary text-surface p-2 rounded-full mr-4 inline-block" aria-hidden="true">
+                                        <HiShieldCheck aria-hidden="true" focusable="false" />
                                     </span>
                                     <article>
                                         <h4 className="text-xl font-semibold text-text-primary">Proven Experience</h4>
@@ -36,8 +37,8 @@ export default function Home() {
                                     </article>
                                 </li>
                                 <li className="flex justify-start items-start gap-2 my-4">
-                                    <span className="bg-accent-primary text-surface p-2 rounded-full mr-4 inline-block">
-                                        <HiClock />
+                                    <span className="bg-accent-primary text-surface p-2 rounded-full mr-4 inline-block" aria-hidden="true">
+                                        <HiClock aria-hidden="true" focusable="false" />
                                     </span>
                                     <article>
                                         <h4 className="text-xl font-semibold text-text-primary">Always Available</h4>
@@ -45,8 +46,8 @@ export default function Home() {
                                     </article>
                                 </li>
                                 <li className="flex justify-start items-start gap-2 my-4">
-                                    <span className="bg-accent-primary text-surface p-2 rounded-full mr-4 inline-block">
-                                        <HiOutlineTrendingUp />
+                                    <span className="bg-accent-primary text-surface p-2 rounded-full mr-4 inline-block" aria-hidden="true">
+                                        <HiOutlineTrendingUp aria-hidden="true" focusable="false" />
                                     </span>
                                     <article>
                                         <h4 className="text-xl font-semibold text-text-primary">Continuous Improvement</h4>
@@ -58,28 +59,31 @@ export default function Home() {
 
                         <motion.div
                             className="max-w-xl overflow-hidden rounded-lg"
-                            initial={{ x: 150, opacity: 0 }}
+                            initial={{ x: 15, opacity: 0 }}
                             whileInView={{ x: 0, opacity: 1 }}
-                            transition={{ duration: 0.6, ease: easeInOut }}
+                            transition={{ duration: 0.6 }}
                         >
-                            <img className="w-full h-auto block" src={Community} alt="Public Safety Workers" />
+                            <img className="w-full h-auto block" src={Community} role="img" alt="Public safety worker in checking a patient's vitals" />
                         </motion.div>
                     </article>
-                </section>
+                </div>
+            </Section>
 
-                <section className="flex flex-col items-center justify-center py-20 bg-surface">
-                    <h2 className="text-3xl md:text-4xl text-center font-bold text-text-primary">Featured Programs</h2>
-                    <p className="max-w-lg text-center text-text-secondary">Explore our most popular programs designed to protect and empower your community.</p>
+            <Section className="bg-surface" role="region" aria-labelledby="featured-programs-title">
+                <div className="flex flex-col items-center justify-center py-6">
+                    <h2 className="text-3xl md:text-4xl text-center font-bold text-text-primary" id="featured-programs-title">Featured Programs</h2>
+                    <p className="max-w-lg text-center text-text-secondary mb-6">Explore our most popular programs designed to protect and empower your community.</p>
+
                     <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                         {card.map((card, index) => (
-                            <Card key={index} className="w-xs md:w-2xl lg:w-lg bg-bg hover:border-l-4 rounded-lg hover:border-b-accent-primary">
-                                <h3 className="text-lg font-bold text-text-primary group-hover:text-accent-secondary transition duration-700">
+                            <Card key={index} className="w-xs md:w-2xl lg:w-lg bg-bg hover:border-l-4 rounded-lg hover:border-b-accent-primary" aria-labelledby={`program-${index}-title`}>
+                                <h3 id={`program-${index}-title`} className="text-lg font-bold text-text-primary group-hover:text-accent-secondary transition duration-700">
                                     {card.title}
                                 </h3>
                                 <p className="font-normal text-text-secondary">
                                     {card.text}
                                 </p>
-                                <a href="#services" className="flex items-center gap-2 text-accent-primary group-hover:text-accent-secondary hover:scale-95 mt-3 transition duration-700">{card.link} <HiOutlineArrowRight /></a>
+                                <a href="#services" aria-label={`Learn more about ${card.title}`} className="flex items-center gap-2 text-accent-primary group-hover:text-accent-secondary hover:scale-95 mt-3 transition duration-700">{card.link} <HiOutlineArrowRight aria-hidden="true" focusable="false" /></a>
                             </Card>
                         ))}
                     </div>
@@ -87,15 +91,15 @@ export default function Home() {
                     <motion.div
                         initial={{ opacity: 0, y: 60 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        whileHover={{ scale: 0.95 }}
+                        whileHover={{ scale: 0.98 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <Button onClick={() => HandleBtnClick("services")} className="bg-transparent border border-accent-secondary hover:bg-accent-primary hover:border-accent-primary transition duration-700 text-text-primary hover:text-surface font-bold mt-8 py-2 px-8 rounded-lg cursor-pointer">
+                        <Button onClick={() => HandleBtnClick("services")} aria-label="View all programs" className="bg-transparent border border-accent-secondary hover:bg-accent-primary hover:border-accent-primary transition duration-700 text-text-primary hover:text-surface font-bold mt-8 py-2 px-8 rounded-lg cursor-pointer">
                             View All Programs
                         </Button>
                     </motion.div>
-                </section>
-            </section>
+                </div>
+            </Section>
         </>
     )
 }

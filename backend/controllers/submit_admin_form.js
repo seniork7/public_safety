@@ -25,14 +25,14 @@ const submitAdminForm = async (req, res) => {
     const token = jwt.sign(
         payload,
         process.env.JWT_SECRET,
-        { expiresIn: '30s' }
+        { expiresIn: '1h' }
     )
 
     res.cookie('admin_token', token, {
         httpOnly: true,
-        secure: true,
-        sameSite: 'none',
-        maxAge: 30 * 1000
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+        maxAge: 60 * 60 * 1000
     })
 
     res.json({

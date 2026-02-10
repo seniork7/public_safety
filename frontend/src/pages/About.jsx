@@ -1,4 +1,4 @@
-import { easeInOut, motion } from "motion/react"
+import { motion } from "motion/react"
 import Card from '../components/Card'
 import EmergencyResponse from '../assets/images/emergency-response.jpg'
 import Education from '../assets/images/education.jpg'
@@ -63,10 +63,10 @@ const team = [
 export default function About() {
     return (
         <>
-            <section id="about" className="scroll-mt-45 lg:scroll-mt-30 text-text-primary bg-bg">
+            <section id="about" className="scroll-mt-45 lg:scroll-mt-30 text-text-primary bg-bg" role="region" aria-labelledby="about-title" aria-describedby="about-desc">
                 <div className="flex flex-col items-center justify-center p-4">
-                    <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">About Us</h2>
-                    <p className="max-w-xl text-center text-text-secondary">For 25 years, we've been dedicated to building safer & stronger communities through volunteer service, emergency response, and comprehensive safety education.</p>
+                    <h2 id="about-title" className="text-3xl md:text-4xl text-center font-bold mb-4">About Us</h2>
+                    <p id="about-desc" className="max-w-xl text-center text-text-secondary">For 25 years, we've been dedicated to building safer & stronger communities through volunteer service, emergency response, and comprehensive safety education.</p>
                 </div>
 
                 <div className="">
@@ -74,17 +74,17 @@ export default function About() {
                         <div className="max-w-lg">
                             <motion.h3
                                 className="text-2xl font-bold mb-4 text-text-primary"
-                                initial={{ x: -60, opacity: 0 }}
+                                initial={{ x: -15, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
-                                transition={{ duration: 0.6, ease: easeInOut }}
+                                transition={{ duration: 0.6 }}
                             >
                                 Our Missions
                             </motion.h3>
                             <motion.p
                                 className="text-text-secondary"
-                                initial={{ x: -150, opacity: 0 }}
+                                initial={{ x: -20, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
-                                transition={{ duration: 0.6, ease: easeInOut }}
+                                transition={{ duration: 0.6 }}
                             >
                                 Public Safety is dedicated to enhancing community safety through training, resources, and support. Our mission is to empower communities through comprehensive safety education, rapid emergency response, and volunteer-driven initiatives that protect lives, prevent crises, and build long-term resilience in the face of challenges.
                             </motion.p>
@@ -92,17 +92,17 @@ export default function About() {
                         <div className="max-w-lg">
                             <motion.h3
                                 className="text-2xl font-bold mb-4 text-text-primary"
-                                initial={{ x: 60, opacity: 0 }}
+                                initial={{ x: 15, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
-                                transition={{ duration: 0.6, ease: easeInOut }}
+                                transition={{ duration: 0.6 }}
                             >
                                 Our Vision
                             </motion.h3>
                             <motion.p
                                 className="text-text-secondary"
-                                initial={{ x: 150, opacity: 0 }}
+                                initial={{ x: 20, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
-                                transition={{ duration: 0.6, ease: easeInOut }}
+                                transition={{ duration: 0.6 }}
                             >
                                 A world where every community member has the knowledge, skills, and support to protect themselves and others in emergencies, creating a network of prepared and compassionate citizens ready to make a difference.
                             </motion.p>
@@ -111,14 +111,14 @@ export default function About() {
                 </div>
             </section>
 
-            <section className="text-text-primary bg-bg py-8">
+            <section className="text-text-primary bg-bg py-8" role="region" aria-labelledby="core-values-title" aria-describedby="core-values-desc">
                 <div className="container mx-auto px-2 lg:px-8 my-15 flex flex-col justify-center items-center">
-                    <h3 className="text-2xl font-bold mb-4">Our Core Values</h3>
-                    <p className="text-center md:w-1/2 text-text-secondary">These principles guide everything we do and shape how we serve our community.</p>
-                    <div className="flex flex-wrap justify-center items-center gap-7 my-10 px-4 md:px-8">
+                    <h3 id="core-values-title" className="text-2xl font-bold mb-4">Our Core Values</h3>
+                    <p id="core-values-desc" className="text-center md:w-1/2 text-text-secondary">These principles guide everything we do and shape how we serve our community.</p>
+                    <div className="flex flex-wrap justify-center items-center gap-7 my-10 px-4 md:px-8" role="list" aria-label="Core values">
                         {values.map((values, index) => (
-                            <Card key={index} className="bg-surface">
-                                <h3 className="text-lg font-semibold text-text-primary group-hover:text-accent-secondary transition duration-700">
+                            <Card key={index} className="bg-surface" aria-labelledby={`value-${index}-title`}>
+                                <h3 id={`value-${index}-title`} className="text-lg font-semibold text-text-primary group-hover:text-accent-secondary transition duration-700">
                                     {values.title}
                                 </h3>
                                 <p className="text-text-secondary mt-1  max-w-lg overflow-hidden transition-all duration-700">
@@ -130,17 +130,17 @@ export default function About() {
                 </div>
             </section>
 
-            <section className="text-text-primary bg-surface">
+            <section className="text-text-primary bg-surface" role="region" aria-labelledby="meet-team-title" aria-describedby="meet-team-desc">
                 <div className="container mx-auto px-2 lg:px-8 flex flex-col justify-center items-center py-8">
-                    <h3 className="text-2xl font-bold mb-4">Meet Our Team</h3>
-                    <p className="text-center max-w-lg px-4 text-text-secondary">Our dedicated team of volunteers is the backbone of our organization, working tirelessly to keep our community safe.</p>
-                    <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
+                    <h3 id="meet-team-title" className="text-2xl font-bold mb-4">Meet Our Team</h3>
+                    <p id="meet-team-desc" className="text-center max-w-lg px-4 text-text-secondary">Our dedicated team of volunteers is the backbone of our organization, working tirelessly to keep our community safe.</p>
+                    <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8" role="list" aria-label="Team groups">
                         {team.map((team, index) => (
-                            <Card key={index} className="relative w-64 h-80 bg-bg overflow-hidden">
-                                <img src={team.image} alt={team.name} className="object-cover w-full h-full rounded-lg" />
+                            <Card key={index} className="group relative w-64 h-80 bg-bg overflow-hidden" aria-labelledby={`team-${index}-title`}>
+                                <img src={team.image} alt={team.name} className="object-cover w-full h-full rounded-lg" role="img" />
                                 <div className="absolute inset-0 text-text-primary flex flex-col items-center justify-end lg:justify-center opacity-100 lg:opacity-0 lg:translate-y-4 group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-700">
                                     <span className="bg-bg/90 text-center p-5">
-                                        <h5 className="text-lg font-semibold text-text-primary">
+                                        <h5 id={`team-${index}-title`} className="text-lg font-semibold text-text-primary">
                                             {team.name}
                                         </h5>
                                         <p className="text-sm max-w-xs opacity-80">

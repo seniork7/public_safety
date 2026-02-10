@@ -8,29 +8,30 @@ import JoinUs from './pages/JoinUs.jsx'
 import Contact from './pages/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import { useEffect } from 'react'
-import { useLocation } from "react-router-dom"
+import { useLocation, Link } from "react-router-dom"
 
-function App() {
+export default function App() {
   const location = useLocation()
 
   useEffect(() => {
-      if (!location.hash) return
+    if (!location.hash) return
 
-      const hashElement = document.querySelector(location.hash)
+    const hashElement = document.querySelector(location.hash)
 
-      if (hashElement) {
-          hashElement.scrollIntoView({ behavior: "smooth" })
-      }
+    if (hashElement) {
+      hashElement.scrollIntoView({ behavior: "smooth" })
+    }
   }, [location.hash])
 
   return (
     <>
       <div className="w-screen fixed top-0 left-0 right-0 z-50 backdrop-blur-md shadow-md">
+        <Link to="#main-content" className="sr-only focus:not-sr-only text-surface" aria-label="Skip to main content">Skip to main content</Link>
         <SafetyAlert />
         <Header />
       </div>
       <HeroBanner />
-      <main>
+      <main id="main-content" role="main">
         <Home />
         <About />
         <Services />
@@ -41,5 +42,3 @@ function App() {
     </>
   )
 }
-
-export default App

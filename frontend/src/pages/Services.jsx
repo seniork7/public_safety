@@ -1,4 +1,4 @@
-import { motion, easeInOut } from "motion/react"
+import { motion } from "motion/react"
 import Card from '../components/Card.jsx'
 import TextInput from '../components/form_elements/TextInput.jsx'
 import Button from '../components/form_elements/Button.jsx'
@@ -155,10 +155,10 @@ export default function Services() {
 
     return (
         <>
-            <section id="services" className="scroll-mt-45 lg:scroll-mt-30 text-primary">
+            <section id="services" className="scroll-mt-45 lg:scroll-mt-30 text-primary" role="region" aria-labelledby="services-title" aria-describedby="services-desc">
                 <div className="flex flex-col items-center justify-center p-8 text-text-primary bg-bg">
-                    <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Our Programs & Services</h2>
-                    <p className="max-w-xl text-center text-text-secondary">Comprehensive safety programs designed to protect, educate, and empower every member of our community through expert training and support.</p>
+                    <h2 id="services-title" className="text-3xl md:text-4xl text-center font-bold mb-4">Our Programs & Services</h2>
+                    <p id="services-desc" className="max-w-xl text-center text-text-secondary">Comprehensive safety programs designed to protect, educate, and empower every member of our community through expert training and support.</p>
                     <div className="flex justify-center items-center w-full">
                         <div className="flex flex-col md:flex-row gap-2 w-full  max-w-md mt-8 mx-4">
                             <TextInput
@@ -179,7 +179,7 @@ export default function Services() {
                     </div>
                 </div>
                 <div className="py-15  bg-surface">
-                    <div className="flex flex-col lg:flex-row lg:flex-wrap justify-center items-start gap-8 container mx-auto px-2 lg:px-8">
+                    <div className="flex flex-col lg:flex-row lg:flex-wrap justify-center items-start gap-8 container mx-auto px-2 lg:px-8" role="list" aria-label="Programs list">
                         {filteredPrograms.length === 0 ? (
                             <p className="text-accent-primary">No program found matching your search.</p>
                         ) : (
@@ -188,38 +188,39 @@ export default function Services() {
                                     key={index}
                                     className="group border border-border rounded-lg lg:max-w-[30%] bg-surface lg:hover:border-accent-primary cursor-pointer"
                                     onClick={() => setActive(active === index ? null : index)}
-                                    initial={{ opacity: 0, y: 100 }}
+                                    initial={{ opacity: 0, y: 60 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.6, ease: easeInOut }}
+                                    transition={{ duration: 0.6 }}
+                                    aria-labelledby={`program-${index}-title`}
                                 >
                                     <div className="flex justify-between items-center p-4">
-                                        <h3 className="text-text-primary font-semibold tracking-wide group-hover:text-accent-primary transition">
+                                        <h3 id={`program-${index}-title`} className="text-text-primary font-semibold tracking-wide group-hover:text-accent-primary transition">
                                             {program.title}
                                         </h3>
 
                                         <span className={`text-accent-primary font-bold text-xl transition-transform duration-300
-                                        ${active === index ? "rotate-90" : ""}`}>
+                                        ${active === index ? "rotate-90" : ""}`} aria-hidden="true">
                                             <HiChevronRight />
                                         </span>
                                     </div>
 
                                     <div className={`${active === index ? "max-h-full" : "max-h-0"} overflow-hidden transition-all duration-500`}>
-                                        <img src={program.image} alt="" className="w-50px h-auto" />
+                                        <img src={program.image} alt={`${program.title} program image`} role="img" className="w-50px h-auto" />
                                         <p className="p-2 text-text-secondary">
                                             {program.text}
                                         </p>
-                                        <ul className="mb-2 p-2">
+                                        <ul className="mb-2 p-2" role="list" aria-label={`${program.title} features`}>
                                             {program.features.map((feature, Index) => (
                                                 <li key={Index} className="text-text-secondary">
-                                                    <HiCheckCircle className="inline-block mr-2 text-success" />
+                                                    <HiCheckCircle className="inline-block mr-2 text-success" aria-hidden="true" focusable="false" />
                                                     {feature}
                                                 </li>
                                             ))}
                                         </ul>
 
-                                        <Button onClick={() => HandleBtnClick("getInvolved")} className="flex justify-center items-center gap-2 bg-accent-secondary hover:bg-accent-primary hover:text-surface text-text-primary hover:underline rounded-lg mt-2 transition-all duration-700 cursor-pointer w-full">
+                                        <Button onClick={() => HandleBtnClick("getInvolved")} className="flex justify-center items-center gap-2 bg-accent-secondary hover:bg-accent-primary hover:text-surface text-text-primary hover:underline rounded-lg mt-2 transition-all duration-700 cursor-pointer w-full" aria-label={`Enroll in ${program.title} program`}>
                                             Enroll Now
-                                            <HiMiniArrowRight />
+                                            <HiMiniArrowRight aria-hidden="true" focusable="false" />
                                         </Button>
                                     </div>
                                 </motion.div>
@@ -260,7 +261,7 @@ export default function Services() {
                         className="rounded-lg my-8" width="80%" height="500" src="https://www.youtube-nocookie.com/embed/RA4uZJz9BeI?si=u2D2Tj6bdmJ_FTQr" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen
                         initial={{ opacity: 0}}
                         whileInView={{ opacity: 1 }}
-                        transition={{ duration: 1.5, easeInOut }}
+                        transition={{ duration: 1.5 }}
                     >
                     </motion.iframe>
                 </article>

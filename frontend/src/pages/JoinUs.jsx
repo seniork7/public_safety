@@ -1,4 +1,4 @@
-import { motion, easeInOut } from 'motion/react'
+import { motion } from 'motion/react'
 import Card from '../components/Card.jsx'
 import Select from '../components/form_elements/Select'
 import TextInput from '../components/form_elements/TextInput'
@@ -117,20 +117,20 @@ export default function JoinUs() {
     return (
         <>
             {loading && <LoadingOverlay />}
-            <section id="joinUs" className="scroll-mt-45 lg:scroll-mt-30  bg-bg text-text-primary">
+            <section id="joinUs" className="scroll-mt-45 lg:scroll-mt-30  bg-bg text-text-primary" role="region" aria-labelledby="joinus-title" aria-describedby="joinus-desc">
                 <div className="flex flex-col items-center justify-center p-8">
-                    <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Join Our Team</h2>
-                    <p className="max-w-xl text-center text-text-secondary">Be part of something meaningful. Whether you want to volunteer, receive training, or stay updated with our initiatives, we'd love to have you join us.</p>
+                    <h2 id="joinus-title" className="text-3xl md:text-4xl text-center font-bold mb-4">Join Our Team</h2>
+                    <p id="joinus-desc" className="max-w-xl text-center text-text-secondary">Be part of something meaningful. Whether you want to volunteer, receive training, or stay updated with our initiatives, we'd love to have you join us.</p>
                 </div>
 
                 <div className="bg-surface py-15">
                     <div className="container mx-auto px-2 lg:px-8 flex flex-col justify-center items-center">
                         <h3 className="text-2xl font-bold mb-4 text-center">How to Get Started</h3>
                         <p className="text-center md:w-1/2 text-text-secondary">Our simple four-step process gets you from application to active volunteer.</p>
-                        <div className="flex flex-col md:grid md:grid-cols-2 justify-center items-center gap-8 my-8 px-4 md:px-8 lg:h-70">
+                        <div className="flex flex-col md:grid md:grid-cols-2 justify-center items-center gap-8 my-8 px-4 md:px-8 lg:h-70" role="list" aria-label="Get started steps">
                             {getStarted.map((start, index) => (
-                                <Card key={index} className="bg-bg">
-                                    <h3 className="text-lg font-bold text-text-primary flex items-center justify-start gap-2 mb-3 group-hover:text-accent-secondary transition duration-300">
+                                <Card key={index} className="bg-bg" aria-labelledby={`getstarted-${index}-title`}>
+                                    <h3 id={`getstarted-${index}-title`} className="text-lg font-bold text-text-primary flex items-center justify-start gap-2 mb-3 group-hover:text-accent-secondary transition duration-300">
                                         <span className="bg-accent-primary grouphover:text-text-primary text-surface w-7 h-7 flex items-center justify-center font-bold rounded-full text-lg group-hover:bg-accent-secondary transition duration-700">{start.id}</span>
                                         {start.title}
                                     </h3>
@@ -155,7 +155,7 @@ export default function JoinUs() {
                             onSubmit={handleSubmit}
                             className="bg-surface flex flex-col gap-4 my-8 px-6 w-full lg:w-[50%] rounded-lg border border-border p-8"
                             aria-labelledby="volunteer-form-title"
-                            initial={{ opacity: 0, y: 150 }}
+                            initial={{ opacity: 0, y: 60 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
                         >
