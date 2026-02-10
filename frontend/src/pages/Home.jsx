@@ -16,7 +16,7 @@ export default function Home() {
     return (
         <>
             <Section id="home" className="bg-bg" aria-labelledby="home-title" aria-describedby="home-desc">
-                <div className="flex flex-col items-center justify-center px-4 py-20">
+                <div className="flex flex-col items-center justify-center px-4 py-5">
                     <article className="flex flex-col lg:flex-row items-center justify-center gap-20">
                         <motion.div
                             className="max-w-md md:w-full"

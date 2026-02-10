@@ -6,12 +6,12 @@ function Footer() {
     return (
         <footer className="bg-surface text-text-primary pt-10 border-t border-border">
             <div className="container mx-auto px-6 lg:px-10 py-8">
-                <div className="flex flex-col lg:flex-row justify-between items-start gap-8">
+                <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-8 text-center lg:text-left">
                     <div className="max-w-lg">
                         <a href="/" className="text-2xl font-bold text-accent-primary hover:text-accent-secondary transition duration-200">Public Safety</a>
                         <p className="mt-3 text-text-secondary">Committed to building safer communities through education, training, and volunteer-driven emergency response services.</p>
 
-                        <div className="mt-6 text-text-primary space-y-2">
+                        <div className="mt-6 text-text-primary space-y-2 flex flex-col items-center lg:items-start">
                             <a href="tel:+15551234567" className="flex items-center gap-2 hover:text-accent-primary">
                                 <HiPhone className="text-xl" /> <span className="text-text-secondary">+1 (555) 123-4567</span>
                             </a>

@@ -34,7 +34,7 @@ export default function HeroBanner() {
         <div id="home" className="relative h-screen overflow-hidden text-primary pt-20">
             <HeroCarousel className="absolute inset-0 z-0" />
 
-            <article className="relative z-10 flex items-center justify-center h-full max-w-8xl lg:max-w-xl px-4 md:px-8 md:ml-4 lg:ml-10">
+            <article className="relative z-10 flex items-end justify-center h-full max-w-8xl lg:max-w-xl px-4 md:px-8 md:ml-4 lg:ml-10 pb-15">
                 <motion.div
                     className="text-surface max-w-2xl"
                     initial="hidden"

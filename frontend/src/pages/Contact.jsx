@@ -281,7 +281,7 @@ export default function Contact() {
                     <div className="container mx-auto px-2 lg:px-8 py-10 flex flex-col justify-center items-center">
                         <h3 className="text-2xl font-bold mb-4">Contact by Department</h3>
                         <p className="text-center text-text-secondary">Please reach out to the appropriate department for assistance.</p>
-                        <div className="flex flex-col lg:grid lg:grid-cols-2 justify-center items-start m-10 gap-7 px-4 md:px-8" role="list" aria-label="Department contacts">
+                        <div className="flex flex-col md:grid md:grid-cols-2 justify-center items-start my-10 gap-7 px-4 md:px-8" role="list" aria-label="Department contacts">
                             {departments.map((department, index) => (
                                 <Card key={index} className="bg-surface" aria-labelledby={`department-${index}-title`}>
                                     <h5 id={`department-${index}-title`} className="text-lg font-bold text-text-primary group-hover:text-accent-secondary transition duration-700">
