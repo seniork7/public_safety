@@ -51,21 +51,6 @@ export default function AdminDashboard() {
     return (
         <>
             {loading && <LoadingOverlay />}
-
-            <div className="p-4">
-                <h1 className="text-2xl font-bold text-accent-secondary">
-                    Welcome, {applications?.fName} {applications?.lName}!
-                </h1>
-
-                <Button
-                    onClick={handleLogout}
-                    className="mt-4 rounded bg-error text-surface px-4 py-2"
-                >
-                    Logout <HiOutlineLogout className='inline-block ml-2' />
-                </Button>
-
-                {loading && <p>Loading Data....</p>}
-            </div>
         </>
     )
 }

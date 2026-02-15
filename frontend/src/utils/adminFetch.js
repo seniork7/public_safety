@@ -1,7 +1,7 @@
 import { API_URL } from './api_url'
 
 export const adminFetch = async (url, options = {}) => {
-    const response = await fetch(`${API_URL}/${url}`, {
+    const response = await fetch(`http://localhost:3000/${url}`, {
         ...options,
         credentials: 'include',
     })
