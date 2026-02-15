@@ -1,10 +1,10 @@
-import ContactForm from "../models/contact_form_schema.js"
+import ContactForm from '../models/contact_form_schema.js'
 
 const submitContactForm = async (req, res) => {
     try {
         const newMessage = await ContactForm.create(req.body)
         res.status(201).json({ success: true, data: newMessage })
-    }catch(error) {
+    } catch (error) {
         res.status(400).json({ success: false, error: error.message })
     }
 }

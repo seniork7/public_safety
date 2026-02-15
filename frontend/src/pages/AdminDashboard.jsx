@@ -2,19 +2,22 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { adminFetch } from '../utils/adminFetch'
 import LoadingOverlay from '../components/LoadingOverlay'
+import Button from '../components/form_elements/Button'
+import { HiOutlineLogout } from 'react-icons/hi'
 
 export default function AdminDashboard() {
     const navigate = useNavigate()
-    const [applications, setApplications] = useState([])
+    const [applications, setApplications] = useState(null)
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         const fetchApplications = async () => {
+            setLoading(true)
+
             try {
-                const data = await adminFetch('api/admin/dashboard')
+                const data = await adminFetch('api/admin/dashboard', { cache: 'no-store' })
 
                 setApplications(data)
-                setLoading(false)
 
                 alert('The dashboard is under development. Please check back later!')
 
@@ -24,19 +27,44 @@ export default function AdminDashboard() {
                     return
                 }
                 console.error(error)
+            } finally {
+                setLoading(false)
             }
         }
 
         fetchApplications()
     }, [navigate])
 
+    const handleLogout = async () => {
+        setLoading(true)
+        try {
+            await adminFetch('api/admin/logout', { method: 'POST' })
+            navigate('/admin/login')
+        } catch (error) {
+            console.error('Logout failed', error)
+            navigate('/admin/login')
+        } finally {
+            setLoading(false)
+        }
+    }
+
     return (
         <>
             {loading && <LoadingOverlay />}
 
-            <div>
-                <h1 className="text-2xl font-bold text-accent-secondary">Welcome, {applications.fName} {applications.lName}!</h1>
-                {loading && <p>Loadind Data....</p>}
+            <div className="p-4">
+                <h1 className="text-2xl font-bold text-accent-secondary">
+                    Welcome, {applications?.fName} {applications?.lName}!
+                </h1>
+
+                <Button
+                    onClick={handleLogout}
+                    className="mt-4 rounded bg-error text-surface px-4 py-2"
+                >
+                    Logout <HiOutlineLogout className='inline-block ml-2' />
+                </Button>
+
+                {loading && <p>Loading Data....</p>}
             </div>
         </>
     )
