@@ -1,4 +1,4 @@
-import Header from './components/Header.jsx'
+import Header from './components/header/Header.jsx'
 import SafetyAlert from './components/SafetyAlert.jsx'
 import HeroBanner from './components/HeroBanner.jsx'
 import Home from './pages/Home.jsx'
