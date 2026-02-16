@@ -1,6 +1,6 @@
 import { motion, easeInOut } from "motion/react"
 
-export default function Card({ children, className = '', imgSrc = '' }) {
+export default function Card({ children, className = '', imgSrc = '' } = {}) {
     return (
         <motion.div
             className={`flex flex-col pl-6 border-l-4 rounded-lg border-accent-primary p-4 shadow-sm ${className}`}
