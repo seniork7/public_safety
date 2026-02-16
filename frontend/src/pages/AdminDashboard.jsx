@@ -21,7 +21,7 @@ export default function AdminDashboard() {
                 
                 setApplications(data)
 
-                // alert('The dashboard is under development. Please check back later!')
+                alert('The dashboard is under development. Please check back later!')
 
             } catch (error) {
                 if (error.message === 'Unauthorized!') {
