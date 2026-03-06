@@ -185,7 +185,7 @@ export default function SafetyTip() {
                 <motion.button
                     aria-expanded={widgetOpen}
                     aria-controls="resources-widget"
-                    onClick={() => setWidgetOpen((open) => !open)}
+                    onClick={() => setWidgetOpen(!widgetOpen)}
                     className="fixed right-6 bottom-12 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition hover:scale-95 duration-700 cursor-pointer bg-accent-secondary text-text-primary hover:bg-accent-primary hover:text-surface"
                     title={widgetOpen ? "Close resources" : "Open resources"}
                     initial={{ scale: 0.9, opacity: 0 }}

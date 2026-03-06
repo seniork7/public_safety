@@ -1,12 +1,17 @@
+/* 
+    Header component - displays the nav menu and admin controls based on the current page and user session
+*/
+
 import { useState } from 'react'
 import HandleBtnClick from '../HandleBtnClick.jsx'
 import Button from '../form_elements/Button.jsx'
-import NavLink from '../header/NavLink.jsx'
 import NavMenu from './NavMenu.jsx'
+import DropdownMenu from '../dashboard/DropdownMenu.jsx'
 import Pulse from '../dashboard/Pulse.jsx'
-import { HiMenu, HiX, HiUser, HiOutlineLogout, HiBell } from 'react-icons/hi'
-import { Link, useNavigate } from 'react-router-dom'
+import { HiMenu, HiX, HiUser, HiBell } from 'react-icons/hi'
+import { Link } from 'react-router-dom'
 
+// Array of nav items for the public site
 const Nav_Items = [
   { label: 'Home', to: '#home' },
   { label: 'About', to: '#about' },
@@ -15,21 +20,14 @@ const Nav_Items = [
   { label: 'Contact', to: '#contact' }
 ]
 
+// Header component that conditionally renders different 
+// nav options based on the current page and user session
 export default function Header({
   page = 'home',
-  adminInfo = null,
   mode = null,
   sessionLabel = null,
-  onLogout = null
 }) {
   const [open, setOpen] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const navigate = useNavigate()
-
-  const handleLogout = async () => {
-    if (onLogout) return onLogout()
-    navigate('/admin/login')
-  }
 
   if (page === 'admin') {
     return (
@@ -48,7 +46,7 @@ export default function Header({
 
           <div className="flex items-center gap-6">
             {sessionLabel && (
-              <div className="bg-success/15 flex items-center gap-2 px-3 py-1 rounded-lg text-sm text-text-primary">
+              <div className="bg-success/15 hidden md:flex items-center gap-2 px-3 py-1 rounded-lg text-sm text-text-primary">
                 <Pulse /> {sessionLabel}
               </div>
             )}
@@ -56,36 +54,20 @@ export default function Header({
             <button className="relative p-2" aria-label="Notifications">
               <HiBell className="text-xl" />
             </button>
-
-            <div className="relative">
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="flex items-center gap-2 px-3 py-1 rounded-md hover:bg-surface/5"
-                aria-haspopup="true"
-                aria-expanded={menuOpen}
-              >
-                <HiUser className="text-xl" />
-              </button>
-
-              {menuOpen && (
-                <div className="absolute right-0 mt-5 w-40 bg-bg shadow-md rounded-md overflow-hidden z-50">
-                  <h3 className="font-medium px-4 py-2 bg-nav-bg text-surface">
-                    {adminInfo ? `${adminInfo.fName} ${adminInfo.lName}` : 'Admin User'}
-                    {adminInfo && <p className="text-xs text-text-muted">{adminInfo.role}</p>}
-                  </h3>
-                  {/* <Link to="/admin/profile" className="block px-4 py-2 hover:bg-surface/5">View Profile</Link> */}
-                  <button onClick={handleLogout} className="w-full text-left px-4 py-2 hover:bg-surface/5">
-                    <HiOutlineLogout className='inline-block ml-2' /> Logout
-                  </button>
+            <DropdownMenu>
+              {sessionLabel && (
+                <div className="bg-success/15 flex md:hidden items-center gap-2 px-3 py-1 text-sm text-text-primary">
+                  <Pulse /> {sessionLabel}
                 </div>
               )}
-            </div>
+            </DropdownMenu>
           </div>
         </div>
       </header>
     )
   }
 
+  // Default header for public site
   return (
     <header>
       <nav className="bg-nav-bg/80 text-surface py-3">

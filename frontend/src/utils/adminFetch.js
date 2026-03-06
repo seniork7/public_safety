@@ -1,3 +1,7 @@
+/* 
+    This function fetch admin data from the backend
+*/
+
 import { API_URL } from './api_url'
 
 export const adminFetch = async (url, options = {}) => {

@@ -1,7 +1,12 @@
+/* 
+    Admin Login Page - contains a login form for admin users to access the admin dashboard
+*/
+
 import AdminBg from '../assets/images/admin-bg.png'
 import { useState } from 'react'
 import { useNavigate, Link } from "react-router-dom"
 import { adminFetch } from '../utils/adminFetch'
+import { useAuth } from '../store/AuthContext'
 import { HiOutlineArrowLeft } from 'react-icons/hi'
 import Submit from '../components/form_elements/Submit'
 import LoadingOverlay from '../components/LoadingOverlay'
@@ -13,6 +18,7 @@ export default function AdminLogin() {
     const [formError, setformError] = useState('')
     const [adminAccess, setAdminAccess] = useState({ email: '', password: '' })
     const navigate = useNavigate()
+    const { login } = useAuth()
 
     const handleChange = (e) => {
         setAdminAccess({ ...adminAccess, [e.target.name]: e.target.value })
@@ -41,7 +47,7 @@ export default function AdminLogin() {
             return;
         }
         try {
-            await adminFetch('api/admin/login', {
+            const response = await adminFetch('api/admin/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -49,6 +55,8 @@ export default function AdminLogin() {
                 body: JSON.stringify(adminAccess),
             })
 
+            login(response)
+            
             setAdminAccess({ email: '', password: '' })
             navigate('/admin/dashboard')
 
