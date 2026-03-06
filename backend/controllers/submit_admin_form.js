@@ -7,12 +7,12 @@ const submitAdminForm = async (req, res) => {
 
     const admin = await AdminForm.findOne({ email })
     if (!admin) {
-        return res.status(401).json({ message: 'Incorrect username!' })
+        return res.status(401).json({ message: 'Invalid credentials!' })
     }
 
     const isValid = await bcrypt.compare(password, admin.passwordHash)
     if (!isValid) {
-        return res.status(401).json({ message: 'Incorrect password!' })
+        return res.status(401).json({ message: 'Invalid credentials!' })
     }
 
     const payload = {
@@ -37,7 +37,9 @@ const submitAdminForm = async (req, res) => {
 
     res.json({
         message: 'Login successful',
-        role: admin.role
+        role: admin.role,
+        fName: admin.fName,
+        lName: admin.lName
     })
 }
 

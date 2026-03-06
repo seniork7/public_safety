@@ -1,4 +1,4 @@
-import { motion, easeInOut } from "motion/react"
+import { motion } from "motion/react"
 import Button from './form_elements/Button.jsx'
 import HandleBtnClick from './HandleBtnClick.jsx'
 import { HeroCarousel } from './HeroCarousel.jsx'
