@@ -10,7 +10,7 @@ const port = process.env.PORT
 const app = express()
 const corsOrigin = process.env.NODE_ENV === 'production'
     ? 'https://public-safety.netlify.app'
-    : 'http://localhost:5174'
+    : 'http://localhost:5173'
 
 app.use(express.json())
 app.use(cookieParser())

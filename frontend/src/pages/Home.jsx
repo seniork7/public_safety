@@ -76,7 +76,7 @@ export default function Home() {
 
                     <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
                         {card.map((card, index) => (
-                            <Card key={index} className="w-xs md:w-2xl lg:w-lg bg-bg hover:border-l-4 rounded-lg hover:border-b-accent-primary" aria-labelledby={`program-${index}-title`}>
+                            <Card key={index} className="w-xs md:w-2xl lg:w-lg bg-bg rounded-lg" aria-labelledby={`program-${index}-title`}>
                                 <h3 id={`program-${index}-title`} className="text-lg font-bold text-text-primary group-hover:text-accent-secondary transition duration-700">
                                     {card.title}
                                 </h3>
@@ -94,7 +94,7 @@ export default function Home() {
                         whileHover={{ scale: 0.98 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <Button onClick={() => HandleBtnClick("services")} aria-label="View all programs" className="bg-transparent border border-accent-secondary hover:bg-accent-primary hover:border-accent-primary transition duration-700 text-text-primary hover:text-surface font-bold mt-8 py-2 px-8 rounded-lg cursor-pointer">
+                        <Button onClick={() => HandleBtnClick("services")} aria-label="View all programs" className="bg-transparent border border-accent-secondary hover:bg-accent-primary hover:border-accent-primary duration-700 text-text-primary hover:text-surface font-bold mt-8 py-2 px-8 rounded-lg">
                             View All Programs
                         </Button>
                     </motion.div>

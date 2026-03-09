@@ -18,7 +18,7 @@ const Nav_Items = [
 export default function ControlPanel({handleCallapse = null}) {
 
     return (
-        <div className="bg-nav-bg h-screen flex flex-col">
+        <div className="bg-nav-bg h-screen md:fixed flex flex-col w-full md:w-[230px]">
             <div className='py-8 shadow-lg flex items-center justify-center gap-4 h-8'>
                 <button 
                     onClick={handleCallapse} 
