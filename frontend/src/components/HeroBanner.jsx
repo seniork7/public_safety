@@ -61,14 +61,14 @@ export default function HeroBanner() {
                             variants={item}
                             transition={{ duration: 0.5 }}
                             className="inline-block">
-                            <Button onClick={() => HandleBtnClick("getInvolved")} className="btn-primary bg-accent-secondary text-text-primary hover:bg-accent-primary hover:text-surface text-sm transition duration-700 w-full">Join Volunteers</Button>
+                            <Button onClick={() => HandleBtnClick("getInvolved")} className="font-semibold btn-primary bg-accent-secondary text-text-primary hover:bg-accent-primary hover:text-surface text-sm transition duration-700 w-full">Join Volunteers</Button>
                         </motion.div>
 
                         <motion.div
                             variants={item}
                             transition={{ duration: 0.4 }}
                             className="inline-block">
-                            <Button onClick={() => HandleBtnClick("about")} className="btn-secondary font-bold rounded-lg border border-accent-secondary bg-transparent text-sm text-surface hover:border-accent-primary transition duration-700 w-full">Learn More</Button>
+                            <Button onClick={() => HandleBtnClick("about")} className="btn-secondary font-semibold rounded-lg border border-accent-secondary bg-transparent text-sm text-surface hover:border-accent-primary transition duration-700 w-full">Learn More</Button>
                         </motion.div>
                     </motion.div>
                 </motion.div>
