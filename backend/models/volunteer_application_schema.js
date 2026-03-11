@@ -15,8 +15,8 @@ const applicationFormSchema = new Schema({
   checkbox: { type: Boolean, required: true  },
   status: { 
     type: String, 
-    enum: ["Pending", "Approved", "Rejected"], 
-    default: "Pending" 
+    enum: ["pending", "approved", "rejected"], 
+    default: "pending" 
   },
   createdAt: { type: Date, default: Date.now },
 });

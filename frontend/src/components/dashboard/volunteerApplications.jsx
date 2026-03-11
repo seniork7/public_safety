@@ -1,21 +1,24 @@
+/* 
+    Volunteer Applications component for admin dashboard. Renders a list of all volunteer applications with options to view details, approve, or reject each application. The data is passed down from the Dashboard component as props.
+*/
+
 import Card from "../Card"
 import Button from "../form_elements/Button"
 
-export default function volunteerApplications({ applications } = {}) {
-    const applicationList = applications?.applications
+export default function volunteerApplications({ dashboardData, onStatusChange } = {}) {
 
     return (
         <div>
             <h1 className="text-2xl mb-4">Volunteer Applications</h1>
-            {applicationList ? (
+            {dashboardData ? (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {applicationList.map((app) => (
+                    {dashboardData.map((app) => (
                         <Card key={app._id} className="w-full bg-surface" aria-labelledby={`application-${app._id}`}>
                             <div className="flex items-start justify-between">
                                 <div className="text-sm">
                                     <h2 className="text-lg flex items-center gap-2">
                                         {`${app.fName} ${app.lName}`}
-                                        <span className={`ml-2 px-2 py-1 text-xs font-semibold rounded-full` + (app.status === 'Pending' ? ' bg-accent-secondary/15 text-accent-secondary' : app.status === 'Approved' ? ' bg-success/15 text-success' : ' bg-error/15 text-error')}>
+                                        <span className={`ml-2 px-2 py-1 text-xs font-semibold rounded-full` + (app.status === 'Pending' ? ' bg-accent-secondary/15 text-accent-secondary' : app.status === 'approved' ? ' bg-success/15 text-success' : ' bg-error/15 text-error')}>
                                             {app.status}
                                         </span>
                                     </h2>
@@ -28,21 +31,30 @@ export default function volunteerApplications({ applications } = {}) {
                                     <p className="">{new Date(app.createdAt).toLocaleDateString()}</p>
                                 </div>
                             </div>
-                            <div className="flex flex-col md:flex-row gap-2 mt-4">
-                                <Button onClick={() => handleViewDetails()} aria-label={`View details for ${app.fName} ${app.lName}`} className="w-full bg-transparent border border-accent-secondary hover:bg-accent-primary hover:border-accent-primary duration-700 text-text-primary hover:text-surface hover:scale-95">
+                            <div className="flex flex-col md:flex-row gap-2 mt-6">
+                                <Button onClick={() => handleViewDetails()} aria-label={`View details for ${app.fName} ${app.lName}`} className="w-full md:w-1/2 bg-transparent border border-accent-secondary hover:bg-accent-primary hover:border-accent-primary duration-700 text-text-primary hover:text-surface hover:scale-95">
                                     View Details
                                 </Button>
 
-                                {app.status !== 'Approved' ? (
-                                    <div className="flex flex-col md:flex-row gap-2">
-                                        <Button onClick={() => handleApprove(app._id)} aria-label={`Approve application for ${app.fName} ${app.lName}`} className="w-[1/2] bg-success hover:bg-success/90 duration-700 text-surface hover:scale-95">
-                                            Approve
-                                        </Button>
-                                        <Button onClick={() => handleReject(app._id)} aria-label={`Reject application for ${app.fName} ${app.lName}`} className="w-[1/2] bg-error hover:bg-error/90 duration-700 text-surface hover:scale-95">
-                                            Reject
-                                        </Button>
-                                    </div>
-                                ) : ''}
+                                {app.status !== "approved" && (
+                                    <Button
+                                        onClick={() => onStatusChange(app._id, "approved")}
+                                        aria-label={`Approve application for ${app.fName} ${app.lName}`}
+                                        className="w-full md:w-1/2 bg-success hover:bg-success/90 duration-700 text-surface hover:scale-95"
+                                    >
+                                        Approve
+                                    </Button>
+                                )}
+
+                                {app.status !== "rejected" && (
+                                    <Button
+                                        onClick={() => onStatusChange(app._id, "rejected")}
+                                        aria-label={`Reject application for ${app.fName} ${app.lName}`}
+                                        className="w-full md:w-1/2 bg-error hover:bg-error/90 duration-700 text-surface hover:scale-95"
+                                    >
+                                        Reject
+                                    </Button>
+                                )}
                             </div>
                         </Card>
                     ))}

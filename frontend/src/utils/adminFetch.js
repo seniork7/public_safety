@@ -6,8 +6,11 @@ import { API_URL } from './api_url'
 
 export const adminFetch = async (url, options = {}) => {
     const response = await fetch(`${API_URL}/${url}`, {
-        ...options,
+        headers: {
+                "Content-Type": "application/json",
+        },
         credentials: 'include',
+        ...options
     })
 
     if (response.status === 401) {
