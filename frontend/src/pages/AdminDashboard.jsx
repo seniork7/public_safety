@@ -12,12 +12,24 @@ import { HiChevronRight } from 'react-icons/hi'
 
 export default function AdminDashboard() {
     const { user, loading } = useAuth()
-    const [isCollapsed, setIsCollapsed] = useState(false)
+    const [isCollapsed, setIsCollapsed] = useState(true)
 
+    const handleCallapse = () => {
+        setIsCollapsed(prev => !prev)
 
-    // useEffect(() => {
-    //     alert('The dashboard is under development. Please check back later!')
-    // }, [])
+        localStorage.setItem('adminPanelCollapsed', JSON.stringify(!isCollapsed))
+    }
+
+    useEffect(() => {
+        alert('The dashboard is under development. Please check back later!')
+
+        const collapsedState = localStorage.getItem('adminPanelCollapsed')
+
+        if (collapsedState) {
+            setIsCollapsed(JSON.parse(collapsedState))
+        }
+        
+    }, [])
 
     const handleMode = () => {
         if (user) {
@@ -29,17 +41,17 @@ export default function AdminDashboard() {
         <>
             {loading && <LoadingOverlay />}
             <main>
-                <section className={`min-h-screen grid grid-cols-1 md:grid-cols-${isCollapsed ? '[1fr]' : '[230px_1fr]'}`}>
+                <section className={`min-h-screen grid grid-cols-1 md:grid-cols-${!isCollapsed ? '[1fr]' : '[230px_1fr]'}`}>
                     {/* Control Panel */}
-                    <div className={isCollapsed ? "hidden" : "block"} aria-label="Admin control panel with navigation links">
-                        <ControlPanel handleCallapse={() => setIsCollapsed(!isCollapsed)} />
+                    <div className={!isCollapsed ? "hidden" : "block"} aria-label="Admin control panel with navigation links">
+                        <ControlPanel onCallapse={handleCallapse} />
                     </div>
 
                     {/* Main Display Area */}
                     <div className="bg-bg relative">
-                        {isCollapsed && (
+                        {!isCollapsed && (
                             <button
-                                onClick={() => setIsCollapsed(!isCollapsed)}
+                                onClick={handleCallapse}
                                 aria-label="Open control panel"
                                 title="Open control panel"
                                 className="left-0 top-1/2 -translate-y-1/2 -ml-6 z-99 fixed flex items-center justify-end h-10 w-10 rounded-r-md bg-nav-bg text-surface shadow-md hover:bg-nav-bg/80 transition duration-300 cursor-pointer"

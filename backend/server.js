@@ -8,17 +8,20 @@ import cookieParser from 'cookie-parser'
 
 const port = process.env.PORT
 const app = express()
+app.use(express.json())
+app.use(cookieParser())
+
 const corsOrigin = process.env.NODE_ENV === 'production'
     ? 'https://public-safety.netlify.app'
     : 'http://localhost:5173'
 
-app.use(express.json())
-app.use(cookieParser())
-
 app.use(cors({
     origin: corsOrigin,
-    credentials: true
+    credentials: true,
+    methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
 }))
+
 
 app.use('/api/volunteers', volunteerApplicationRoutes)
 app.use('/api/contact', contactFormRoutes)

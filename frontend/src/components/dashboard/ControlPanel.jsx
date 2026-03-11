@@ -15,13 +15,13 @@ const Nav_Items = [
     { label: 'Settings', to: '/admin/dashboard/settings', icon: HiCog }
 ]
 
-export default function ControlPanel({handleCallapse = null}) {
+export default function ControlPanel({onCallapse = null}) {
 
     return (
         <div className="bg-nav-bg h-screen md:fixed flex flex-col w-full md:w-[230px]">
             <div className='py-8 shadow-lg flex items-center justify-center gap-4 h-8'>
                 <button 
-                    onClick={handleCallapse} 
+                    onClick={onCallapse} 
                     className="p-1 rounded-full text-surface hover:bg-surface/15 transition duration-300 cursor-pointer"
                     aria-label="Collapse control panel"
                     title="Collapse control panel"

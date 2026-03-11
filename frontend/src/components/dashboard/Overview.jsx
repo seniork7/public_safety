@@ -1,27 +1,32 @@
+/* 
+    Overview component for admin dashboard. Displays the total number of volunteer applications, pending reviews, approved volunteers, and rejected applications. The data is passed down from the Dashboard component as props.
+*/
+
 import Card from "../Card"
 
-export default function Overview({ applications } = {}) {
+export default function Overview({ dashboardData } = {}) {
+    const { totalApplications, totalPending, totalApproved, totalRejected } = dashboardData?.stats || {}
 
     const overviewCards = [
         {
             title: "Total Applications",
             description: "applications received",
-            value: applications ? applications.stats.totalApplications : "Loading..."
+            value: totalApplications ? totalApplications : "Loading..."
         },
         {
             title: "Pending Reviews",
             description: "applications pending review",
-            value: applications ? applications.stats.totalPending : "Loading..."
+            value: totalPending ? totalPending : "Loading..."
         },
         {
             title: "Approved Volunteers",
             description: "volunteers approved",
-            value: applications ? applications.stats.totalApproved : "Loading..."
+            value: totalApproved ? totalApproved : "Loading..."
         },
         {
             title: "Rejected Applications",
             description: "applications rejected",
-            value: applications ? applications.stats.totalRejected : "Loading..."
+            value: totalRejected ? totalRejected : "Loading..."
         }
     ]
 
