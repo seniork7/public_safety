@@ -1,10 +1,26 @@
 import Application from '../models/volunteer_application_schema.js'
+import AdminForm from '../models/admin_schema.js'
 
 const updateApplication = async (req, res) => {
+    
     try {
         const { id } = req.params
         const { status } = req.body
 
+        const adminRole = req.admin?.role.toLowerCase() 
+        const adminID = req.admin?.id
+
+        // Check if the admin ID from the token exists in the database
+        const idInDB = await AdminForm.findById(adminID).select("_id").lean()
+
+        if (!idInDB) {
+            return res.status(404).json({ message: "Admin not found" })
+        }
+        
+        if (adminRole !== "admin") {
+            return res.status(403).json({ message: "Unauthorized! Action can only be performed by an admin." })
+        }
+        
         const allowedStatuses = ["pending", "approved", "rejected"]
 
         if (!allowedStatuses.includes(status)) {
