@@ -4,14 +4,17 @@
 
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { HiExclamation } from 'react-icons/hi'
 import { adminFetch } from '../../../utils/adminFetch'
 import { useAuth } from '../../../store/AuthContext'
 import Overview from "../Overview"
 import VolunteerApplications from '../volunteerApplications'
 import updateApplicationStatus from '../../../utils/updateApplicationStatus'
+import PopUpOverlay from '../PopUpOverlay'
+import Button from '../../form_elements/Button'
 
 export default function Dashboard() {
-    const [isAdmin, setIsAdmin] = useState(false)
+    const [isAdmin, setIsAdmin] = useState(null)
     const navigate = useNavigate()
     const { user, logout, loading } = useAuth()
 
@@ -31,12 +34,12 @@ export default function Dashboard() {
     })
 
     useEffect(() => {
-        const fetchApplications = async () => {
+        const fetchDashboardData = async () => {
             // setLoading(true)
 
             try {
                 await new Promise(resolve => setTimeout(resolve, 500))
-                const response = await adminFetch('api/admin/dashboard', { cache: 'no-store' })
+                const response = await adminFetch('api/admin/dashboard_data', { cache: 'no-store' })
 
                 setDashboardData(response)
 
@@ -51,14 +54,13 @@ export default function Dashboard() {
             }
         }
 
-        fetchApplications()
+        fetchDashboardData()
     }, [navigate])
 
     const handleStatusChange = async (id, status) => {
-        setIsAdmin(user?.role === "Admin")
-
-        if (!isAdmin) {
-            alert("Unauthorized! Action can only be performed by an admin.")
+        const isAdminUser = (user?.role ?? "").toLowerCase() === "admin"
+        if (!isAdminUser) {
+            setIsAdmin(isAdminUser)
             return
         }
 
@@ -86,6 +88,14 @@ export default function Dashboard() {
 
     return (
         <section>
+            {isAdmin === false && (
+                <PopUpOverlay className="text-6xl text-error" icon={<HiExclamation />}>
+                    <h1 className="text-4xl font-bold">Unauthorized!</h1>
+                    <p className="text-lg">You do not have permission to perform this action.</p>
+                    <Button className="mt-2 bg-error hover:bg-accent-secondary hover:text-text-primary text-surface duration-700 hover:scale-98" onClick={() => setIsAdmin(null)}>Close</Button>
+                </PopUpOverlay>
+            )}
+
             <div className="space-y-15">
                 <Overview dashboardData={dashboardData} />
                 <VolunteerApplications dashboardData={dashboardData.applications} onStatusChange={handleStatusChange} />
