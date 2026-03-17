@@ -15,13 +15,13 @@ const Nav_Items = [
     { label: 'Settings', to: '/admin/dashboard/settings', icon: HiCog }
 ]
 
-export default function ControlPanel({onCallapse = null}) {
+export default function ControlPanel({ onCollapse = () => { } }) {
 
     return (
         <div className="bg-nav-bg h-screen md:fixed flex flex-col w-full md:w-[230px]">
             <div className='py-8 shadow-lg flex items-center justify-center gap-4 h-8'>
-                <button 
-                    onClick={onCallapse} 
+                <button
+                    onClick={onCollapse}
                     className="p-1 rounded-full text-surface hover:bg-surface/15 transition duration-300 cursor-pointer"
                     aria-label="Collapse control panel"
                     title="Collapse control panel"
@@ -38,7 +38,7 @@ export default function ControlPanel({onCallapse = null}) {
             <div className="flex justify-center">
                 <NavMenu Nav_Items={Nav_Items} className="py-15 text-surface/80 text-lg flex-col" page='admin' />
             </div>
-            
+
             <footer className="mt-auto py-4 px-8 text-xs text-surface/80 shadow-lg border-t border-surface/10">
                 <p>v1.0 | &copy; {new Date().getFullYear()} | <Link to="/" className="hover:underline">Public Safety</Link></p>
             </footer>

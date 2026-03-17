@@ -5,7 +5,11 @@
 import Card from "../Card"
 import Button from "../form_elements/Button"
 
-export default function volunteerApplications({ dashboardData, onStatusChange } = {}) {
+export default function volunteerApplications({
+    dashboardData,
+    onStatusChange = () => { },
+    onViewDetails = () => { }
+} = {}) {
 
     return (
         <div>
@@ -32,7 +36,7 @@ export default function volunteerApplications({ dashboardData, onStatusChange } 
                                 </div>
                             </div>
                             <div className="flex flex-col md:flex-row gap-2 mt-6">
-                                <Button onClick={() => handleViewDetails()} aria-label={`View details for ${app.fName} ${app.lName}`} className="w-full md:w-1/2 bg-transparent border border-accent-secondary hover:bg-accent-primary hover:border-accent-primary duration-700 text-text-primary hover:text-surface hover:scale-95">
+                                <Button onClick={() => onViewDetails(app._id)} aria-label={`View details for ${app.fName} ${app.lName}`} className="flex-1 bg-transparent border border-accent-secondary hover:bg-accent-primary hover:border-accent-primary duration-700 text-text-primary hover:text-surface hover:scale-95">
                                     View Details
                                 </Button>
 
@@ -40,7 +44,7 @@ export default function volunteerApplications({ dashboardData, onStatusChange } 
                                     <Button
                                         onClick={() => onStatusChange(app._id, "approved")}
                                         aria-label={`Approve application for ${app.fName} ${app.lName}`}
-                                        className="w-full md:w-1/2 bg-success hover:bg-success/90 duration-700 text-surface hover:scale-95"
+                                        className="flex-1 bg-success hover:bg-success/90 duration-700 text-surface hover:scale-95"
                                     >
                                         Approve
                                     </Button>
@@ -50,7 +54,7 @@ export default function volunteerApplications({ dashboardData, onStatusChange } 
                                     <Button
                                         onClick={() => onStatusChange(app._id, "rejected")}
                                         aria-label={`Reject application for ${app.fName} ${app.lName}`}
-                                        className="w-full md:w-1/2 bg-error hover:bg-error/90 duration-700 text-surface hover:scale-95"
+                                        className="flex-1 bg-error hover:bg-error/90 duration-700 text-surface hover:scale-95"
                                     >
                                         Reject
                                     </Button>

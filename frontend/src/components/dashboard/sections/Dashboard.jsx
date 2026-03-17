@@ -12,9 +12,12 @@ import VolunteerApplications from '../volunteerApplications'
 import updateApplicationStatus from '../../../utils/updateApplicationStatus'
 import PopUpOverlay from '../PopUpOverlay'
 import Button from '../../form_elements/Button'
+import ApplicationPanel from '../ApplicationPanel'
 
 export default function Dashboard() {
     const [isAdmin, setIsAdmin] = useState(null)
+    const [selectedApp, setSelectedApp] = useState(null)
+    const [detailsOpen, setDetailsOpen] = useState(false)
     const navigate = useNavigate()
     const { user, logout, loading } = useAuth()
 
@@ -72,18 +75,39 @@ export default function Dashboard() {
                     app._id === id ? response.application : app
                 )
 
+                const total = updatedApplications.length
+                const pending = updatedApplications.filter(app => app.status === "Pending").length
+                const approved = updatedApplications.filter(app => app.status === "approved").length
+                const rejected = updatedApplications.filter(app => app.status === "rejected").length
+
                 return {
                     ...prev,
                     applications: updatedApplications,
-                    totalApplications: updatedApplications.length,
-                    totalPending: updatedApplications.filter(app => app.stats === "Pending").length,
-                    totalApproved: updatedApplications.filter(app => app.stats === "approved").length,
-                    totalRejected: updatedApplications.filter(app => app.stats === "rejected").length
+                    stats: {
+                        totalApplications: total,
+                        totalPending: pending,
+                        totalApproved: approved,
+                        totalRejected: rejected
+                    }
                 }
             })
+
+            setSelectedApp(prev => (prev && prev._id === id) ? response.application : prev)
+
         } catch (error) {
             console.error("Error changing application status:", error)
         }
+    }
+
+    const handleViewDetails = (id) => {
+        const currentApp = dashboardData.applications.find(app => app._id === id)
+        setSelectedApp(currentApp)
+
+        setDetailsOpen(true)
+    }
+
+    const handleCloseDetails = () => {
+        setDetailsOpen(false)
     }
 
     return (
@@ -98,8 +122,19 @@ export default function Dashboard() {
 
             <div className="space-y-15">
                 <Overview dashboardData={dashboardData} />
-                <VolunteerApplications dashboardData={dashboardData.applications} onStatusChange={handleStatusChange} />
+                <VolunteerApplications
+                    dashboardData={dashboardData.applications}
+                    onStatusChange={handleStatusChange}
+                    onViewDetails={handleViewDetails}
+                />
             </div>
+
+            <ApplicationPanel
+                app={selectedApp}
+                open={detailsOpen}
+                onClose={handleCloseDetails}
+                onStatusChange={handleStatusChange}
+            />
         </section>
     )
 }

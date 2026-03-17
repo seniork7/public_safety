@@ -3,7 +3,7 @@
 
 @theme {
 	--color-bg: #f3f6f9;
-	--overlay-bg: rgba(15, 23, 42, 0.55);
+	--color-overlay-bg: rgba(15, 23, 42, 0.55);
 	--color-surface: #ffffff;
 	--color-nav-bg: #1b2a41;
 	--color-border: #d6dde6;
