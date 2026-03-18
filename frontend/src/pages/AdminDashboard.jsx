@@ -15,7 +15,6 @@ export default function AdminDashboard() {
     const [isCollapsed, setIsCollapsed] = useState(false)
 
     const handleCollapse = () => {
-        // update state and persist the new value (use functional update so we can compute next)
         setIsCollapsed(prev => {
             const next = !prev
             localStorage.setItem('adminPanelCollapsed', JSON.stringify(next))
@@ -24,7 +23,7 @@ export default function AdminDashboard() {
     }
 
     useEffect(() => {
-        // alert('The dashboard is under development. Please check back later!')
+        alert('The dashboard is under development. Please check back later!')
 
         const collapsedState = localStorage.getItem('adminPanelCollapsed')
         if (collapsedState) {
@@ -43,12 +42,6 @@ export default function AdminDashboard() {
         <>
             {loading && <LoadingOverlay />}
             <main>
-                {/* use a stable md class to avoid producing invalid class names */}
-                {/*
-                  md:grid-cols-[230px_1fr] => 230px 1fr
-                  md:grid-cols-[1fr]       => 1fr
-                */}
-                {(() => { })()}
                 <section className={`min-h-screen grid grid-cols-1 ${isCollapsed ? 'md:grid-cols-[1fr]' : 'md:grid-cols-[230px_1fr]'}`}>
                     {/* Control Panel */}
                     <div className={isCollapsed ? "hidden" : "block"} aria-label="Admin control panel with navigation links">

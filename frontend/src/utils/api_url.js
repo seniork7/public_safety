@@ -1,1 +1,1 @@
-export const API_URL = 'https://public-safety.onrender.com'
+export const API_URL = 'https://api.public-safety.kevonsenior.com'
