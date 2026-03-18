@@ -32,19 +32,19 @@ export default function ApplicationPanel({
         role="dialog"
       >
         <div className="flex flex-col h-full">
-          <header className="flex items-center justify-between p-4 border-b border-border">
+          <header className="flex items-start justify-between p-4 border-b border-border">
             <div>
-              <h2 className="text-lg font-semibold flex items-center gap-10">
+              <h2 className="text-lg font-semibold flex items-center gap-14">
                 {app.fName} {app.lName}
-                <span className={`ml-2 px-2 py-1 text-xs font-semibold rounded-full` + (app.status === 'Pending' ? ' bg-accent-secondary/15 text-accent-secondary' : app.status === 'approved' ? ' bg-success/15 text-success' : ' bg-error/15 text-error')}>
-                  {app.status}
+                <span className={`ml-12 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${app.status?.toLowerCase() === 'approved' ? 'bg-success/15 text-success' : app.status?.toLowerCase() === 'rejected' ? 'bg-error/15 text-error' : 'bg-accent-secondary/15 text-accent-secondary'}`}>
+                  {app.status?.charAt(0).toUpperCase() + (app.status?.slice(1) ?? '')}
                 </span>
               </h2>
-              <p className="text-sm text-text-muted">{app.email}</p>
+
+              <p className="text-sm text-text-muted">{`ID: ${app._id}`}</p>
             </div>
             <button onClick={onClose} className="p-2 rounded-md hover:bg-surface/5"><HiX className="w-5 h-5" /></button>
           </header>
-
           <div className="flex-1 overflow-auto p-4 space-y-4">
             <dl className="space-y-3 text-text-primary">
               <div className="space-y-2 bg-bg p-3 rounded-lg">

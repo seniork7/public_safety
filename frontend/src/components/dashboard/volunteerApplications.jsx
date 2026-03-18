@@ -23,7 +23,7 @@ export default function volunteerApplications({
                                     <h2 className="text-lg flex items-center gap-2">
                                         {`${app.fName} ${app.lName}`}
                                         <span className={`ml-2 px-2 py-1 text-xs font-semibold rounded-full` + (app.status === 'Pending' ? ' bg-accent-secondary/15 text-accent-secondary' : app.status === 'approved' ? ' bg-success/15 text-success' : ' bg-error/15 text-error')}>
-                                            {app.status}
+                                            {app.status?.charAt(0).toUpperCase() + (app.status?.slice(1) ?? '')}
                                         </span>
                                     </h2>
 

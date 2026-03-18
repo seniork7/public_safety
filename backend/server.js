@@ -11,10 +11,6 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 
-// Allow trusting proxy headers in production
-if (process.env.NODE_ENV === 'production') {
-    app.set('trust proxy', 1);
-}
 
 const corsOrigin = process.env.NODE_ENV === 'production'
     ? 'https://public-safety.kevonsenior.com'
