@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const corsOrigin = process.env.NODE_ENV === 'production'
-    ? 'https://public-safety.netlify.app'
+    ? 'https://public-safety.kevonsenior.com'
     : 'http://localhost:5173'
 
 app.use(cors({

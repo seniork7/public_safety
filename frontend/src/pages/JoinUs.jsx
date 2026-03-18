@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { motion } from 'motion/react'
+import { API_URL } from '../utils/api_url'
 import Card from '../components/Card.jsx'
 import Select from '../components/form_elements/Select'
 import TextInput from '../components/form_elements/TextInput'
@@ -7,8 +9,7 @@ import Submit from '../components/form_elements/Submit'
 import Label from '../components/form_elements/Label'
 import Checkbox from '../components/form_elements/Checkbox'
 import LoadingOverlay from '../components/LoadingOverlay'
-import { API_URL } from '../utils/api_url'
-import { useState } from 'react'
+import { locations } from '../utils/location.js'
 
 const getStarted = [
     {
@@ -44,6 +45,8 @@ export default function JoinUs() {
         email: '',
         phone: '',
         gender: '',
+        province: '',
+        city: '',
         role: '',
         experience: '',
         availability: '',
@@ -188,18 +191,18 @@ export default function JoinUs() {
                                 </div>
                             </div>
                             <div className="flex flex-col md:flex-row gap-4">
-                                <div className="flex-col w-full">
-                                    <Label htmlFor="email" className="">*Email</Label>
-                                    <TextInput
-                                        className="form-input"
-                                        id="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        type="email"
-                                        placeholder="john@example.com"
-                                    />
+                                <div className="w-full">
+                                    <Label htmlFor="gender" className="">*Gender</Label>
+                                    <Select className="form-input" id="gender" name="gender" value={formData.gender} onChange={handleChange}>
+                                        <option value="">-- choose an option --</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="non-binary">Non-binary</option>
+                                        <option value="none">Prefer not to say</option>
+                                        <option value="other">Other</option>
+                                    </Select>
                                 </div>
+
                                 <div className="flex-col w-full">
                                     <Label htmlFor="phone" className="">*Phone Number</Label>
                                     <TextInput
@@ -214,16 +217,49 @@ export default function JoinUs() {
                                 </div>
                             </div>
                             <div className="flex flex-col justify-between items-center md:flex-row gap-4">
-                                <div className="w-full">
-                                    <Label htmlFor="gender" className="">*Gender</Label>
-                                    <Select className="form-input" id="gender" name="gender" value={formData.gender} onChange={handleChange}>
-                                        <option value="">-- choose an option --</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="non-binary">Non-binary</option>
-                                        <option value="none">Prefer not to say</option>
-                                        <option value="other">Other</option>
+                                <div className="flex-col w-full">
+                                    <Label htmlFor="city" className="">*Province</Label>
+                                    <Select
+                                        className="form-input"
+                                        id="province"
+                                        name="province"
+                                        value={formData.province}
+                                        onChange={handleChange}
+                                    >
+                                        <option value="">-- choose a province --</option>
+                                        {locations.map(location => (
+                                            <option key={location.name} value={location.name}>{location.name}</option>
+                                        ))}
                                     </Select>
+                                </div>
+                                <div className="w-full">
+                                    <Label htmlFor="city" className="">*City / Region</Label>
+                                    <Select
+                                        className="form-input"
+                                        id="city"
+                                        name="city"
+                                        value={formData.city}
+                                        onChange={handleChange}
+                                    >
+                                        <option value="">-- choose a city --</option>
+                                        {(locations.find(location => location.name === formData.province)?.regions || []).map(region => (
+                                            <option key={region} value={region}>{region}</option>
+                                        ))}
+                                    </Select>
+                                </div>
+                            </div>
+                            <div className="flex flex-col justify-between items-center md:flex-row gap-4">
+                                <div className="flex-col w-full">
+                                    <Label htmlFor="email" className="">*Email</Label>
+                                    <TextInput
+                                        className="form-input"
+                                        id="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        type="email"
+                                        placeholder="john@example.com"
+                                    />
                                 </div>
                                 <div className="w-full">
                                     <Label htmlFor="role" className="">*Role Interested In</Label>
