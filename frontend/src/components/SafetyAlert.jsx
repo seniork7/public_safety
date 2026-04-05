@@ -1,36 +1,55 @@
-import { HiEye, HiInformationCircle } from "react-icons/hi"
+import { useState, useEffect } from "react"
+import { HiX } from "react-icons/hi"
+import { HiBellAlert } from "react-icons/hi2"
 import { Link } from "react-router-dom"
 import Alerts from "../alerts.json"
-import { useState, useEffect } from "react"
 
 export default function SafetyAlert() {
-    const [currentAlert, setCurrentAlert] = useState()
+    const [currentAlert, setCurrentAlert] = useState(null)
+    const [dismissed, setDismissed] = useState(false)
 
     useEffect(() => {
-        const randomAlert = Alerts[Math.floor(Math.random() * Alerts.length)];
-        setCurrentAlert(randomAlert);
+        const random = Alerts[Math.floor(Math.random() * Alerts.length)]
+        setCurrentAlert(random)
     }, [])
 
-    const HandleDismissBtn = () => {
-        const alertElement = document.getElementById('dismiss-alert')
-        if (alertElement) {
-            alertElement.style.display = 'none'
-        }
-    }
+    if (dismissed || !currentAlert) return null
 
     return (
-        <div id="dismiss-alert" className="flex items-center justify-center gap-3 text-surface bg-alert-bg border border-alert-border p-3 text-sm md:text-base" role="region" aria-label="Safety alert">
-            <div className="flex flex-col lg:flex-row items-start justify-center gap-4 lg:gap-10">
-                <div className="font-medium flex items-start lg:items-center justify-center gap-2">
-                    <HiInformationCircle className="w-6 h-6 mt-1 " aria-hidden="true" focusable="false" />
-                    <p><span className="">Safety Alert:</span> {currentAlert?.alertText}</p>
+        <div
+            role="region"
+            aria-label="Safety alert"
+            className="bg-alert-bg border-l-4 border-alert-border text-surface"
+        >
+            <div className="container mx-auto px-4 lg:px-8 py-2.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
+
+                {/* Label + message */}
+                <div className="flex items-start sm:items-center gap-3 min-w-0">
+                    <HiBellAlert className="shrink-0 text-surface w-4 h-4" aria-hidden="true" />
+                    <p className="text-surface/90 text-sm leading-snug line-clamp-2 sm:line-clamp-1">
+                        <span className="font-semibold text-surface">{currentAlert.title}: </span>
+                        {currentAlert.alertText}
+                    </p>
                 </div>
-                <div className="flex items-center justify-center gap-2">
-                    <Link to={`/safety-tip/${currentAlert?.id}`} aria-label="View safety alert details" className="mr-2 inline-flex items-center rounded-lg text-text-primary hover:bg-accent-primary bg-accent-secondary px-3 py-1.5 text-xs font-medium hover:text-surface transition duration-700 cursor-pointer">
-                        <HiEye className="ml-0.5 mr-2 h-4 w-4" aria-hidden="true" focusable="false" />
-                        View more
+
+                {/* Actions */}
+                <div className="flex items-center gap-3 shrink-0 pl-0 sm:pl-2">
+                    <Link
+                        to={`/safety-tip/${currentAlert.id}`}
+                        aria-label={`View details about ${currentAlert.title}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-surface border border-surface/30 hover:border-surface/60 hover:bg-surface/10 rounded px-3 py-1.5 transition-colors duration-200"
+                    >
+                        View Details
                     </Link>
-                    <button onClick={() => HandleDismissBtn()} type="button" aria-label="Dismiss safety alert" className="rounded-lg border border-accent-secondary bg-transparent px-3 py-1.5 text-xs font-medium text-surface hover:border-accent-primary transition duration-700 cursor-pointer">Dismiss</button>
+
+                    <button
+                        onClick={() => setDismissed(true)}
+                        type="button"
+                        aria-label="Dismiss safety alert"
+                        className="text-surface/50 hover:text-surface transition-colors duration-200 p-1 rounded"
+                    >
+                        <HiX className="w-4 h-4" />
+                    </button>
                 </div>
             </div>
         </div>

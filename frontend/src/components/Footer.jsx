@@ -1,114 +1,153 @@
-import { HiPhone, HiMiniEnvelope, HiMapPin } from "react-icons/hi2"
+import { HiPhone, HiMiniEnvelope, HiMapPin, HiArrowUp } from "react-icons/hi2"
 import { FaLinkedinIn, FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6"
 
-function Footer() {
+export default function Footer() {
     const currentYear = new Date().getFullYear()
+
     return (
-        <footer className="bg-surface text-text-primary pt-10 border-t border-border">
-            <div className="container mx-auto px-6 lg:px-10 py-8">
-                <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-8 text-center lg:text-left">
-                    <div className="max-w-lg">
-                        <a href="/" className="text-2xl font-bold text-accent-primary hover:text-accent-secondary transition duration-200">Public Safety</a>
-                        <p className="mt-3 text-text-secondary">Committed to building safer communities through education, training, and volunteer-driven emergency response services.</p>
+        <footer className="bg-nav-bg text-surface">
+            {/* Top Border */}
+            <div className="h-1 bg-accent-secondary" />
 
-                        <div className="mt-6 text-text-primary space-y-2 flex flex-col items-center lg:items-start">
-                            <a href="tel:+15551234567" className="flex items-center gap-2 hover:text-accent-primary">
-                                <HiPhone className="text-xl" /> <span className="text-text-secondary">+1 (555) 123-4567</span>
+            <div className="container mx-auto px-6 lg:px-10 py-12">
+                <div className="flex flex-col lg:flex-row justify-between gap-10">
+
+                    {/* Brand column */}
+                    <div className="max-w-xs mx-auto lg:mx-0 text-center lg:text-left">
+                        <a href="/" className="text-xl font-bold text-surface hover:text-accent-secondary transition-colors duration-200">
+                            Public Safety
+                        </a>
+                        <p className="mt-3 text-surface/60 text-sm leading-relaxed">
+                            Committed to building safer communities through education, training, and volunteer-driven emergency response services.
+                        </p>
+
+                        <div className="mt-6 space-y-2">
+                            <a href="tel:+15551234567" className="flex items-center justify-center lg:justify-start gap-2 text-surface/60 hover:text-surface text-sm transition-colors duration-200">
+                                <HiPhone className="text-base shrink-0" />
+                                +1 (555) 123-4567
                             </a>
-                            <a href="mailto:info@safetyfirst.org" className="flex items-center gap-2 hover:text-accent-primary">
-                                <HiMiniEnvelope className="text-xl" /> <span className="text-text-secondary">info@safetyfirst.org</span>
+                            <a href="mailto:info@safetyfirst.org" className="flex items-center justify-center lg:justify-start gap-2 text-surface/60 hover:text-surface text-sm transition-colors duration-200">
+                                <HiMiniEnvelope className="text-base shrink-0" />
+                                info@safetyfirst.org
                             </a>
-                            <a href="https://www.google.com/maps" target="_blank" className="flex items-center gap-2 hover:text-accent-primary" rel="noreferrer">
-                                <HiMapPin className="text-xl" /> <span className="text-text-secondary">123 Safety Street, Community City</span>
+                            <a href="https://www.google.com/maps" target="_blank" rel="noreferrer" className="flex items-center justify-center lg:justify-start gap-2 text-surface/60 hover:text-surface text-sm transition-colors duration-200">
+                                <HiMapPin className="text-base shrink-0" />
+                                123 Safety Street, Community City
                             </a>
                         </div>
                     </div>
 
-                    <div className="hidden lg:flex gap-12">
+                    {/* Link columns */}
+                    <div className="flex flex-wrap gap-20 justify-center lg:justify-start text-center">
                         <div>
-                            <h4 className="font-semibold mb-3 text-accent-primary">Quick Links</h4>
-                            <ul className="text-text-secondary space-y-2">
-                                <li><a href="#about" className="hover:underline hover:text-accent-primary transition">About Us</a></li>
-                                <li><a href="#services" className="hover:underline hover:text-accent-primary transition">Our Services</a></li>
-                                <li><a href="#joinUs" className="hover:underline hover:text-accent-primary transition">Join Us</a></li>
-                                <li><a href="#contact" className="hover:underline hover:text-accent-primary transition">Contact</a></li>
+                            <h4 className="font-semibold text-surface text-sm mb-4">Quick Links</h4>
+                            <ul className="space-y-2">
+                                {[
+                                    { label: 'About Us', href: '#about' },
+                                    { label: 'Our Services', href: '#services' },
+                                    { label: 'Join Us', href: '#joinUs' },
+                                    { label: 'Contact', href: '#contact' },
+                                ].map(({ label, href }) => (
+                                    <li key={label}>
+                                        <a href={href} className="text-surface/60 hover:text-surface text-sm transition-colors duration-200">
+                                            {label}
+                                        </a>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
 
                         <div>
-                            <h4 className="font-semibold mb-3 text-accent-primary">Programs</h4>
-                            <ul className="text-text-secondary space-y-2">
-                                <li><a href="#" className="hover:underline hover:text-accent-primary transition">Emergency Response</a></li>
-                                <li><a href="#" className="hover:underline hover:text-accent-primary transition">First Aid Training</a></li>
-                                <li><a href="#" className="hover:underline hover:text-accent-primary transition">Safety Workshops</a></li>
-                                <li><a href="#" className="hover:underline hover:text-accent-primary transition">Youth Programs</a></li>
+                            <h4 className="font-semibold text-surface text-sm mb-4">Programs</h4>
+                            <ul className="space-y-2">
+                                {[
+                                    'Emergency Response',
+                                    'First Aid Training',
+                                    'Safety Workshops',
+                                    'Youth Programs',
+                                ].map(label => (
+                                    <li key={label}>
+                                        <a href="#services" className="text-surface/60 hover:text-surface text-sm transition-colors duration-200">
+                                            {label}
+                                        </a>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
 
                         <div>
-                            <h4 className="font-semibold mb-3 text-accent-primary">Resources</h4>
-                            <ul className="text-text-secondary space-y-2">
-                                <li><a href="#" className="hover:underline hover:text-accent-primary transition">Safety Tips</a></li>
-                                <li><a href="#" className="hover:underline hover:text-accent-primary transition">Training Materials</a></li>
-                                <li><a href="#" className="hover:underline hover:text-accent-primary transition">News & Updates</a></li>
-                                <li><a href="#" className="hover:underline hover:text-accent-primary transition">FAQs</a></li>
+                            <h4 className="font-semibold text-surface text-sm mb-4">Resources</h4>
+                            <ul className="space-y-2">
+                                {[
+                                    'Safety Tips',
+                                    'Training Materials',
+                                    'News & Updates',
+                                    'FAQs',
+                                ].map(label => (
+                                    <li key={label}>
+                                        <a href="#" className="text-surface/60 hover:text-surface text-sm transition-colors duration-200">
+                                            {label}
+                                        </a>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <hr className="my-6 border-border" />
+                {/* Bottom bar */}
+                <div className="border-t border-surface/15 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div className="flex items-center gap-4">
+                        {/* Back to top */}
+                        <button
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            aria-label="Back to top"
+                            className="flex items-center gap-1.5 text-surface/50 hover:text-surface text-xs transition-colors duration-200"
+                        >
+                            <HiArrowUp className="w-3.5 h-3.5" />
+                            Back to top
+                        </button>
 
-                <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
-                    <div className="flex items-center gap-3">
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="inline-block hover:scale-90 transition duration-700">
-                            <span className="bg-accent-primary text-surface p-2 rounded-full inline-flex transition-colors hover:bg-accent-secondary hover:text-text-primary duration-700" aria-hidden="true">
-                                <FaFacebookF className="text-lg" />
-                            </span>
-                            <span className="sr-only">Facebook</span>
-                        </a>
+                        <span className="text-surface/20 text-xs">|</span>
 
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="inline-block hover:scale-90 transition duration-700">
-                            <span className="bg-accent-primary text-surface p-2 rounded-full inline-flex transition-colors hover:bg-accent-secondary hover:text-text-primary duration-700" aria-hidden="true">
-                                <FaXTwitter className="text-lg" />
-                            </span>
-                            <span className="sr-only">Twitter</span>
-                        </a>
-
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="inline-block hover:scale-90 transition duration-700">
-                            <span className="bg-accent-primary text-surface p-2 rounded-full inline-flex transition-colors hover:bg-accent-secondary hover:text-text-primary duration-700" aria-hidden="true">
-                                <FaInstagram className="text-lg" />
-                            </span>
-                            <span className="sr-only">Instagram</span>
-                        </a>
-
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="inline-block hover:scale-90 transition duration-700">
-                            <span className="bg-accent-primary text-surface p-2 rounded-full inline-flex transition-colors hover:bg-accent-secondary hover:text-text-primary duration-700" aria-hidden="true">
-                                <FaLinkedinIn className="text-lg" />
-                            </span>
-                            <span className="sr-only">LinkedIn</span>
-                        </a>
+                        <p className="text-surface/50 text-xs">
+                            &copy; {currentYear} Public Safety. All rights reserved.
+                        </p>
                     </div>
 
-                    <div className="text-center">
-                        <p className="text-error font-semibold">Emergency? Call <span className="font-bold">911</span> immediately</p>
-                        <p className="text-sm text-text-secondary mt-1">For non-emergency inquiries, contact us during business hours</p>
-                    </div>
-                </div>
-            </div>
+                    <div className="flex items-center gap-6">
+                        {/* Social links */}
+                        <div className="flex items-center gap-3">
+                            {[
+                                { icon: FaFacebookF, href: 'https://facebook.com', label: 'Facebook' },
+                                { icon: FaXTwitter, href: 'https://twitter.com', label: 'Twitter' },
+                                { icon: FaInstagram, href: 'https://instagram.com', label: 'Instagram' },
+                                { icon: FaLinkedinIn, href: 'https://linkedin.com', label: 'LinkedIn' },
+                            ].map(({ icon: Icon, href, label }) => (
+                                <a
+                                    key={label}
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={label}
+                                    className="text-surface/50 hover:text-surface transition-colors duration-200"
+                                >
+                                    <Icon className="w-4 h-4" />
+                                </a>
+                            ))}
+                        </div>
 
-            <div className="border-t border-border bg-bg">
-                <div className="container mx-auto px-6 lg:px-10 py-4 flex flex-col md:flex-row justify-between items-center text-text-muted">
-                    <p className="text-sm">&copy; {currentYear} Public Safety. All rights reserved.</p>
-                    <div className="flex gap-4 mt-3 md:mt-0">
-                        <a href="#" className="text-sm hover:underline hover:text-accent-primary">Privacy Policy</a>
-                        <a href="#" className="text-sm hover:underline hover:text-accent-primary">Terms of Service</a>
-                        <a href="#" className="text-sm hover:underline hover:text-accent-primary">Accessibility</a>
+                        {/* Legal links */}
+                        <div className="flex gap-4">
+                            {['Privacy Policy', 'Terms of Service', 'Accessibility'].map(label => (
+                                <a key={label} href="#" className="text-surface/50 hover:text-surface text-xs transition-colors duration-200">
+                                    {label}
+                                </a>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
         </footer>
-    );
+    )
 }
-
-export default Footer;

@@ -1,87 +1,92 @@
-# Public Safety — Volunteer Landing Page
+# Public Safety
 
-A full-stack project that presents public safety programs and collects volunteer applications. Built with React (frontend) and Node/Express + MongoDB (backend). Images are optimized via Cloudinary in production and UI motion is implemented with the motion/react library (motion) across the site.
-
----
-
-## Goal
-
-Build a responsive landing page to help communities learn about public safety and register as volunteers in their community.
+A full-stack web application for a community public safety organization. The site serves as a platform for sharing safety programs, spreading safety awareness through alerts, collecting volunteer applications and a private admin dashboard for managing those applications.
 
 ---
 
-## Architecture
+## What It Does
 
-- Frontend: React, Vite and Tailwind CSS. UI components live in `frontend/src/components/`. Pages in `frontend/src/pages/`.
-- Backend: Express server exposing REST API endpoints in `backend/`. Routes call controllers which validate and persist data to MongoDB via Mongoose models.
-- Images: Production images are served/optimized through Cloudinary.
-- Animations: page & component entrance animations implemented with `motion/react` (used in HeroBanner, Home, Services, SafetyTips, Card and others).
+### Public site
 
----
+- Introduces the organization's mission, vision, and core values
+- Showcases active programs (Emergency Response, First Aid, Community Safety Workshops, and more)
+- Publishes safety alerts that link to dedicated safety tip detail pages
+- Allows community members to apply as volunteers through a multi-field application form
+- Provides a contact form and department-level contact details
 
-## Repo Structure
+### Admin dashboard (`/admin`)
 
-- frontend/
-  - src/components/ — shared UI components (Card, Header, HeroBanner, forms)
-  - src/pages/ — pages (Home, Services, JoinUs, Contact, SafetyTips)
-  - src/index.css — color variables
-- backend/
-  - controllers/ — request handling & business logic
-  - middleware/ - handle logic for protected routes
-  - models/ — Mongoose schemas for volunteers, contact forms, admin
-  - router/ — Express routers wiring controllers to endpoints
-  - database/ — MongoDB connection
+- Secure login with JWT-based session cookies
+- Overview stats: total applications, pending reviews, approved volunteers, rejected applications
+- View, approve, and reject individual volunteer applications
+- Side panel with full applicant details and admin notes
+- Role-based access: `Admin` role can approve/reject; `Demo_Admin` role is read-only
 
 ---
 
-## Backend flow
+## Tech Stack
 
-1. Express receives POST request at an endpoint (e.g. `/api/volunteers`).
-2. Router delegates to a controller in `backend/controllers/submit_volunteer_applications.js`.
-3. Controller validates input then uses a Mongoose model to save to MongoDB.
-4. Controller returns JSON with status and frontend displays success/error message.
+| Layer | Technology |
+| --- | --- |
+| Frontend | React 19, React Router v7, Vite |
+| Styling | Tailwind CSS v4 |
+| Animation | Framer Motion (`motion/react`) |
+| Icons | `react-icons` (Heroicons, Lucide) |
+| Backend | Node.js, Express 5 |
+| Database | MongoDB via Mongoose |
+| Auth | JWT signed tokens stored in `httpOnly` session cookies |
+| Deployment | Frontend → Netlify · Backend → Render |
 
-Example Express setup:
+---
 
-````javascript
-import express from 'express'
-import cors from 'cors'
-import cookieParser from 'cookie-parser'
-import volunteerRoutes from './router/volunteer_application_routes.js'
-import contactRoutes from './router/contact_form_routes.js'
-import connectDB from './database/app_db.js'
+## Auth & Permission Flow
 
-const app = express()
-app.use(express.json())
-app.use(cookieParser())
+1. Admin submits credentials to `POST /api/admin/login`
+2. Server validates email/password against the `Admin` collection, signs a JWT, and sets an `httpOnly` cookie
+3. All subsequent admin API calls (`/api/admin/*`) pass through the `verifyAdmin` middleware which verifies the cookie
+4. `AuthContext` runs a `GET /api/admin/check-auth` on app load to restore session state
+5. `ProtectedRoute` redirects unauthenticated users to `/admin/login`
+6. Role check on `PATCH /api/admin/applications/:id` — `Admin` role required; `Demo_Admin` is blocked server-side (403) and client-side (modal)
 
-app.use(cors({
-    origin: corsOrigin,
-    credentials: true
-}))
-connectDB()
+---
 
-app.use('/api/volunteers', volunteerRoutes)     
-app.use('/api/contact', contactRoutes)       
-app.use('/api/admin', adminFormRoutes)
+## API Endpoints
 
-connectDB().catch(error => console.error('Database connection error', error))
+| Method | Endpoint | Auth | Description |
+| --- | --- | --- | --- |
+| `POST` | `/api/volunteers` | None | Submit volunteer application |
+| `POST` | `/api/contact` | None | Submit contact form message |
+| `POST` | `/api/admin/login` | None | Admin login |
+| `POST` | `/api/admin/logout` | None | Clear session cookie |
+| `GET` | `/api/admin/check-auth` | `verifyAdmin` | Validate active session |
+| `GET` | `/api/admin/dashboard_data` | `verifyAdmin` | Fetch all applications & stats |
+| `PATCH` | `/api/admin/applications/:id` | `verifyAdmin` & Admin role | Approve or reject an application |
 
-app.get('/', (req, res) => res.send('Server is working!'))
+---
 
-app.listen(port, () => console.log(`Server running on port ${port}`)
-)
-````
+## Running Locally
+
+### Backend
+
+```bash
+cd backend
+npm install
+# create a .env file with: PORT, MONGO_URI, JWT_SECRET, NODE_ENV
+npm run dev       # nodemon server.js on port defined in .env
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev       # Vite dev server on http://localhost:5173
+```
+
+---
 
 ## Deployment
 
-- [Frontend](https://public-safety.netlify.app/)
-- [Backend](https://public-safety.onrender.com/api/volunteers)
-
----
-
-## Future Improvements
-
-- Create UI for the admin dashboard to manage volunteers applications
-- Improve accessibility accross the entire site
-- Iteratively refactor components and application structure to improve scalability and maintainability.
+- **Frontend:** [public-safety.netlify.app](https://public-safety.netlify.app)
+- **Backend:** [public-safety.onrender.com](https://public-safety.onrender.com)
+- **Live site:** [public-safety.kevonsenior.com](https://public-safety.kevonsenior.com)

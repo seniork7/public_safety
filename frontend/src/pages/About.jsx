@@ -1,11 +1,10 @@
-import { motion } from "motion/react"
-import Card from '../components/Card'
 import EmergencyResponse from '../assets/images/emergency-response.jpg'
 import Education from '../assets/images/education.jpg'
 import OutReach from '../assets/images/outreach.jpg'
 import Leadership from '../assets/images/leadership.jpg'
 import Disaster from '../assets/images/disaster.jpg'
 import Medical from '../assets/images/medical.jpg'
+import SectionHeader from '../components/SectionHeader.jsx'
 
 const values = [
     {
@@ -14,141 +13,172 @@ const values = [
     },
     {
         title: "Compassion",
-        text: "Our volunteers serve with empathy, understanding, and genuine care for those in need. We believe in treating everyone with dignity and respect."
+        text: "Our volunteers serve with empathy, understanding, and genuine care for those in need. We believe in treating everyone with dignity and respect.",
     },
     {
         title: "Community",
-        text: "We believe in the power of unity and collaboration to create lasting positive change. Together, we are stronger and more effective."
+        text: "We believe in the power of unity and collaboration to create lasting positive change. Together, we are stronger and more effective.",
     },
     {
         title: "Excellence",
-        text: "We continuously strive for the highest quality in our training, response, and service delivery. Mediocrity has no place in emergency services."
-    }
+        text: "We continuously strive for the highest quality in our training, response, and service delivery. Mediocrity has no place in emergency services.",
+    },
 ]
 
 const team = [
     {
         name: "First Aid Team",
-        role: "First aiders trained in basic life support ready to respond",
-        image: EmergencyResponse
+        role: "First aiders trained in basic life support, ready to respond",
+        image: EmergencyResponse,
     },
     {
         name: "Training & Education",
         role: "Certified instructors providing safety education and training",
-        image: Education
+        image: Education,
     },
     {
         name: "Community Outreach",
-        role: "Building connections through engagement and support",
-        image: OutReach
+        role: "Building connections through community engagement and support",
+        image: OutReach,
     },
     {
-        id: 4,
         name: "Management Team",
         role: "Experienced leaders guiding our mission and vision",
-        image: Leadership
+        image: Leadership,
     },
     {
         name: "Disaster Preparedness",
-        role: "Planning for emergency situations and response strategies",
-        image: Disaster
+        role: "Planning and coordinating emergency response strategies",
+        image: Disaster,
     },
     {
         name: "Medical Services",
-        role: "Healthcare professionals on standby",
-        image: Medical
-    }
+        role: "Healthcare professionals providing on-site medical support",
+        image: Medical,
+    },
 ]
 
 export default function About() {
     return (
         <>
-            <section id="about" className="scroll-mt-45 lg:scroll-mt-30 text-text-primary bg-bg" role="region" aria-labelledby="about-title" aria-describedby="about-desc">
-                <div className="flex flex-col items-center justify-center p-4">
-                    <h2 id="about-title" className="text-3xl md:text-4xl text-center font-bold mb-4">About Us</h2>
-                    <p id="about-desc" className="max-w-xl text-center text-text-secondary">For 25 years, we've been dedicated to building safer & stronger communities through volunteer service, emergency response, and comprehensive safety education.</p>
+            <section
+                id="about"
+                className="scroll-mt-45 lg:scroll-mt-30"
+                role="region"
+                aria-labelledby="about-title"
+            >
+                <div className="bg-linear-to-r from-navy-deep to-navy-deep/85 text-surface py-20 md:py-28 px-8">
+                    <div className="max-w-6xl mx-auto lg:px-8 text-center lg:text-left">
+                        <p className="inline-block text-accent-secondary font-semibold text-xs uppercase tracking-[0.2em]">
+                            About Us
+                        </p>
+                        <div className="w-10 h-0.5 bg-accent-secondary mb-4 mx-auto lg:mx-0"></div>
+
+                        <h2
+                            id="about-title"
+                            className="text-3xl md:text-4xl font-bold text-surface leading-tight mb-4"
+                        >
+                            Who We Are
+                        </h2>
+                        <p className="text-surface text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
+                            For 25 years, we've been dedicated to building safer and stronger communities through volunteer service, emergency response, and comprehensive safety education.
+                        </p>
+                    </div>
                 </div>
 
-                <div className="">
-                    <article className="flex flex-col md:flex-row items-start justify-center gap-8 py-15 px-8 bg-surface">
-                        <div className="max-w-lg">
-                            <motion.h3
-                                className="text-2xl font-bold mb-4 text-text-primary"
-                                initial={{ x: -15, opacity: 0 }}
-                                whileInView={{ x: 0, opacity: 1 }}
-                                transition={{ duration: 0.6 }}
-                            >
-                                Our Missions
-                            </motion.h3>
-                            <motion.p
-                                className="text-text-secondary"
-                                initial={{ x: -20, opacity: 0 }}
-                                whileInView={{ x: 0, opacity: 1 }}
-                                transition={{ duration: 0.6 }}
-                            >
-                                Public Safety is dedicated to enhancing community safety through training, resources, and support. Our mission is to empower communities through comprehensive safety education, rapid emergency response, and volunteer-driven initiatives that protect lives, prevent crises, and build long-term resilience in the face of challenges.
-                            </motion.p>
+                <div className="bg-surface">
+                    <div className="max-w-6xl mx-auto px-8 lg:px-16 py-20">
+                        <div className="flex flex-col lg:flex-row gap-10 lg:gap-0 lg:divide-x lg:divide-border">
+                            <div className="lg:pr-12 text-center lg:text-left">
+                                <h3 className="text-xl font-bold text-text-primary mb-3">
+                                    Our Mission
+                                </h3>
+                                <p className="text-text-secondary leading-relaxed">
+                                    Public Safety is dedicated to enhancing community safety through training, resources, and support. Our mission is to empower communities through comprehensive safety education, rapid emergency response, and volunteer-driven initiatives that protect lives, prevent crises, and build long-term resilience in the face of challenges.
+                                </p>
+                            </div>
+
+                            <div className="lg:pl-12 text-center lg:text-left">
+                                <h3 className="text-xl font-bold text-text-primary mb-3">
+                                    Our Vision
+                                </h3>
+                                <p className="text-text-secondary leading-relaxed">
+                                    A world where every community member has the knowledge, skills, and support to protect themselves and others in emergencies — creating a network of prepared and compassionate citizens ready to make a difference when it matters most.
+                                </p>
+                            </div>
                         </div>
-                        <div className="max-w-lg">
-                            <motion.h3
-                                className="text-2xl font-bold mb-4 text-text-primary"
-                                initial={{ x: 15, opacity: 0 }}
-                                whileInView={{ x: 0, opacity: 1 }}
-                                transition={{ duration: 0.6 }}
-                            >
-                                Our Vision
-                            </motion.h3>
-                            <motion.p
-                                className="text-text-secondary"
-                                initial={{ x: 20, opacity: 0 }}
-                                whileInView={{ x: 0, opacity: 1 }}
-                                transition={{ duration: 0.6 }}
-                            >
-                                A world where every community member has the knowledge, skills, and support to protect themselves and others in emergencies, creating a network of prepared and compassionate citizens ready to make a difference.
-                            </motion.p>
-                        </div>
-                    </article>
+                    </div>
                 </div>
             </section>
 
-            <section className="text-text-primary bg-bg py-8" role="region" aria-labelledby="core-values-title" aria-describedby="core-values-desc">
-                <div className="container mx-auto px-2 lg:px-8 my-15 flex flex-col justify-center items-center">
-                    <h3 id="core-values-title" className="text-2xl font-bold mb-4">Our Core Values</h3>
-                    <p id="core-values-desc" className="text-center md:w-1/2 text-text-secondary">These principles guide everything we do and shape how we serve our community.</p>
-                    <div className="flex flex-wrap justify-center items-center gap-7 my-10 px-4 md:px-8" role="list" aria-label="Core values">
-                        {values.map((values, index) => (
-                            <Card key={index} className="bg-surface" aria-labelledby={`value-${index}-title`}>
-                                <h3 id={`value-${index}-title`} className="text-lg font-semibold text-text-primary group-hover:text-accent-secondary transition duration-700">
-                                    {values.title}
-                                </h3>
-                                <p className="text-text-secondary mt-1  max-w-lg overflow-hidden transition-all duration-700">
-                                    {values.text}
+            <section className="bg-bg" role="region" aria-labelledby="core-values-title">
+                <div className="max-w-6xl mx-auto px-8 lg:px-16 py-20">
+                    <SectionHeader
+                        tag="Our Values"
+                        title="Core Values"
+                        subtitle="These principles guide everything we do and shape how we serve our community."
+                    />
+
+                    <div
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-8"
+                        role="list"
+                        aria-label="Core values"
+                        aria-labelledby="core-values-title"
+                    >
+                        {values.map((value, index) => (
+                            <div
+                                key={index}
+                                role="listitem"
+                                aria-labelledby={`value-${index}-title`}
+                                className="text-center sm:text-left"
+                            >
+                                <h4 id={`value-${index}-title`} className="font-semibold text-text-primary mb-1">
+                                    {value.title}
+                                </h4>
+                                <p className="text-text-secondary text-sm leading-relaxed">
+                                    {value.text}
                                 </p>
-                            </Card>
+                            </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            <section className="text-text-primary bg-surface" role="region" aria-labelledby="meet-team-title" aria-describedby="meet-team-desc">
-                <div className="container mx-auto px-2 lg:px-8 flex flex-col justify-center items-center py-8">
-                    <h3 id="meet-team-title" className="text-2xl font-bold mb-4">Meet Our Team</h3>
-                    <p id="meet-team-desc" className="text-center max-w-lg px-4 text-text-secondary">Our dedicated team of volunteers is the backbone of our organization, working tirelessly to keep our community safe.</p>
-                    <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8" role="list" aria-label="Team groups">
-                        {team.map((team, index) => (
-                            <Card key={index} className="group relative w-64 h-80 bg-bg overflow-hidden" aria-labelledby={`team-${index}-title`}>
-                                <img src={team.image} alt={team.name} className="object-cover w-full h-full rounded-lg" role="img" />
-                                <div className="absolute inset-0 text-text-primary flex flex-col items-center justify-end lg:justify-center opacity-100 lg:opacity-0 lg:translate-y-4 group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-700">
-                                    <span className="bg-bg/90 text-center p-5">
-                                        <h5 id={`team-${index}-title`} className="text-lg font-semibold text-text-primary">
-                                            {team.name}
-                                        </h5>
-                                        <p className="text-sm max-w-xs opacity-80">
-                                            {team.role}
-                                        </p>
-                                    </span>
+            <section className="bg-surface" role="region" aria-labelledby="meet-team-title">
+                <div className="max-w-6xl mx-auto px-8 lg:px-16 py-20">
+                    <SectionHeader
+                        tag="Our Team"
+                        title="The People Behind the Mission"
+                        subtitle="Our dedicated volunteers are the backbone of everything we do - trained, committed, and ready to serve."
+                    />
+
+                    <div
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                        role="list"
+                        aria-label="Team groups"
+                    >
+                        {team.map((member, index) => (
+                            <article
+                                key={index}
+                                role="listitem"
+                                aria-labelledby={`team-${index}-title`}
+                                className="group relative aspect-3/4 rounded-xl overflow-hidden bg-bg"
+                            >
+                                <img
+                                    src={member.image}
+                                    alt={member.name}
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                                />
+                                {/* Overlay — always visible on mobile, slides up on desktop hover */}
+                                <div className="absolute inset-x-0 bottom-0 translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 ease-out bg-navy-deep/90 px-5 py-4">
+                                    <h5 id={`team-${index}-title`} className="font-semibold text-surface text-base leading-snug">
+                                        {member.name}
+                                    </h5>
+                                    <p className="text-surface/65 text-sm mt-1 leading-relaxed">
+                                        {member.role}
+                                    </p>
                                 </div>
-                            </Card>
+                            </article>
                         ))}
                     </div>
                 </div>

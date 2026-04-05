@@ -25,7 +25,7 @@ export default function App() {
 
   return (
     <>
-      <div className="w-screen fixed top-0 left-0 right-0 z-50 backdrop-blur-md shadow-md">
+      <div className="fixed top-0 left-0 right-0 z-50">
         <Link to="#main-content" className="sr-only focus:not-sr-only text-surface" aria-label="Skip to main content">Skip to main content</Link>
         <SafetyAlert />
         <Header />

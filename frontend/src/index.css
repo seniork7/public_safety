@@ -1,28 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap');
 @import "tailwindcss";
 @import './App.css';
 
 @theme {
-	--color-bg: #f3f6f9;
-	--color-overlay-bg: rgba(15, 23, 42, 0.55);
+	/* Backgrounds */
+	--color-bg: #F5F7FA;
+	--color-overlay-bg: rgba(13, 17, 23, 0.60);
 	--color-surface: #ffffff;
-	--color-nav-bg: #1b2a41;
-	--color-border: #d6dde6;
-	--color-text-primary: #0b1c2d;
-	--color-text-secondary: #2c3e50;
-	--color-text-muted: #6b7c93;
-	--color-accent-primary: #1f4fd8;
-	--color-accent-secondary: #d97706;
-	--color-accent-info: #0284c7;
-	--color-success: #166534;
-	--color-error: #991b1b;
-	--color-alert-bg: rgba(153, 27, 27, 0.9);
-	--color-alert-border: rgba(153, 27, 27);
-	--color-alert-text: #0b1c2d;
-	--color-input-bg: #f8fafc;
-	--color-input-border: #b6c2d1;
-	--color-input-placeholder: #6b7c93;
-	--color-input-text: #0b1c2d;
-	--color-input-focus: #1f4fd8;
-	--color-hover-bg: #e7eef6;
-	--color-hover-text: #0b1c2d;
+
+	/* Navigation & dark sections */
+	--color-nav-bg: #0D1117;
+	--color-navy-deep: #1C355F;
+	--color-navy-light: #1F2933;
+	--color-blue-muted: #F5F7FA;
+
+	/* Borders */
+	--color-border: #E5E7EB;
+
+	/* Text */
+	--color-text-primary: #0D1117;
+	--color-text-secondary: #1F2933;
+	--color-text-muted: #9CA3AF;
+
+	/* Accents */
+	--color-accent-primary: #1C355F;
+	--color-accent-secondary: #F2CB05;
+	--color-accent-hover: #D4A900;
+	--color-accent-info: #305473;
+
+	/* Status */
+	--color-success: #16A34A;
+	--color-error: #C1121F;
+
+	/* Alerts */
+	--color-alert-bg: #E63946;
+	--color-alert-border: #C1121F;
+	--color-alert-text: #ffffff;
+
+	/* Form inputs */
+	--color-input-bg: #F5F7FA;
+	--color-input-border: #E5E7EB;
+	--color-input-placeholder: #9CA3AF;
+	--color-input-text: #0D1117;
+	--color-input-focus: #1C355F;
+	--color-hover-bg: #E8EEF5;
+	--color-hover-text: #0D1117;
+
+	--font-display: 'Sora', sans-serif;
+	--font-body: 'Inter', system-ui, sans-serif;
+}
+
+body {
+	font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-display);
 }
