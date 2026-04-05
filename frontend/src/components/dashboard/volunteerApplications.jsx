@@ -1,42 +1,76 @@
-/* 
-    Volunteer Applications component for admin dashboard. Renders a list of all volunteer applications with options to view details, approve, or reject each application. The data is passed down from the Dashboard component as props.
+/*
+    Volunteer Applications component for admin dashboard. Renders a list of all volunteer applications with options to view details, approve, or reject each application.
 */
 
-import Card from "../Card"
 import Button from "../form_elements/Button"
 
-export default function volunteerApplications({
+const statusStyle = (status) => {
+    if (status?.toLowerCase() === 'approved') return 'bg-success/15 text-success'
+    if (status?.toLowerCase() === 'rejected') return 'bg-error/15 text-error'
+    return 'bg-accent-secondary/25 text-navy-light'
+}
+
+export default function VolunteerApplications({
     dashboardData,
     onStatusChange = () => { },
     onViewDetails = () => { }
 } = {}) {
 
+    if (!dashboardData || dashboardData.length === 0) {
+        return (
+            <div>
+                <h2 className="text-lg font-semibold text-text-primary mb-4">Volunteer Applications</h2>
+                <div className="bg-surface rounded-xl border border-border p-12 text-center">
+                    <p className="text-text-secondary text-sm">No applications found.</p>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div>
-            <h1 className="text-2xl mb-4">Volunteer Applications</h1>
-            {dashboardData ? (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {dashboardData.map((app) => (
-                        <Card key={app._id} className="w-full bg-surface" aria-labelledby={`application-${app._id}`}>
-                            <div className="flex items-start justify-between">
-                                <div className="text-sm">
-                                    <h2 className="text-lg flex items-center gap-2">
-                                        {`${app.fName} ${app.lName}`}
-                                        <span className={`ml-2 px-2 py-1 text-xs font-semibold rounded-full` + (app.status === 'Pending' ? ' bg-accent-secondary/15 text-accent-secondary' : app.status === 'approved' ? ' bg-success/15 text-success' : ' bg-error/15 text-error')}>
-                                            {app.status?.charAt(0).toUpperCase() + (app.status?.slice(1) ?? '')}
-                                        </span>
-                                    </h2>
+            <h2 className="text-lg font-semibold text-text-primary mb-4">Volunteer Applications</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                {dashboardData.map((app) => (
+                    <div
+                        key={app._id}
+                        className="bg-surface rounded-xl border border-border p-5"
+                        aria-labelledby={`app-name-${app._id}`}
+                    >
+                        <div className="flex items-start justify-between mb-1">
+                            <div>
+                                <h3 id={`app-name-${app._id}`} className="font-semibold text-text-primary">
+                                    {app.fName} {app.lName}
+                                </h3>
 
-                                    <p>{app.role}</p>
-                                    <p>Application ID: {app._id}</p>
-                                </div>
-                                <div className="text-sm italic text-text-muted">
-                                    <p className="">Submitted</p>
-                                    <p className="">{new Date(app.createdAt).toLocaleDateString()}</p>
-                                </div>
+                                <p className="text-text-secondary text-sm">{app.role}</p>
+
+                                {(app.province || app.city) && (
+                                    <p className="text-text-secondary text-sm">
+                                        {`${app.city}, ${app.province}`}
+                                    </p>
+                                )}
+
+                                <p className="text-text-secondary text-xs mt-1">#{app._id?.slice(-6)}</p>
                             </div>
-                            <div className="flex flex-col md:flex-row gap-2 mt-6">
-                                <Button onClick={() => onViewDetails(app._id)} aria-label={`View details for ${app.fName} ${app.lName}`} className="flex-1 bg-transparent border border-accent-secondary hover:bg-accent-primary hover:border-accent-primary duration-700 text-text-primary hover:text-surface hover:scale-95">
+
+                            <div>
+                                <p className="text-text-secondary text-xs mb-1">
+                                    Submitted {new Date(app.createdAt).toLocaleDateString()}
+                                </p>
+                                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${statusStyle(app.status)}`}>
+                                    {app.status?.charAt(0).toUpperCase() + (app.status?.slice(1) ?? '')}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="flex items-center justify-center gap-3 mt-4 pt-4 border-t border-border">
+                            <div className="flex flex-row items-center justify-center gap-3 w-full">
+                                <Button
+                                    onClick={() => onViewDetails(app._id)}
+                                    aria-label={`View details for ${app.fName} ${app.lName}`}
+                                    className="bg-transparent border border-border hover:border-accent-primary hover:text-accent-primary text-text-primary text-sm duration-200 w-full"
+                                >
                                     View Details
                                 </Button>
 
@@ -44,7 +78,7 @@ export default function volunteerApplications({
                                     <Button
                                         onClick={() => onStatusChange(app._id, "approved")}
                                         aria-label={`Approve application for ${app.fName} ${app.lName}`}
-                                        className="flex-1 bg-success hover:bg-success/90 duration-700 text-surface hover:scale-95"
+                                        className="bg-success hover:bg-success/90 text-surface text-sm duration-200 w-full"
                                     >
                                         Approve
                                     </Button>
@@ -54,18 +88,16 @@ export default function volunteerApplications({
                                     <Button
                                         onClick={() => onStatusChange(app._id, "rejected")}
                                         aria-label={`Reject application for ${app.fName} ${app.lName}`}
-                                        className="flex-1 bg-error hover:bg-error/90 duration-700 text-surface hover:scale-95"
+                                        className="bg-error hover:bg-error/90 text-surface text-sm duration-200 w-full"
                                     >
                                         Reject
                                     </Button>
                                 )}
                             </div>
-                        </Card>
-                    ))}
-                </div>
-            ) : (
-                <p>Loading applications...</p>
-            )}
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

@@ -1,103 +1,109 @@
-import { motion } from "motion/react"
-import { HiClock, HiOutlineTrendingUp, HiShieldCheck, HiOutlineArrowRight } from "react-icons/hi"
-import Card from '../components/Card.jsx'
 import Button from '../components/form_elements/Button.jsx'
-import Community from '../assets/images/checking_pressure.jpg'
 import HandleBtnClick from '../components/HandleBtnClick.jsx'
 import Section from '../components/Section.jsx'
+import SectionHeader from '../components/SectionHeader.jsx'
+import FeatureCard from '../components/FeatureCard.jsx'
+import EmergencyImg from '../assets/images/emergency-response.jpg'
+import FirstAidImg from '../assets/images/cpr-training.jpg'
+import WorkshopImg from '../assets/images/outreach-program.jpg'
 
-const card = [
-    { title: "Emergency Response Training", text: "Our Emergency Response Training program equips individuals with the skills and knowledge needed to respond effectively in crisis situations.", link: "Learn More" },
-    { title: "First Aid Training", text: "Comprehensive First Aid Training covering essential lifesaving techniques such as CPR, wound care, and handling medical emergencies that require immediate intervention.", link: "Learn More" },
-    { title: "Community Safety Workshops", text: "Engage in our Community Safety Workshops to learn about crime prevention, disaster preparedness, and creating safer neighborhoods.", link: "Learn More" }
+const programs = [
+    {
+        image: EmergencyImg,
+        alt: "Emergency response volunteers at a training exercise",
+        title: "Emergency Response Training",
+        description: "Equip yourself with the skills to respond effectively in crisis situations — from accident scenes to natural disasters.",
+    },
+    {
+        image: FirstAidImg,
+        alt: "Volunteer practising CPR during a first aid training session",
+        title: "First Aid Training",
+        description: "Learn lifesaving techniques including CPR, wound care, and managing medical emergencies that require immediate action.",
+    },
+    {
+        image: WorkshopImg,
+        alt: "Community members gathered at a safety workshop",
+        title: "Community Safety Workshops",
+        description: "Build safer neighbourhoods through hands-on workshops covering crime prevention, disaster preparedness, and community resilience.",
+    },
 ]
 
 export default function Home() {
     return (
         <>
-            <Section id="home" className="bg-bg" aria-labelledby="home-title" aria-describedby="home-desc">
-                <div className="flex flex-col items-center justify-center px-4 py-5">
-                    <article className="flex flex-col lg:flex-row items-center justify-center gap-20">
-                        <motion.div
-                            className="max-w-md md:w-full"
-                            initial={{ x: -15, opacity: 0 }}
-                            whileInView={{ x: 0, opacity: 1 }}
-                            transition={{ duration: 0.6 }}
-                        >
-                            <h2 id="home-title" className="text-3xl md:text-4xl mb-2 font-bold text-text-primary">Protecting Lives. Shaping the Future</h2>
-                            <p id="home-desc" className="max-w-xl text-text-secondary">Be a part of a community dedicated to protecting lives and building a safer future for everyone.</p>
-                            <ul className="max-w-lg" role="list" aria-label="Key program highlights">
-                                <li className="flex justify-start items-start gap-2 my-4">
-                                    <span className="bg-accent-primary text-surface p-2 rounded-full mr-4 inline-block" aria-hidden="true">
-                                        <HiShieldCheck aria-hidden="true" focusable="false" />
-                                    </span>
-                                    <article>
-                                        <h4 className="text-xl font-semibold text-text-primary">Proven Experience</h4>
-                                        <p className="text-text-secondary">25 years of experience providing emergency response and safety education to communities across the region.</p>
-                                    </article>
-                                </li>
-                                <li className="flex justify-start items-start gap-2 my-4">
-                                    <span className="bg-accent-primary text-surface p-2 rounded-full mr-4 inline-block" aria-hidden="true">
-                                        <HiClock aria-hidden="true" focusable="false" />
-                                    </span>
-                                    <article>
-                                        <h4 className="text-xl font-semibold text-text-primary">Always Available</h4>
-                                        <p className="text-text-secondary">24/7 emergency response teams and support available whenever you need us most.</p>
-                                    </article>
-                                </li>
-                                <li className="flex justify-start items-start gap-2 my-4">
-                                    <span className="bg-accent-primary text-surface p-2 rounded-full mr-4 inline-block" aria-hidden="true">
-                                        <HiOutlineTrendingUp aria-hidden="true" focusable="false" />
-                                    </span>
-                                    <article>
-                                        <h4 className="text-xl font-semibold text-text-primary">Continuous Improvement</h4>
-                                        <p className="text-text-secondary">Regular training updates and certifications ensure our volunteers are equipped with the latest lifesaving techniques.</p>
-                                    </article>
-                                </li>
-                            </ul>
-                        </motion.div>
+            {/* Mission / Impact */}
+            <section className="bg-navy-deep text-surface overflow-hidden" aria-labelledby="mission-title">
+                <div className="max-w-6xl mx-auto px-8 lg:px-16 py-20 flex flex-col md:flex-row items-center md:items-start gap-12 md:gap-20">
 
-                        <motion.div
-                            className="max-w-xl overflow-hidden rounded-lg"
-                            initial={{ x: 15, opacity: 0 }}
-                            whileInView={{ x: 0, opacity: 1 }}
-                            transition={{ duration: 0.6 }}
+                    <div className="shrink-0 lg:w-[38%] text-center md:text-left">
+                        <p className="font-display font-bold text-surface text-[5.5rem] md:text-[7rem] lg:text-[9rem]">
+                            25
+                        </p>
+                        <p className="font-display text-xl font-semibold text-surface">
+                            Years of Service
+                        </p>
+
+                        <p className="text-surface text-xs uppercase tracking-[0.2em]">
+                            Established 2000
+                        </p>
+                    </div>
+
+                    <div className="lg:w-[62%] text-center md:text-left">
+                        <p className="text-surface font-semibold text-xs uppercase tracking-[0.2em]">
+                            The Mission
+                        </p>
+                        <div className="w-10 h-0.5 bg-accent-secondary mb-4 mx-auto md:mx-0"></div>
+
+                        <h2 id="mission-title" className="text-3xl md:text-4xl font-bold text-surface mb-6 leading-tight">
+                            Protecting Lives.<br />Shaping the Future.
+                        </h2>
+                        <p className="text-surface text-lg leading-relaxed">
+                            For 25 years, we have stood at the intersection of community, courage, and care. We believe public safety begins with people - trained, committed, and ready. Today, our work spans 12 active programs supported by more than 500 trained volunteers, each prepared to respond when it matters most.
+                        </p>
+                        <p className="text-surface text-base leading-relaxed mt-5">
+                            From emergency response to youth safety education, our programs are built around one principle: every life is worth protecting, and every community deserves the tools to do it.
+                        </p>
+                        <a
+                            href="#about"
+                            className="inline-flex items-center gap-2 text-accent-secondary hover:text-surface font-semibold text-sm mt-10 transition duration-300 uppercase tracking-widest group"
                         >
-                            <img className="w-full h-auto block" src={Community} role="img" alt="Public safety worker in checking a patient's vitals" />
-                        </motion.div>
-                    </article>
+                            Learn About Us
+                            <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
+                        </a>
+                    </div>
                 </div>
-            </Section>
+            </section>
 
-            <Section className="bg-surface" role="region" aria-labelledby="featured-programs-title">
-                <div className="flex flex-col items-center justify-center py-6">
-                    <h2 className="text-3xl md:text-4xl text-center font-bold text-text-primary" id="featured-programs-title">Featured Programs</h2>
-                    <p className="max-w-lg text-center text-text-secondary mb-6">Explore our most popular programs designed to protect and empower your community.</p>
+            {/* Top Programs */}
+            <Section className="bg-blue-muted" role="region" aria-labelledby="featured-programs-title">
+                <div className="max-w-6xl mx-auto px-8 lg:px-16">
+                    <SectionHeader
+                        tag="Our Programs"
+                        title="Top Programs"
+                        subtitle="Explore our most impactful programs - designed to equip, protect, and empower your community."
+                    />
 
-                    <div className="flex flex-wrap justify-center items-center gap-8 my-8 px-4 md:px-8">
-                        {card.map((card, index) => (
-                            <Card key={index} className="w-xs md:w-2xl lg:w-lg bg-bg rounded-lg" aria-labelledby={`program-${index}-title`}>
-                                <h3 id={`program-${index}-title`} className="text-lg font-bold text-text-primary group-hover:text-accent-secondary transition duration-700">
-                                    {card.title}
-                                </h3>
-                                <p className="font-normal text-text-secondary">
-                                    {card.text}
-                                </p>
-                                <a href="#services" aria-label={`Learn more about ${card.title}`} className="flex items-center gap-2 text-accent-primary group-hover:text-accent-secondary hover:scale-95 mt-3 transition duration-700">{card.link} <HiOutlineArrowRight aria-hidden="true" focusable="false" /></a>
-                            </Card>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {programs.map((program, index) => (
+                            <FeatureCard
+                                key={index}
+                                image={program.image}
+                                alt={program.alt}
+                                title={program.title}
+                                description={program.description}
+                            />
                         ))}
                     </div>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 60 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        whileHover={{ scale: 0.98 }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <Button onClick={() => HandleBtnClick("services")} aria-label="View all programs" className="bg-transparent border border-accent-secondary hover:bg-accent-primary hover:border-accent-primary duration-700 text-text-primary hover:text-surface font-bold mt-8 py-2 px-8 rounded-lg">
+                    <div className="mt-10 flex justify-center lg:justify-start">
+                        <Button
+                            onClick={() => HandleBtnClick("services")}
+                            aria-label="View all programs"
+                            className="bg-transparent border border-accent-secondary hover:bg-accent-primary hover:border-accent-primary transition duration-300 text-text-primary hover:text-surface font-semibold py-2 px-8 rounded-lg"
+                        >
                             View All Programs
                         </Button>
-                    </motion.div>
+                    </div>
                 </div>
             </Section>
         </>

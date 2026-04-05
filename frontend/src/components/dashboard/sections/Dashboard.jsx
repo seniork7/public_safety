@@ -1,5 +1,5 @@
-/* 
-    Dashboard component for admin panel. Fetches volunteer application data and admin info on mount, and renders the Overview and VolunteerApplications components. Also handles status changes for volunteer applications.
+/*
+    Dashboard component for admin panel. Fetches volunteer application data on mount, and renders the Overview and VolunteerApplications components. Also handles status changes for volunteer applications.
 */
 
 import { useEffect, useState } from 'react'
@@ -10,24 +10,20 @@ import { useAuth } from '../../../store/AuthContext'
 import Overview from "../Overview"
 import VolunteerApplications from '../volunteerApplications'
 import updateApplicationStatus from '../../../utils/updateApplicationStatus'
+import LoadingOverlay from '../../LoadingOverlay'
 import PopUpOverlay from '../PopUpOverlay'
-import Button from '../../form_elements/Button'
 import ApplicationPanel from '../ApplicationPanel'
 
 export default function Dashboard() {
+    const [fetchLoading, setFetchLoading] = useState(false)
     const [isAdmin, setIsAdmin] = useState(null)
     const [selectedApp, setSelectedApp] = useState(null)
     const [detailsOpen, setDetailsOpen] = useState(false)
     const navigate = useNavigate()
-    const { user, logout, loading } = useAuth()
+    const { user } = useAuth()
 
     const [dashboardData, setDashboardData] = useState({
         applications: [],
-        admin: {
-            fullName: "",
-            role: "",
-            id: ""
-        },
         stats: {
             totalApplications: 0,
             totalPending: 0,
@@ -38,14 +34,10 @@ export default function Dashboard() {
 
     useEffect(() => {
         const fetchDashboardData = async () => {
-            // setLoading(true)
-
+            setFetchLoading(true)
             try {
-                await new Promise(resolve => setTimeout(resolve, 500))
                 const response = await adminFetch('api/admin/dashboard_data', { cache: 'no-store' })
-
                 setDashboardData(response)
-
             } catch (error) {
                 if (error.message === 'Unauthorized!') {
                     navigate('/admin/login')
@@ -53,7 +45,7 @@ export default function Dashboard() {
                 }
                 console.error(error)
             } finally {
-                // setLoading(false)
+                setFetchLoading(false)
             }
         }
 
@@ -63,7 +55,7 @@ export default function Dashboard() {
     const handleStatusChange = async (id, status) => {
         const isAdminUser = (user?.role ?? "").toLowerCase() === "admin"
         if (!isAdminUser) {
-            setIsAdmin(isAdminUser)
+            setIsAdmin(false)
             return
         }
 
@@ -83,12 +75,7 @@ export default function Dashboard() {
                 return {
                     ...prev,
                     applications: updatedApplications,
-                    stats: {
-                        totalApplications: total,
-                        totalPending: pending,
-                        totalApproved: approved,
-                        totalRejected: rejected
-                    }
+                    stats: { totalApplications: total, totalPending: pending, totalApproved: approved, totalRejected: rejected }
                 }
             })
 
@@ -100,27 +87,26 @@ export default function Dashboard() {
     }
 
     const handleViewDetails = (id) => {
-        const currentApp = dashboardData.applications.find(app => app._id === id)
-        setSelectedApp(currentApp)
-
+        setSelectedApp(dashboardData.applications.find(app => app._id === id))
         setDetailsOpen(true)
-    }
-
-    const handleCloseDetails = () => {
-        setDetailsOpen(false)
     }
 
     return (
         <section>
+            {fetchLoading && <LoadingOverlay />}
+
+            {/* isAdmin === false means a non-admin tried to approve/reject — null means no action has been taken yet */}
             {isAdmin === false && (
-                <PopUpOverlay className="text-6xl text-error" icon={<HiExclamation />}>
-                    <h1 className="text-4xl font-bold">Unauthorized!</h1>
-                    <p className="text-lg">You do not have permission to perform this action.</p>
-                    <Button className="mt-2 bg-error hover:bg-accent-secondary hover:text-text-primary text-surface duration-700 hover:scale-98" onClick={() => setIsAdmin(null)}>Close</Button>
-                </PopUpOverlay>
+                <PopUpOverlay
+                    icon={HiExclamation}
+                    iconClassName="text-error"
+                    title="Unauthorized!"
+                    message="You do not have permission to perform this action."
+                    onClose={() => setIsAdmin(null)}
+                />
             )}
 
-            <div className="space-y-15">
+            <div className="space-y-10">
                 <Overview dashboardData={dashboardData} />
                 <VolunteerApplications
                     dashboardData={dashboardData.applications}
@@ -132,7 +118,7 @@ export default function Dashboard() {
             <ApplicationPanel
                 app={selectedApp}
                 open={detailsOpen}
-                onClose={handleCloseDetails}
+                onClose={() => setDetailsOpen(false)}
                 onStatusChange={handleStatusChange}
             />
         </section>

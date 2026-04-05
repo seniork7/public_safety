@@ -1,4 +1,4 @@
-/* 
+/*
     This function fetch admin data from the backend
 */
 

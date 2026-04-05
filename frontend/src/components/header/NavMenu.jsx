@@ -1,12 +1,26 @@
 import NavLink from './NavLink'
 
-export default function NavMenu({ Nav_Items = [], className = '', label = '', page = 'home', children, ...props } = {}) {
-    const hoverBg = page === 'admin'
+export default function NavMenu({ Nav_Items = [], className = '', page = 'home', mobile = false, onLinkClick, children } = {}) {
+    const adminHover = page === 'admin'
         ? 'hover:bg-accent-secondary hover:text-text-primary hover:font-semibold px-2 py-1 rounded-md'
-        : 'hover:text-accent-secondary'
+        : ''
+
+    const mobileLink = mobile
+        ? 'text-surface text-xl font-semibold w-full text-center py-3 hover:text-accent-secondary'
+        : ''
+
     return (
-        <div className={`flex ${className}`} {...props}>
-            {Nav_Items.map(link => <NavLink key={link.to} to={link.to} icon={link.icon} className={`py-2 px-4 hover:scale-105 transition duration-300 ${hoverBg}`} >{link.label}</NavLink>)}
+        <div className={`flex ${className}`}>
+            {Nav_Items.map(link => (
+                <NavLink
+                    key={link.to}
+                    to={link.to}
+                    onClick={onLinkClick}
+                    className={`px-4 py-2 ${adminHover} ${mobileLink}`}
+                >
+                    {link.label}
+                </NavLink>
+            ))}
             {children}
         </div>
     )

@@ -13,7 +13,7 @@ export default function DropdownMenu({ adminInfo = null, children }) {
     const dropdownRef = useRef(null)
     const navigate = useNavigate()
     const { user, logout } = useAuth()
-    
+
     adminInfo = user ? user : null
 
     // This function calls the backend to destroy the session and 
@@ -24,7 +24,7 @@ export default function DropdownMenu({ adminInfo = null, children }) {
             logout()
             navigate('/admin/login')
             console.log('Logout successful');
-            
+
         } catch (error) {
             console.error('Logout failed', error)
             navigate('/admin/login')
@@ -66,9 +66,9 @@ export default function DropdownMenu({ adminInfo = null, children }) {
                 <div className="absolute right-0 mt-5 w-40 bg-bg shadow-md rounded-md overflow-hidden z-50">
                     <h3 className="font-medium px-4 py-2 bg-nav-bg text-surface">
                         {adminInfo ? `${adminInfo?.fName} ${adminInfo?.lName}` : 'Admin User'}
-                        {adminInfo && <p className="text-xs text-text-muted">{adminInfo?.role}</p>}
+                        {adminInfo && <p className="text-xs text-surface/80">{adminInfo?.role}</p>}
                     </h3>
-                
+
                     {children}
 
                     {/* <Link to="/admin/profile" className="block px-4 py-2 hover:bg-surface/5">View Profile</Link> */}

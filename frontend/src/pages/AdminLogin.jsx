@@ -1,21 +1,16 @@
-/* 
-    Admin Login Page - contains a login form for admin users to access the admin dashboard
-*/
-
-import AdminBg from '../assets/images/admin-bg.png'
 import { useState } from 'react'
 import { useNavigate, Link } from "react-router-dom"
 import { adminFetch } from '../utils/adminFetch'
 import { useAuth } from '../store/AuthContext'
-import { HiOutlineArrowLeft } from 'react-icons/hi'
+import AdminBg from '../assets/images/admin-bg.jpg'
 import Submit from '../components/form_elements/Submit'
 import LoadingOverlay from '../components/LoadingOverlay'
 import TextInput from '../components/form_elements/TextInput'
-
+import Label from '../components/form_elements/Label'
 
 export default function AdminLogin() {
     const [loading, setLoading] = useState(false)
-    const [formError, setformError] = useState('')
+    const [formError, setFormError] = useState('')
     const [adminAccess, setAdminAccess] = useState({ email: '', password: '' })
     const navigate = useNavigate()
     const { login } = useAuth()
@@ -29,39 +24,34 @@ export default function AdminLogin() {
         setLoading(true)
 
         const errors = []
-
         if (!adminAccess.email.trim()) {
-            errors.push('Email Address is required.');
+            errors.push('Email Address is required.')
         } else if (!/^\S+@\S+\.\S+$/.test(adminAccess.email)) {
-            errors.push('Please enter a valid email address.');
+            errors.push('Please enter a valid email address.')
         }
-
         if (!adminAccess.password.trim()) {
-            errors.push('Password is required.');
+            errors.push('Password is required.')
         }
 
         if (errors.length > 0) {
-            setformError(errors.join(' '));
+            setFormError(errors.join(' '))
             setLoading(false)
-
-            return;
+            return
         }
+
         try {
             const response = await adminFetch('api/admin/login', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(adminAccess),
             })
 
             login(response)
-            
             setAdminAccess({ email: '', password: '' })
             navigate('/admin/dashboard')
-
         } catch (error) {
-            console.error(`There was an error during login. ${error.message}`)
+            setFormError('Invalid email or password. Please try again.')
+            console.error(`Login error: ${error.message}`)
         } finally {
             setLoading(false)
         }
@@ -70,53 +60,75 @@ export default function AdminLogin() {
     return (
         <>
             {loading && <LoadingOverlay />}
-            <section className="flex items-center justify-center h-screen bg-bg bg-cover bg-center text-text-primary px-4"
-                style={{ backgroundImage: `url(${AdminBg})` }}
-            >
-                <div className="w-full max-w-md bg-cover bg-center bg-no-repeat backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-white/8">
-                    <header className="mb-8 text-center space-y-2">
-                        <h2 className="text-3xl font-bold text-accent-primary">Admin Login</h2>
-                        <p className="text-sm text-surface">
-                            For Demo Admin access (Read-Only), use the following credentials: <br />
-                            Email: demo@publicsafety.com <br />
-                            Password: demoAccess000
-                        </p>
-                    </header>
 
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-                        {formError && <p className="text-error">{formError}</p>}
-                        <div className="">
-                            <label htmlFor="username" className="font-medium text-surface text-sm">*Email</label>
-                            <TextInput
-                                id="username"
-                                type="email"
-                                name="email"
-                                placeholder="admin@example.com"
-                                className="w-full text-surface p-2 rounded-lg bg-input-bg border border-input-border focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all duration-300"
-                                value={adminAccess.email}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className="">
-                            <label htmlFor="password" className="font-medium text-surface text-sm">*Password</label>
-                            <TextInput
-                                id="password"
-                                type="password"
-                                name="password"
-                                placeholder="********"
-                                className="w-full p-2 rounded-lg bg-input-bg border border-input-border text-input-text placeholder-input-placeholder focus:ring-2 focus:ring-accent-primary focus:border-transparent transition-all duration-300"
-                                value={adminAccess.password}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <Submit loading={loading} loadingText="Loading..." buttonText="Login" />
+            <div className="min-h-screen flex flex-col lg:flex-row">
 
-                        <Link to="/"
-                            className="flex items-center justify-center gap-1 text-center mt-5 rounded-lg font-semibold text-surface hover:text-accent-secondary  cursor-pointer transition duration-700 hover:scale-98"
-                        >< HiOutlineArrowLeft />back to Home</Link>
-                    </form>
+                <div
+                    className="hidden lg:block lg:w-[45%] relative"
+                    style={{ backgroundImage: `url(${AdminBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                >
+                    <div className="absolute inset-0 bg-navy-deep/55" aria-hidden="true" />
                 </div>
-            </section>
+
+                <div className="flex-1 lg:w-[55%] bg-blue-muted flex items-center justify-center px-8 md:px-16 lg:px-20 py-16">
+                    <div className="w-full max-w-md">
+
+                        <div className="mb-10">
+                            <p className="inline-block text-text-primary text-2xl font-bold tracking-tight">
+                                Public Safety
+                            </p>
+                            <div className="w-10 h-0.5 bg-accent-primary mb-4"></div>
+                        </div>
+
+                        <h2 className="text-3xl font-bold text-text-primary mb-1">Welcome Back</h2>
+                        <p className="text-text-secondary text-sm mb-8">Sign in to your admin account</p>
+
+                        {formError && (
+                            <p className="text-error text-sm mb-4" role="alert">{formError}</p>
+                        )}
+
+                        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                            <div>
+                                <Label htmlFor="username">*Email</Label>
+                                <TextInput
+                                    id="username"
+                                    type="email"
+                                    name="email"
+                                    placeholder="admin@example.com"
+                                    value={adminAccess.email}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div>
+                                <Label htmlFor="password">*Password</Label>
+                                <TextInput
+                                    id="password"
+                                    type="password"
+                                    name="password"
+                                    placeholder="••••••••"
+                                    value={adminAccess.password}
+                                    onChange={handleChange}
+                                />
+                            </div>
+
+                            <div className="pt-1">
+                                <Submit loading={loading} loadingText="Signing in..." buttonText="Sign In" />
+                            </div>
+                        </form>
+
+                        <p className="text-text-secondary text-xs mt-6 leading-relaxed">
+                            Demo access (read-only): demo@publicsafety.com / demoAccess000
+                        </p>
+
+                        <Link
+                            to="/"
+                            className="inline-flex items-center gap-1.5 text-text-secondary hover:text-accent-primary text-sm mt-4 transition-colors duration-200"
+                        >
+                            ← Back to Home
+                        </Link>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
