@@ -9,7 +9,7 @@ const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     // Check if the user is already authenticated when the app loads and 
     // set the user state accordingly
@@ -22,8 +22,7 @@ export const AuthProvider = ({ children }) => {
                 
                 setUser(response?.user)
 
-            } catch (error) {
-                console.error('Error checking credentials:', error)
+            } catch {
                 setUser(null)
             } finally {
                 setLoading(false)

@@ -68,7 +68,7 @@ export default function Dashboard() {
                 )
 
                 const total = updatedApplications.length
-                const pending = updatedApplications.filter(app => app.status === "Pending").length
+                const pending = updatedApplications.filter(app => app.status === "pending").length
                 const approved = updatedApplications.filter(app => app.status === "approved").length
                 const rejected = updatedApplications.filter(app => app.status === "rejected").length
 

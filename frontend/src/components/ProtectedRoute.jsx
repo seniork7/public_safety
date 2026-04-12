@@ -10,9 +10,7 @@ export const ProtectedRoute = ({ children }) => {
     const { user, loading } = useAuth()
 
     if (loading) {
-        return <>
-            <LoadingOverlay /> <p className='font-bold text-error'>Authenticating...</p>
-        </>
+        return <LoadingOverlay />
     }
 
     if (!user) {

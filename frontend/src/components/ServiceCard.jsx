@@ -15,7 +15,7 @@ export default function ServiceCard({ title, description, features, image, index
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                 />
                 {/* Image Overlay */}
-                <div className="absolute inset-0 bg-navy-deep/25" aria-hidden="true" />
+                <div className="absolute inset-0 bg-nav-bg/25" aria-hidden="true" />
             </div>
 
             <div className="flex flex-col flex-1 p-6">

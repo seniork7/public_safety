@@ -24,7 +24,7 @@ export default function ApplicationPanel({
         ? 'bg-success/15 text-success'
         : app.status?.toLowerCase() === 'rejected'
             ? 'bg-error/15 text-error'
-            : 'bg-accent-secondary/25 text-navy-light'
+            : 'bg-accent-secondary/25 text-text-secondary'
 
     return (
         <section className={`fixed inset-0 z-50 ${open ? 'pointer-events-auto' : 'pointer-events-none'}`}>

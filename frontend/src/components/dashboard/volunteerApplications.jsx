@@ -7,7 +7,7 @@ import Button from "../form_elements/Button"
 const statusStyle = (status) => {
     if (status?.toLowerCase() === 'approved') return 'bg-success/15 text-success'
     if (status?.toLowerCase() === 'rejected') return 'bg-error/15 text-error'
-    return 'bg-accent-secondary/25 text-navy-light'
+    return 'bg-accent-secondary/25 text-text-secondary'
 }
 
 export default function VolunteerApplications({

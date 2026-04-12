@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider, Outlet, Navigate } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import { AuthProvider } from './store/AuthContext'
 import './App.css'
 import './index.css'
@@ -29,12 +29,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    // element: <ProtectedRoute><Outlet /></ProtectedRoute>,
     children: [
       { index: true, element: <Navigate to="/admin/dashboard" replace /> },
       {
         path: 'dashboard',
-        element: <AdminDashboard />,
+        element: <ProtectedRoute><AdminDashboard /></ProtectedRoute>,
         children: [
           { index: true, element: <Dashboard /> },
           { path: 'safety-alerts', element: <AdminSafetyAlerts /> },
@@ -44,12 +43,7 @@ const router = createBrowserRouter([
       },
       { path: 'login', element: <AdminLogin /> }
     ]
-  },
-  {
-    path: '/admin/login',
-    element: <AdminLogin />,
-    errorElement: <Error404 />,
-  },
+  }
 ])
 
 createRoot(document.getElementById('root')).render(

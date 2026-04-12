@@ -39,7 +39,9 @@ const submitAdminForm = async (req, res) => {
         message: 'Login successful',
         role: admin.role,
         fName: admin.fName,
-        lName: admin.lName
+        lName: admin.lName,
+        email: admin.email,
+        createdAt: admin.createdAt,
     })
 }
 

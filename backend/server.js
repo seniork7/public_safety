@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import connectDB from './database/app_db.js'
@@ -6,7 +7,7 @@ import contactFormRoutes from './router/contact_form_routes.js'
 import adminFormRoutes from './router/admin_routes.js'
 import cookieParser from 'cookie-parser'
 
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 const app = express()
 app.use(express.json())
 app.use(cookieParser())

@@ -67,10 +67,10 @@ export default function AdminLogin() {
                     className="hidden lg:block lg:w-[45%] relative"
                     style={{ backgroundImage: `url(${AdminBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                 >
-                    <div className="absolute inset-0 bg-navy-deep/55" aria-hidden="true" />
+                    <div className="absolute inset-0 bg-nav-bg/55" aria-hidden="true" />
                 </div>
 
-                <div className="flex-1 lg:w-[55%] bg-blue-muted flex items-center justify-center px-8 md:px-16 lg:px-20 py-16">
+                <div className="flex-1 lg:w-[55%] bg-bg flex items-center justify-center px-8 md:px-16 lg:px-20 py-16">
                     <div className="w-full max-w-md">
 
                         <div className="mb-10">
