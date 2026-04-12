@@ -47,7 +47,7 @@ export default function SafetyTip() {
     return (
         <>
             <main role="main" aria-labelledby="tip-title">
-                <div className="bg-linear-to-r from-navy-deep to-navy-deep/85 text-surface py-20 md:py-28 px-8">
+                <div className="bg-linear-to-r from-nav-bg to-nav-bg/85 text-surface py-20 md:py-28 px-8">
                     <div className="max-w-6xl mx-auto lg:px-8 text-center lg:text-left">
 
                         <nav className="mb-4" aria-label="Breadcrumb">

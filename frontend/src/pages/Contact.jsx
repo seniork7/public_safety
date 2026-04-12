@@ -98,7 +98,7 @@ export default function Contact() {
                 role="region"
                 aria-labelledby="contact-title"
             >
-                <div className="bg-linear-to-r from-navy-deep to-navy-deep/85 text-surface py-20 md:py-28 px-8">
+                <div className="bg-linear-to-r from-nav-bg to-nav-bg/85 text-surface py-20 md:py-28 px-8">
                     <div className="max-w-6xl mx-auto lg:px-8 text-center lg:text-left">
                         <p className="inline-block text-accent-secondary font-semibold text-xs uppercase tracking-[0.2em]">
                             Contact Us

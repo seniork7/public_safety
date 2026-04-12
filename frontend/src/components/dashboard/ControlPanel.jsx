@@ -8,10 +8,10 @@ import { HiExclamationTriangle, HiFolder } from 'react-icons/hi2'
 
 // "end: true" on Dashboard prevents it from staying active when a nested route (e.g. /reports) is open
 const Nav_Items = [
-    { label: 'Dashboard',      to: '/admin/dashboard',                  icon: HiViewGrid,         end: true },
-    { label: 'Safety Alerts',  to: '/admin/dashboard/safety-alerts',    icon: HiExclamationTriangle },
-    { label: 'Reports',        to: '/admin/dashboard/reports',           icon: HiFolder },
-    { label: 'Settings',       to: '/admin/dashboard/settings',          icon: HiCog },
+    { label: 'Dashboard', to: '/admin/dashboard', icon: HiViewGrid, end: true },
+    { label: 'Safety Alerts', to: '/admin/dashboard/safety-alerts', icon: HiExclamationTriangle },
+    { label: 'Reports', to: '/admin/dashboard/reports', icon: HiFolder },
+    { label: 'Settings', to: '/admin/dashboard/settings', icon: HiCog },
 ]
 
 export default function ControlPanel({ onCollapse = () => { }, mobileClose = () => { } }) {
@@ -33,10 +33,9 @@ export default function ControlPanel({ onCollapse = () => { }, mobileClose = () 
                         end={end}
                         onClick={mobileClose}
                         className={({ isActive }) =>
-                            `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-colors duration-200 ${
-                                isActive
-                                    ? 'bg-surface/10 text-surface font-medium'
-                                    : 'text-surface/60 hover:text-surface hover:bg-surface/5'
+                            `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-colors duration-200 ${isActive
+                                ? 'bg-surface/10 text-surface font-medium'
+                                : 'text-surface/60 hover:text-surface hover:bg-surface/5'
                             }`
                         }
                     >
@@ -57,7 +56,7 @@ export default function ControlPanel({ onCollapse = () => { }, mobileClose = () 
                     Collapse
                 </button>
                 <footer className="px-5 pb-4 text-xs text-surface/40">
-                    <p>v1.0 · © {new Date().getFullYear()} · <Link to="/" className="hover:text-surface/70 transition-colors">Public Safety</Link></p>
+                    <p>v1.0 | &copy; {new Date().getFullYear()} | <Link to="/" className="hover:text-surface/70 transition-colors">Public Safety</Link></p>
                 </footer>
             </div>
         </div>

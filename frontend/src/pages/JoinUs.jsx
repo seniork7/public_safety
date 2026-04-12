@@ -45,10 +45,15 @@ export default function JoinUs() {
 
     const handleChange = (e) => {
         const { name, type, value, checked } = e.target
+
         setFormData({
             ...formData,
             [name]: type === "checkbox" ? checked : value
         })
+
+        if (invalidFields.includes(name)) {
+            setInvalidFields(invalidFields.filter(field => field !== name))
+        }
     }
 
     const handleSubmit = async (e) => {
@@ -103,17 +108,19 @@ export default function JoinUs() {
                 role="region"
                 aria-labelledby="joinus-title"
             >
-                <div className="bg-linear-to-r from-navy-deep to-navy-deep/85 text-surface py-20 md:py-28 px-8">
-                    <div className="max-w-6xl mx-auto lg:px-8 text-center lg:text-left">
-                        <p className="inline-block text-accent-secondary font-semibold text-xs uppercase tracking-[0.2em]">
-                            Join Our Team
-                        </p>
-                        <div className="w-10 h-0.5 bg-accent-secondary mb-4 mx-auto lg:mx-0"></div>
+                <div className="bg-linear-to-r from-nav-bg to-nav-bg/85 text-surface py-20 md:py-28 px-8">
+                    <div className="max-w-6xl mx-auto lg:px-8">
+                        <div className="text-center lg:text-left">
+                            <p className="inline-block text-accent-secondary font-semibold text-xs uppercase tracking-[0.2em]">
+                                Join Our Team
+                            </p>
+                            <div className="w-10 h-0.5 bg-accent-secondary mb-4 mx-auto lg:mx-0"></div>
 
-                        <h2 id="joinus-title" className="text-3xl md:text-4xl font-bold text-surface leading-tight mb-6">
-                            Make a Difference<br />in Your Community
-                        </h2>
-                        <ul className="space-y-3 flex flex-col items-center text-left" aria-label="Volunteer benefits">
+                            <h2 id="joinus-title" className="text-3xl md:text-4xl font-bold text-surface leading-tight mb-6">
+                                Make a Difference<br />in Your Community
+                            </h2>
+                        </div>
+                        <ul className="space-y-3 flex flex-col w-fit mx-auto lg:mx-0" aria-label="Volunteer benefits">
                             {benefits.map((benefit, index) => (
                                 <li key={index} className="flex gap-3 text-surface text-base">
                                     <HiCheckCircle className="shrink-0 mt-0.5 text-accent-secondary w-5 h-5" aria-hidden="true" />
@@ -138,14 +145,17 @@ export default function JoinUs() {
                         aria-label="What to expect after you apply"
                     >
                         <div>
-                            <p className="inline-block text-accent-primary font-semibold text-xs uppercase tracking-[0.2em]">
-                                What to Expect
-                            </p>
-                            <div className="w-10 h-0.5 bg-accent-primary mb-4"></div>
+                            <div className="text-center lg:text-left">
+                                <p className="inline-block text-accent-primary font-semibold text-xs uppercase tracking-[0.2em]">
+                                    What to Expect
+                                </p>
+                                <div className="w-10 h-0.5 bg-accent-primary mb-4 mx-auto lg:mx-0"></div>
 
-                            <h3 className="font-bold text-text-primary text-lg mb-6">
-                                Your path to volunteering
-                            </h3>
+                                <h3 className="font-bold text-text-primary text-lg mb-6">
+                                    Your path to volunteering
+                                </h3>
+                            </div>
+
 
                             <ol className="space-y-6" aria-label="Application steps">
                                 {steps.map((step) => (
@@ -194,17 +204,26 @@ export default function JoinUs() {
                                 <div className="flex-col w-full">
                                     <Label htmlFor="fName">*First Name</Label>
                                     <TextInput
-                                        id="fName" name="fName"
-                                        value={formData.fName} onChange={handleChange}
-                                        type="text" placeholder="John"
+                                        id="fName"
+                                        name="fName"
+                                        value={formData.fName}
+                                        onChange={handleChange}
+                                        type="text"
+                                        placeholder="John"
+                                        className={invalidFields.includes('fName') ? 'ring-1 ring-error' : ''}
                                     />
                                 </div>
+
                                 <div className="flex-col w-full">
                                     <Label htmlFor="lName">*Last Name</Label>
                                     <TextInput
-                                        id="lName" name="lName"
-                                        value={formData.lName} onChange={handleChange}
-                                        type="text" placeholder="Doe"
+                                        id="lName"
+                                        name="lName"
+                                        value={formData.lName}
+                                        onChange={handleChange}
+                                        type="text"
+                                        placeholder="Doe"
+                                        className={invalidFields.includes('lName') ? 'ring-1 ring-error' : ''}
                                     />
                                 </div>
                             </div>
@@ -212,7 +231,12 @@ export default function JoinUs() {
                             <div className="flex flex-col md:flex-row gap-4">
                                 <div className="w-full">
                                     <Label htmlFor="gender">*Gender</Label>
-                                    <Select id="gender" name="gender" value={formData.gender} onChange={handleChange}>
+                                    <Select
+                                        id="gender"
+                                        name="gender"
+                                        value={formData.gender}
+                                        onChange={handleChange}
+                                        className={invalidFields.includes('gender') ? 'ring-1 ring-error' : ''}>
                                         <option value="">-- choose an option --</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
@@ -221,12 +245,17 @@ export default function JoinUs() {
                                         <option value="other">Other</option>
                                     </Select>
                                 </div>
+
                                 <div className="flex-col w-full">
                                     <Label htmlFor="phone">*Phone Number</Label>
                                     <TextInput
-                                        id="phone" name="phone"
-                                        value={formData.phone} onChange={handleChange}
-                                        type="tel" placeholder="(123) 456-7890"
+                                        id="phone"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        type="tel"
+                                        placeholder="(123) 456-7890"
+                                        className={invalidFields.includes('phone') ? 'ring-1 ring-error' : ''}
                                     />
                                 </div>
                             </div>
@@ -234,16 +263,27 @@ export default function JoinUs() {
                             <div className="flex flex-col md:flex-row gap-4">
                                 <div className="flex-col w-full">
                                     <Label htmlFor="province">*Province</Label>
-                                    <Select id="province" name="province" value={formData.province} onChange={handleChange}>
+                                    <Select
+                                        id="province"
+                                        name="province"
+                                        value={formData.province}
+                                        onChange={handleChange}
+                                        className={invalidFields.includes('province') ? 'ring-1 ring-error' : ''}>
                                         <option value="">-- choose a province --</option>
                                         {locations.map(location => (
                                             <option key={location.name} value={location.name}>{location.name}</option>
                                         ))}
                                     </Select>
                                 </div>
+
                                 <div className="w-full">
                                     <Label htmlFor="city">*City / Region</Label>
-                                    <Select id="city" name="city" value={formData.city} onChange={handleChange}>
+                                    <Select
+                                        id="city"
+                                        name="city"
+                                        value={formData.city}
+                                        onChange={handleChange}
+                                        className={invalidFields.includes('city') ? 'ring-1 ring-error' : ''}>
                                         <option value="">-- choose a city --</option>
                                         {(locations.find(location => location.name === formData.province)?.regions || []).map(region => (
                                             <option key={region} value={region}>{region}</option>
@@ -256,14 +296,24 @@ export default function JoinUs() {
                                 <div className="flex-col w-full">
                                     <Label htmlFor="email">*Email</Label>
                                     <TextInput
-                                        id="email" name="email"
-                                        value={formData.email} onChange={handleChange}
-                                        type="email" placeholder="john@example.com"
+                                        id="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        type="email"
+                                        placeholder="john@example.com"
+                                        className={invalidFields.includes('email') ? 'ring-1 ring-error' : ''}
                                     />
                                 </div>
+
                                 <div className="w-full">
                                     <Label htmlFor="role">*Role Interested In</Label>
-                                    <Select id="role" name="role" value={formData.role} onChange={handleChange}>
+                                    <Select
+                                        id="role"
+                                        name="role"
+                                        value={formData.role}
+                                        onChange={handleChange}
+                                        className={invalidFields.includes('role') ? 'ring-1 ring-error' : ''}>
                                         <option value="">-- choose an option --</option>
                                         <option>First Aid</option>
                                         <option>Community Outreach</option>
@@ -278,16 +328,27 @@ export default function JoinUs() {
                             <div className="flex flex-col md:flex-row gap-4">
                                 <div className="flex-col w-full">
                                     <Label htmlFor="experience">*Experience Level</Label>
-                                    <Select id="experience" name="experience" value={formData.experience} onChange={handleChange}>
+                                    <Select
+                                        id="experience"
+                                        name="experience"
+                                        value={formData.experience}
+                                        onChange={handleChange}
+                                        className={invalidFields.includes('experience') ? 'ring-1 ring-error' : ''}>
                                         <option value="">-- choose an option --</option>
                                         <option>No Experience</option>
                                         <option>Some Experience</option>
                                         <option>Certified Professional</option>
                                     </Select>
                                 </div>
+
                                 <div className="flex-col w-full">
                                     <Label htmlFor="availability">*Availability</Label>
-                                    <Select id="availability" name="availability" value={formData.availability} onChange={handleChange}>
+                                    <Select
+                                        id="availability"
+                                        name="availability"
+                                        value={formData.availability}
+                                        onChange={handleChange}
+                                        className={invalidFields.includes('availability') ? 'ring-1 ring-error' : ''}>
                                         <option value="">-- choose an option --</option>
                                         <option>Weekdays</option>
                                         <option>Weekends</option>
@@ -300,9 +361,13 @@ export default function JoinUs() {
                             <div>
                                 <Label htmlFor="whyVolunteer">*Why do you want to volunteer?</Label>
                                 <Textarea
-                                    id="whyVolunteer" name="whyVolunteer"
-                                    value={formData.whyVolunteer} onChange={handleChange}
-                                    rows={4} placeholder="Tell us why you want to volunteer..."
+                                    id="whyVolunteer"
+                                    name="whyVolunteer"
+                                    value={formData.whyVolunteer}
+                                    onChange={handleChange}
+                                    rows={4}
+                                    placeholder="Tell us why you want to volunteer..."
+                                    className={invalidFields.includes('whyVolunteer') ? 'ring-1 ring-error' : ''}
                                 />
                             </div>
 
@@ -312,7 +377,7 @@ export default function JoinUs() {
                                     checked={formData.checkbox} onChange={handleChange}
                                     className="transition focus:outline-none focus:ring-0 cursor-pointer mt-0.5"
                                 />
-                                <Label htmlFor="checkbox" className="text-text-secondary text-sm">
+                                <Label htmlFor="checkbox" className={`text-sm ${invalidFields.includes('checkbox') ? 'text-error!' : 'text-text-secondary'}`}>
                                     *I agree to the terms and conditions and understand that a background check may be required for certain volunteer positions.
                                 </Label>
                             </div>

@@ -32,7 +32,7 @@ export default function Home() {
     return (
         <>
             {/* Mission / Impact */}
-            <section className="bg-navy-deep text-surface overflow-hidden" aria-labelledby="mission-title">
+            <section className="bg-nav-bg text-surface overflow-hidden" aria-labelledby="mission-title">
                 <div className="max-w-6xl mx-auto px-8 lg:px-16 py-20 flex flex-col md:flex-row items-center md:items-start gap-12 md:gap-20">
 
                     <div className="shrink-0 lg:w-[38%] text-center md:text-left">
@@ -75,7 +75,7 @@ export default function Home() {
             </section>
 
             {/* Top Programs */}
-            <Section className="bg-blue-muted" role="region" aria-labelledby="featured-programs-title">
+            <Section className="bg-bg" role="region" aria-labelledby="featured-programs-title">
                 <div className="max-w-6xl mx-auto px-8 lg:px-16">
                     <SectionHeader
                         tag="Our Programs"

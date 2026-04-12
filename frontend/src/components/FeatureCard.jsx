@@ -10,7 +10,7 @@ export default function FeatureCard({ image, alt, title, description, href = "#s
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.04]"
                 />
                 {/* Image Overlay */}
-                <div className="absolute inset-0 bg-navy-deep/25" aria-hidden="true" />
+                <div className="absolute inset-0 bg-nav-bg/25" aria-hidden="true" />
             </div>
             <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-lg font-bold text-text-primary mb-2 leading-snug">

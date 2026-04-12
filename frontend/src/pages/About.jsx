@@ -67,7 +67,7 @@ export default function About() {
                 role="region"
                 aria-labelledby="about-title"
             >
-                <div className="bg-linear-to-r from-navy-deep to-navy-deep/85 text-surface py-20 md:py-28 px-8">
+                <div className="bg-linear-to-r from-nav-bg to-nav-bg/85 text-surface py-20 md:py-28 px-8">
                     <div className="max-w-6xl mx-auto lg:px-8 text-center lg:text-left">
                         <p className="inline-block text-accent-secondary font-semibold text-xs uppercase tracking-[0.2em]">
                             About Us
@@ -170,7 +170,7 @@ export default function About() {
                                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                                 />
                                 {/* Overlay — always visible on mobile, slides up on desktop hover */}
-                                <div className="absolute inset-x-0 bottom-0 translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 ease-out bg-navy-deep/90 px-5 py-4">
+                                <div className="absolute inset-x-0 bottom-0 translate-y-0 lg:translate-y-full lg:group-hover:translate-y-0 transition-transform duration-300 ease-out bg-nav-bg/90 px-5 py-4">
                                     <h5 id={`team-${index}-title`} className="font-semibold text-surface text-base leading-snug">
                                         {member.name}
                                     </h5>
