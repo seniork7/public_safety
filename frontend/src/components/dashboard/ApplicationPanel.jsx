@@ -1,5 +1,6 @@
+import { useState, useEffect } from 'react'
 import { HiX } from 'react-icons/hi'
-import { HiPhone, HiMiniEnvelope, HiMapPin } from 'react-icons/hi2'
+import { HiPhone, HiMiniEnvelope, HiMapPin, HiPencilSquare, HiTrash, HiCheck, HiXMark } from 'react-icons/hi2'
 import Button from '../form_elements/Button'
 
 export default function ApplicationPanel({
@@ -7,7 +8,23 @@ export default function ApplicationPanel({
     open = false,
     onClose = () => { },
     onStatusChange = () => { },
+    onAddNote = () => { },
+    onDeleteNote = () => { },
+    onEditNote = () => { },
 } = {}) {
+
+    const [newNoteText, setNewNoteText] = useState('')
+    const [editingNoteId, setEditingNoteId] = useState(null)
+    const [editNoteText, setEditNoteText] = useState('')
+    const [noteLoading, setNoteLoading] = useState(false)
+
+    // Reset note state whenever a different application is opened
+    useEffect(() => {
+        setNewNoteText('')
+        setEditingNoteId(null)
+        setEditNoteText('')
+        setNoteLoading(false)
+    }, [app?._id])
 
     if (!app) return null
 
@@ -25,6 +42,54 @@ export default function ApplicationPanel({
         : app.status?.toLowerCase() === 'rejected'
             ? 'bg-error/15 text-error'
             : 'bg-accent-secondary/25 text-text-secondary'
+
+    const formatNoteDate = (date) => new Date(date).toLocaleDateString(undefined, {
+        month: 'short', day: 'numeric', year: 'numeric'
+    })
+
+    const handleSaveNewNote = async () => {
+        if (!newNoteText.trim()) return
+        setNoteLoading(true)
+        try {
+            await onAddNote(app._id, newNoteText)
+            setNewNoteText('')
+        } finally {
+            setNoteLoading(false)
+        }
+    }
+
+    const handleStartEdit = (note) => {
+        setEditingNoteId(note._id)
+        setEditNoteText(note.text)
+    }
+
+    const handleSaveEdit = async (noteId) => {
+        if (!editNoteText.trim()) return
+        setNoteLoading(true)
+        try {
+            await onEditNote(app._id, noteId, editNoteText)
+            setEditingNoteId(null)
+            setEditNoteText('')
+        } finally {
+            setNoteLoading(false)
+        }
+    }
+
+    const handleCancelEdit = () => {
+        setEditingNoteId(null)
+        setEditNoteText('')
+    }
+
+    const handleDelete = async (noteId) => {
+        setNoteLoading(true)
+        try {
+            await onDeleteNote(app._id, noteId)
+        } finally {
+            setNoteLoading(false)
+        }
+    }
+
+    const notes = app.notes ?? []
 
     return (
         <section className={`fixed inset-0 z-50 ${open ? 'pointer-events-auto' : 'pointer-events-none'}`}>
@@ -91,9 +156,9 @@ export default function ApplicationPanel({
 
                             <div className="grid grid-cols-2 gap-3">
                                 {[
-                                    { label: "Gender",       value: app.gender },
-                                    { label: "Role",         value: app.role },
-                                    { label: "Experience",   value: app.experience },
+                                    { label: "Gender", value: app.gender },
+                                    { label: "Role", value: app.role },
+                                    { label: "Experience", value: app.experience },
                                     { label: "Availability", value: app.availability },
                                 ].map(({ label, value }) => (
                                     <div key={label} className="bg-bg rounded-lg p-3">
@@ -111,16 +176,99 @@ export default function ApplicationPanel({
                             </div>
                         </dl>
 
-                        {/* Admin notes are not yet saved to the database */}
+                        {/* Admin Notes */}
                         <div>
-                            <label className="block text-sm font-medium text-text-primary mb-2">Admin Notes</label>
+                            <h3 className="text-sm font-medium text-text-primary mb-3">
+                                Admin Notes
+                                {notes.length > 0 && (
+                                    <span className="ml-2 text-xs font-normal text-text-secondary">
+                                        ({notes.length})
+                                    </span>
+                                )}
+                            </h3>
+
+                            {/* Existing notes */}
+                            {notes.length > 0 && (
+                                <ul className="space-y-2 mb-3">
+                                    {notes.map((note) => (
+                                        <li key={note._id} className="bg-bg rounded-lg p-3">
+                                            {editingNoteId === note._id ? (
+                                                <div>
+                                                    <textarea
+                                                        value={editNoteText}
+                                                        onChange={(e) => setEditNoteText(e.target.value)}
+                                                        className="w-full min-h-20 resize-y rounded-lg border border-border px-3 py-2 text-sm bg-surface text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary"
+                                                        disabled={noteLoading}
+                                                    />
+                                                    <div className="flex justify-end gap-2 mt-2">
+                                                        <button
+                                                            onClick={handleCancelEdit}
+                                                            disabled={noteLoading}
+                                                            className="px-2 py-1 rounded text-xs text-text-secondary hover:text-text-primary transition-colors duration-200 disabled:opacity-50"
+                                                            aria-label="Cancel edit"
+                                                        >
+                                                            Cancel
+                                                        </button>
+                                                        <button
+                                                            onClick={() => handleSaveEdit(note._id)}
+                                                            disabled={noteLoading || !editNoteText.trim()}
+                                                            className="px-2 py-1 rounded text-xs bg-accent-primary text-surface hover:bg-accent-primary/90 transition-colors duration-200 disabled:opacity-50"
+                                                            aria-label="Save edit"
+                                                        >
+                                                            Save
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <div>
+                                                    <p className="text-sm text-text-primary leading-relaxed whitespace-pre-wrap">
+                                                        {note.text}
+                                                    </p>
+                                                    <div className="flex items-center justify-between mt-2">
+                                                        <p className="text-xs text-text-secondary">
+                                                            {note.adminName} - {formatNoteDate(note.createdAt)}
+                                                        </p>
+                                                        <div className="flex items-center gap-1">
+                                                            <button
+                                                                onClick={() => handleStartEdit(note)}
+                                                                disabled={noteLoading}
+                                                                className="p-1 rounded text-text-secondary hover:text-accent-primary transition-colors duration-200 disabled:opacity-50"
+                                                                aria-label="Edit note"
+                                                            >
+                                                                <HiPencilSquare className="w-3.5 h-3.5" />
+                                                            </button>
+                                                            <button
+                                                                onClick={() => handleDelete(note._id)}
+                                                                disabled={noteLoading}
+                                                                className="p-1 rounded text-text-secondary hover:text-error transition-colors duration-200 disabled:opacity-50"
+                                                                aria-label="Delete note"
+                                                            >
+                                                                <HiTrash className="w-3.5 h-3.5" />
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+
+                            {/* Add new note */}
                             <textarea
+                                value={newNoteText}
+                                onChange={(e) => setNewNoteText(e.target.value)}
                                 placeholder="Add context, review notes, follow up items..."
-                                className="w-full min-h-[100px] resize-y rounded-lg border border-border px-3 py-2 text-sm bg-bg text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary"
+                                className="w-full min-h-20 resize-y rounded-lg border border-border px-3 py-2 text-sm bg-bg text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary disabled:opacity-50"
+                                disabled={noteLoading}
                             />
                             <div className="flex justify-end mt-2">
-                                <Button className="bg-accent-primary text-surface hover:bg-accent-primary/90 text-sm duration-200">
-                                    Save Notes
+                                <Button
+                                    onClick={handleSaveNewNote}
+                                    disabled={noteLoading || !newNoteText.trim()}
+                                    className="bg-accent-primary text-surface hover:bg-accent-primary/90 text-sm duration-200 disabled:opacity-50"
+                                >
+                                    {noteLoading ? 'Saving...' : 'Save Note'}
                                 </Button>
                             </div>
                         </div>

@@ -8,6 +8,9 @@ import AdminForm from "../models/admin_schema.js"
 import getAdminProfile from "../controllers/get_admin_profile.js"
 import updateAdminProfile from "../controllers/update_admin_profile.js"
 import updateAdminPassword from "../controllers/update_admin_password.js"
+import addApplicationNote from "../controllers/add_application_note.js"
+import deleteApplicationNote from "../controllers/delete_application_note.js"
+import updateApplicationNote from "../controllers/update_application_note.js"
 
 const router = express.Router()
 
@@ -15,6 +18,9 @@ router.post("/login", submitAdminForm)
 router.post("/logout", logoutAdmin)
 router.get("/dashboard_data", verifyAdmin, getDashboardData)
 router.patch("/applications/:id", verifyAdmin, updateApplication)
+router.post("/applications/:id/notes", verifyAdmin, addApplicationNote)
+router.delete("/applications/:id/notes/:noteId", verifyAdmin, deleteApplicationNote)
+router.patch("/applications/:id/notes/:noteId", verifyAdmin, updateApplicationNote)
 router.get("/profile", verifyAdmin, getAdminProfile)
 router.patch("/profile", verifyAdmin, updateAdminProfile)
 router.patch("/password", verifyAdmin, updateAdminPassword)

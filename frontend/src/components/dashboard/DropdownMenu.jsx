@@ -10,26 +10,26 @@ import { adminFetch } from '../../utils/adminFetch'
 
 export default function DropdownMenu({ adminInfo = null, children }) {
     const [menuOpen, setMenuOpen] = useState(false)
+    const [logoutLoading, setLogoutLoading] = useState(false)
     const dropdownRef = useRef(null)
     const navigate = useNavigate()
     const { user, logout } = useAuth()
 
     adminInfo = user ? user : null
 
-    // This function calls the backend to destroy the session and 
+    // This function calls the backend to destroy the session and
     // then clears the user state and redirects to login page
     const handleLogout = async () => {
+        setLogoutLoading(true)
         try {
             await adminFetch('api/admin/logout', { method: 'POST' })
             logout()
             navigate('/admin/login')
-            console.log('Logout successful');
-
         } catch (error) {
             console.error('Logout failed', error)
             navigate('/admin/login')
         } finally {
-            // setLoading(false)
+            setLogoutLoading(false)
         }
     }
 
@@ -72,8 +72,13 @@ export default function DropdownMenu({ adminInfo = null, children }) {
                     {children}
 
                     {/* <Link to="/admin/profile" className="block px-4 py-2 hover:bg-surface/5">View Profile</Link> */}
-                    <button onClick={handleLogout} className="w-full text-left px-4 py-2 hover:bg-surface/5">
-                        <HiOutlineLogout className='inline-block ml-2' /> Logout
+                    <button
+                        onClick={handleLogout}
+                        disabled={logoutLoading}
+                        className="w-full text-left px-4 py-2 hover:bg-surface/5 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        <HiOutlineLogout className='inline-block ml-2' />
+                        {logoutLoading ? ' Logging out...' : ' Logout'}
                     </button>
                 </div>
             )}

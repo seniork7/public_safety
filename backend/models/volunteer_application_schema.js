@@ -15,16 +15,19 @@ const applicationFormSchema = new Schema({
   availability: { type: String, required: true  },
   whyVolunteer: { type: String, required: true  },     
   checkbox: { type: Boolean, required: true  },
-  status: { 
-    type: String, 
-    enum: ["pending", "approved", "rejected"], 
-    default: "pending" 
+  status: {
+    type: String,
+    enum: ["pending", "approved", "rejected"],
+    default: "pending"
   },
+  notes: [{
+    text: { type: String, required: true },
+    adminName: { type: String, required: true },
+    createdAt: { type: Date, default: Date.now },
+  }],
   createdAt: { type: Date, default: Date.now },
 });
 
-// model() links the schema to a MongoDB collection and
-// allows you to create, read, update, and delete documents
 const ApplicationForm = model('Volunteer', applicationFormSchema)
 
 export default ApplicationForm

@@ -3,7 +3,7 @@
 */
 
 import { createContext, useContext, useEffect, useState } from 'react'
-import { adminFetch } from '../utils/adminFetch'
+import { API_URL } from '../utils/api_url'
 
 const AuthContext = createContext()
 
@@ -17,11 +17,17 @@ export const AuthProvider = ({ children }) => {
         const checkAuth = async () => {
             setLoading(true)
             try {
-                await new Promise(resolve => setTimeout(resolve, 500))
-                const response = await adminFetch('api/admin/check-auth', { cache: 'no-store' })
-                
-                setUser(response?.user)
+                const response = await fetch(`${API_URL}/api/admin/check-auth`, {
+                    credentials: 'include',
+                    cache: 'no-store',
+                })
 
+                if (response.ok) {
+                    const data = await response.json()
+                    setUser(data?.user)
+                } else {
+                    setUser(null)
+                }
             } catch {
                 setUser(null)
             } finally {

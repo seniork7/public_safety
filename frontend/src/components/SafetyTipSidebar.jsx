@@ -45,7 +45,7 @@ export default function SafetyTipSidebar({ alert, copied, onCopy, onShare }) {
                             className="flex-1 flex items-center justify-center gap-1.5 bg-bg border border-border text-text-primary text-sm font-medium py-2.5 rounded-lg hover:bg-surface hover:text-accent-primary hover:border-accent-primary transition-colors duration-200 cursor-pointer"
                             aria-label="Copy link to this tip"
                         >
-                            <HiClipboardCopy className="w-4 h-4 flex-shrink-0" />
+                            <HiClipboardCopy className="w-4 h-4 shrink-0" />
                             {copied ? "Copied!" : "Copy Link"}
                         </button>
                         <button
@@ -53,7 +53,7 @@ export default function SafetyTipSidebar({ alert, copied, onCopy, onShare }) {
                             className="flex-1 flex items-center justify-center gap-1.5 bg-accent-primary text-surface text-sm font-medium py-2.5 rounded-lg hover:bg-accent-primary/90 transition-colors duration-200 cursor-pointer"
                             aria-label="Share this tip"
                         >
-                            <HiShare className="w-4 h-4 flex-shrink-0" />
+                            <HiShare className="w-4 h-4 shrink-0" />
                             Share
                         </button>
                     </div>

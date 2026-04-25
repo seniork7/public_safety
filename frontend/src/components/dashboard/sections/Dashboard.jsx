@@ -91,6 +91,44 @@ export default function Dashboard() {
         setDetailsOpen(true)
     }
 
+    const syncNotes = (appId, updatedNotes) => {
+        setDashboardData(prev => ({
+            ...prev,
+            applications: prev.applications.map(app =>
+                app._id === appId ? { ...app, notes: updatedNotes } : app
+            )
+        }))
+        setSelectedApp(prev =>
+            prev && prev._id === appId ? { ...prev, notes: updatedNotes } : prev
+        )
+    }
+
+    const handleAddNote = async (appId, text) => {
+        const data = await adminFetch(`api/admin/applications/${appId}/notes`, {
+            method: 'POST',
+            body: JSON.stringify({ text })
+        })
+        const currentNotes = dashboardData.applications.find(a => a._id === appId)?.notes ?? []
+        syncNotes(appId, [...currentNotes, data.note])
+    }
+
+    const handleDeleteNote = async (appId, noteId) => {
+        await adminFetch(`api/admin/applications/${appId}/notes/${noteId}`, {
+            method: 'DELETE'
+        })
+        const currentNotes = dashboardData.applications.find(a => a._id === appId)?.notes ?? []
+        syncNotes(appId, currentNotes.filter(n => n._id !== noteId))
+    }
+
+    const handleEditNote = async (appId, noteId, text) => {
+        const data = await adminFetch(`api/admin/applications/${appId}/notes/${noteId}`, {
+            method: 'PATCH',
+            body: JSON.stringify({ text })
+        })
+        const currentNotes = dashboardData.applications.find(a => a._id === appId)?.notes ?? []
+        syncNotes(appId, currentNotes.map(n => n._id === noteId ? data.note : n))
+    }
+
     return (
         <section>
             {fetchLoading && <LoadingOverlay />}
@@ -120,6 +158,9 @@ export default function Dashboard() {
                 open={detailsOpen}
                 onClose={() => setDetailsOpen(false)}
                 onStatusChange={handleStatusChange}
+                onAddNote={handleAddNote}
+                onDeleteNote={handleDeleteNote}
+                onEditNote={handleEditNote}
             />
         </section>
     )

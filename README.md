@@ -19,7 +19,8 @@ A full-stack web application for a community public safety organization. The sit
 - Secure login with JWT-based session cookies
 - Overview stats: total applications, pending reviews, approved volunteers, rejected applications
 - View, approve, and reject individual volunteer applications
-- Side panel with full applicant details and admin notes
+- Side panel with full applicant details per application
+- Admin Notes - admins can add, edit, and delete notes on any application directly from the side panel. Notes are persisted in the database and display the author's name and timestamp. All notes load automatically when an application is opened
 - Role-based access: `Admin` role can approve/reject; `Demo_Admin` role is read-only
 
 ---
@@ -61,6 +62,9 @@ A full-stack web application for a community public safety organization. The sit
 | `GET` | `/api/admin/check-auth` | `verifyAdmin` | Validate active session |
 | `GET` | `/api/admin/dashboard_data` | `verifyAdmin` | Fetch all applications & stats |
 | `PATCH` | `/api/admin/applications/:id` | `verifyAdmin` & Admin role | Approve or reject an application |
+| `POST` | `/api/admin/applications/:id/notes` | `verifyAdmin` | Add a note to an application |
+| `PATCH` | `/api/admin/applications/:id/notes/:noteId` | `verifyAdmin` | Edit an existing note |
+| `DELETE` | `/api/admin/applications/:id/notes/:noteId` | `verifyAdmin` | Delete a note |
 
 ---
 

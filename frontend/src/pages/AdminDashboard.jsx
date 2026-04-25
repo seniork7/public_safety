@@ -33,8 +33,6 @@ export default function AdminDashboard() {
     }
 
     useEffect(() => {
-        alert('The dashboard is under development. Please check back later!')
-
         const collapsedState = localStorage.getItem('adminPanelCollapsed')
         if (collapsedState) {
             setIsCollapsed(JSON.parse(collapsedState))
